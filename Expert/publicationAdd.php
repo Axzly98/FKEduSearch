@@ -1,8 +1,11 @@
 <html> 
 
-<head>
 
-</head>
+<?php
+
+$page = 'publication';
+
+?>
 
 <body>
  

@@ -277,6 +277,10 @@ section {
   .navmenu li {
     position: relative;
   }
+  
+    .navmenu li.active a {
+  color: red;
+}
 
   .navmenu a,
   .navmenu a:focus {

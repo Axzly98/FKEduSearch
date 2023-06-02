@@ -41,7 +41,7 @@
   <header id="header" class="header position-relative d-flex align-items-center scroll-up-sticky">
     <div class="container-fluid d-flex align-items-center justify-content-between">
 
-      <a href=" " class="logo d-flex align-items-center me-auto me-xl-0">
+      <a href="https://ump.edu.my/en" target="_blank" class="logo d-flex align-items-center me-auto me-xl-0">
 
         <img src="assets/img/logoUMP.png" alt="Logo UMP" width="auto" height="auto" class="image-class" id="image-id">
         <span></span>
@@ -74,16 +74,32 @@
        
     <!--  </a> -->
 	  
+	  
+
+
+	  
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
-	 <!-- Nav Menu -->
-      <nav id="navmenu" class="navmenu">
-        <ul>
-          <li><a href="expertHome.php" style= " color : #18A0FB ; font-weight: bold">Home</a></li>
-          <li><a href="expertPost.php" style="color : #18A0FB ; font-weight: bold">Post</a></li>
-          <li><a href="expertPublication.php" style="color : #18A0FB ; font-weight: bold">Publication</a></li>
-          <li><a href="expertProfile.php" style="color : #18A0FB ; font-weight: bold">Profile</a></li>
-          <li><a href="logout.php" style="color : #18A0FB ; font-weight: bold">Logout</a></li>
-        </ul>
+    <!-- Nav Menu -->
+<nav id="navmenu" class="navmenu">
+  <ul>
+    <li <?php if ($page == 'home') echo 'class="active"'; ?>>
+      <a href="expertHome.php" style="<?php if ($page == 'home') echo 'color: red;'; else echo 'color: #18A0FB;'; ?> font-weight: bold" id="home">Home</a>
+    </li>
+    <li <?php if ($page == 'post') echo 'class="active"'; ?>>
+      <a href="expertPost.php" style="<?php if ($page == 'post') echo 'color: red;'; else echo 'color: #18A0FB;'; ?> font-weight: bold" id="post">Post</a>
+    </li>
+    <li <?php if ($page == 'publication') echo 'class="active"'; ?>>
+      <a href="expertPublication.php" style="<?php if ($page == 'publication') echo 'color: red;'; else echo 'color: #18A0FB;'; ?> font-weight: bold" id="publication">Publication</a>
+    </li>
+    <li <?php if ($page == 'profile') echo 'class="active"'; ?>>
+      <a href="expertProfile.php" style="<?php if ($page == 'profile') echo 'color: red;'; else echo 'color: #18A0FB;'; ?> font-weight: bold" id="profile">Profile</a>
+    </li>
+    <li><a href="logout.php" style="color: #18A0FB; font-weight: bold">Logout</a></li>
+  </ul>
+</nav>
+
+		
+
 
       
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>

@@ -1,7 +1,9 @@
 <?php
-
+$page = 'post';
 include 'header.php';
 ?>
+
+
 
    <div data-aos="fade" class="page-title">
           

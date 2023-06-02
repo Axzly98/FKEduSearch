@@ -1,5 +1,5 @@
 <?php
-
+$page = 'publication';
 include 'header.php';
 ?>
 

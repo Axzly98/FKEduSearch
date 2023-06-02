@@ -1,3 +1,11 @@
+
+<?php
+
+$page = 'publication';
+
+?>
+
+
 <?php
 if (isset($_REQUEST['id'])) {
     $idDelete = $_REQUEST['id'];
