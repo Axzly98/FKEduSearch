@@ -22,6 +22,13 @@ include 'header.php';
 		
 	}
 	
+	.thlist {
+		text-transform: uppercase;
+		 width: auto;
+		 
+	}
+
+	
 	  .publication-table {
     width: 100%;
 
@@ -29,7 +36,10 @@ include 'header.php';
   
 	</style>
 	
-	<form action="publicationAdd.php" method="post">  
+	
+	
+													<!-- enctype utk file upload -->
+	<form action="publicationAdd.php" method="post"  enctype="multipart/form-data">>  
 	<table class="publication-table" border="1"> 
 	
 	<tr>
@@ -38,7 +48,6 @@ include 'header.php';
 	
 	<tr>
 	<td>.</td>
-	<td></td>
 	</tr>
 	
 	<tr>
@@ -50,7 +59,7 @@ include 'header.php';
 	
 	<tr>
 	<th class="th">Publisher Name:</th>  
-	<td> <input type="text" name="publicationName" placeholder="Enter Publisher Name" style="width: 340px;"></td>
+	<td> <input type="text" name="publisherName" placeholder="Enter Publisher Name" style="width: 340px;"></td>
 	<td></td>
 	<td></td> 
 	</tr>
@@ -60,10 +69,10 @@ include 'header.php';
 	<th class="th">Categories:</th>  
 	<td><select name="publicationCategories">
 	<option value="" selected align="center">-Select Categories-</option>
-  <option value="option1">Networking</option>
-  <option value="option2">Software Engineering</option>
-  <option value="option3">Graphic and Multimedia</option>
-   <option value="option4">Cyber Security</option>
+  <option value="Networking">Networking</option>
+  <option value="Software Engineering">Software Engineering</option>
+  <option value="Graphic and Multimedia">Graphic and Multimedia</option>
+   <option value="Cyber Security">Cyber Security</option>
 </select></td>
 	</tr>
 	
@@ -72,24 +81,79 @@ include 'header.php';
 	<td></td>  
 	<td></td>
 	<td></td>
-	<td> <input type="button" type="submit" style="background-color: #18A0FB; color: #FFFFFF" value="SAVE"></td> 
+	<td> <input type="submit" style="background-color: #18A0FB; color: #FFFFFF" value="SAVE"></td> 
 	
 	
 	</tr>
 	
 	</table>
 	
-	<br><br>
-	php belom buat...sini SQL statement --> insert(add), select * (view) dgn delete (dkt button delete dkt display table kat bwh)
-	<br><br>
-	display publication yg dh upload kat bawah,, buat table -->  display..no. title, publisher name, categories, date uploaded, (1 table data --> ada download dgn delete button utk file)
-	<br><br>
-	page ni utk skrg, ada insert, delete .... part yg belom buat --> update 
+	
+	
+
+	<table class="publication-table" border="1"> 
+	
+		<tr>
+	<th class="th">Lists of Publications</th>  
+	</tr>
+	
+	<tr>
+	<td>.</td>
+	<td></td>
+	</tr>
+	
 
 	
 	
+<?php
+$link = mysqli_connect("localhost", "root") or die(mysqli_connect_error());
+mysqli_select_db($link, "miniproject") or die(mysqli_error());
+
+$query = "SELECT * FROM publication" or die(mysqli_connect_error());
+$result = mysqli_query($link, $query);
+
+if (mysqli_num_rows($result) > 0) {
+    $numberIncrement = 1;
+    ?>
+
+    <table border="2" style="width: 100%;">
+      	<tr>
+	<th class="thlist">No. </th>  
+	<th class="thlist">publication title</th> 
+	<th class="thlist">publisher name</th> 
+	<th class="thlist">categories</th> 
+	<th class="thlist">date uploaded</th> 
+	<th class="thlist">       </th> 
 	
+	</tr>
+
+        <?php
+        while ($row = mysqli_fetch_assoc($result)) {
+            ?>
+            <tr class="trlist">
+                <td><?php echo $numberIncrement; ?></td>
+                <td><?php echo $row['publicationTitle']; ?></td>
+                <td><?php echo $row['publisherName']; ?></td>
+                <td><?php echo $row['publicationType']; ?></td>
+                <td><?php echo $row['publicationDate']; ?></td>
+                <td><a href="uploads/<?php echo $row['publicationFile']; ?>" download>DOWNLOAD</a> <a href="publicationDelete.php?id=<?php echo $row['publication_ID']; ?>">DELETE</a>
+<td>
+				<?php // echo $row['publicationFile']; ?>
+				
+            </tr>
+            <?php
+            $numberIncrement++; // Increment the numberIncrement variable
+        }
+        ?>
+
+    </table>
+
+    <?php
+} else {
+    echo "No Data in Database -----";
+}
+?>
+
 	
-	
-	
+
 <?php include 'footer.php'; ?>
