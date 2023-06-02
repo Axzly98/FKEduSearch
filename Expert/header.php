@@ -43,7 +43,7 @@
 
       <a href=" " class="logo d-flex align-items-center me-auto me-xl-0">
 
-        <img src="assets/img/logoUMP.png" alt="Image description" width="auto" height="auto" class="image-class" id="image-id">
+        <img src="assets/img/logoUMP.png" alt="Logo UMP" width="auto" height="auto" class="image-class" id="image-id">
         <span></span>
       </a>
 	  
@@ -68,21 +68,21 @@
   <header id="header" class="header position-relative d-flex align-items-center scroll-up-sticky">
     <div class="container-fluid d-flex align-items-center justify-content-between">
 
-      <a href=" " class="logo d-flex align-items-center me-auto me-xl-0">
+   <!--    <a href=" " class="logo d-flex align-items-center me-auto me-xl-0"> -->
 
-        <img src="" alt="" width="auto" height="auto" >
-        <span></span>
-      </a>
+        <p>Sini Profile Picture Expert, Social Media, Current Active (drpd database)</p>
+       
+    <!--  </a> -->
 	  
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
 	 <!-- Nav Menu -->
       <nav id="navmenu" class="navmenu">
         <ul>
-          <li><a href=" " class="active" ; style= "font-weight: bold">Home</a></li>
-          <li><a href=" " style="color : #18A0FB ; font-weight: bold">Post</a></li>
-          <li><a href=" " style="color : #18A0FB ; font-weight: bold">Publication</a></li>
-          <li><a href=" " style="color : #18A0FB ; font-weight: bold">Profile</a></li>
-          <li><a href=" " style="color : #18A0FB ; font-weight: bold">Logout</a></li>
+          <li><a href="expertHome.php" style= " color : #18A0FB ; font-weight: bold">Home</a></li>
+          <li><a href="expertPost.php" style="color : #18A0FB ; font-weight: bold">Post</a></li>
+          <li><a href="expertPublication.php" style="color : #18A0FB ; font-weight: bold">Publication</a></li>
+          <li><a href="expertProfile.php" style="color : #18A0FB ; font-weight: bold">Profile</a></li>
+          <li><a href="logout.php" style="color : #18A0FB ; font-weight: bold">Logout</a></li>
         </ul>
 
       
@@ -91,7 +91,7 @@
 	<div class="sidebar">
       <div class="sidebar-item search-form">
                 <form action="" class="mt-3">
-                  <input type="text">
+                  <input type="text" placeholder="Search Publication">
                   <button type="submit"><i class="bi bi-search"></i></button>
                 </form>
               </div><!-- End sidebar search form-->
@@ -100,6 +100,31 @@
   </header><!-- End Header Second -->
   
 <hr>
+
+
+  <!-- Scroll Top Button -->
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+
+  <!-- Preloader -->
+  <div id="preloader">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+  
+    <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
      
 
 </body>
