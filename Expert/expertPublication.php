@@ -39,7 +39,7 @@ include 'header.php';
 	
 	
 													<!-- enctype utk file upload -->
-	<form action="publicationAdd.php" method="post"  enctype="multipart/form-data">>  
+	<form action="publicationAdd.php" method="post"  enctype="multipart/form-data">
 	<table class="publication-table" border="1"> 
 	
 	<tr>
@@ -81,12 +81,13 @@ include 'header.php';
 	<td></td>  
 	<td></td>
 	<td></td>
-	<td> <input type="submit" style="background-color: #18A0FB; color: #FFFFFF" value="SAVE"></td> 
+	<td> <input type="submit" style="background-color: #18A0FB; color: #FFFFFF; border-radius: 5px;" value="SAVE"></td> 
 	
 	
 	</tr>
 	
 	</table>
+	</form>
 	
 	
 	

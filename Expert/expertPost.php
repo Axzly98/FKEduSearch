@@ -71,8 +71,8 @@ include 'header.php';
 
 				
                   <div class="text-center">
-                    <button type="submit" style="color: #FFFFFF ; background-color: #18A0FB">Accept</button>
-					<button type="submit" style="color: #FFFFFF ; background-color: #FB1818">Reject</button>
+                    <button type="submit" style="color: #FFFFFF ; background-color: #18A0FB ; border-radius: 5px;">Accept</button>
+					<button type="submit" style="color: #FFFFFF ; background-color: #FB1818 ; border-radius: 5px;">Reject</button>
                   </div>
 
                 </form>
