@@ -84,7 +84,7 @@ include 'header.php';
 	<th class="th">Research Area:</th>  
 	<td><select name= "researchAreaName">
 	<option value="" selected align="center"> -Select Research Area- </option>
-	<option value="Networking" <?php if ($row['researchAreaName'] === 'Computer Systems and Networking') echo 'selected'; ?>>Computer Systems and Networking</option>
+	<option value="Computer Systems and Networking" <?php if ($row['researchAreaName'] === 'Computer Systems and Networking') echo 'selected'; ?>>Computer Systems and Networking</option>
 	<option value="Software Engineering" <?php if ($row['researchAreaName'] === 'Software Engineering') echo 'selected'; ?>>Software Engineering</option>
 	<option value="Graphic and Multimedia" <?php if ($row['researchAreaName'] === 'Graphic and Multimedia') echo 'selected'; ?>>Graphic and Multimedia</option>
 	<option value="Cyber Security" <?php if ($row['researchAreaName'] === 'Cyber Security') echo 'selected'; ?>>Cyber Security</option>
