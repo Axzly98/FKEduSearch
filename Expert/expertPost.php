@@ -88,9 +88,11 @@ include 'header.php';
 }
 ?>
 	<br><br>
-					<p align = "center"> For now, sini boleh View dulu...... </p>
+					<p align = "center"> Reminder...... </p>
+					<p align = "center"> Sini boleh View dulu...... </p>
 					<p align = "center"> **Belom Siap** time duration dynamically, post assigned, post-status(kena baiki) link dgn user post...... </p>
 					<p align = "center"> **Belom Siap** function button accept, reject, popup/ape2 utk answer post... </p>
+					<p align = "center"> **Belom Siap** total rating, linked dgn login, notification, view feedback... </p>
 					<br>
 
 
