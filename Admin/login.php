@@ -11,11 +11,30 @@ $chosenRole = $_REQUEST["role"];
 
 // SQL query to check if the entered username and password match with the data in the login and admin tables
 $query = "
-	SELECT login.login_ID, login.login_userName, admin.admin_ID, admin.admin_userName, admin.admin_password
-	FROM login
-	INNER JOIN admin ON login.admin_id = admin.admin_id
-	WHERE login.login_userName = '$enteredUsername' AND admin.admin_password = '$enteredPassword';
+    SELECT 
+        login.login_ID, 
+        login.login_userName, 
+        admin.admin_ID, 
+        admin.admin_userName, 
+        admin.admin_password,
+        expert.expert_ID,
+        expert.expert_userName,
+        expert.expert_password,
+        user.user_ID,
+        user.user_userName,
+        user.user_password
+    FROM login
+    LEFT JOIN admin ON login.admin_ID = admin.admin_ID
+    LEFT JOIN expert ON login.expert_ID = expert.expert_ID
+    LEFT JOIN user ON login.user_ID = user.user_ID
+    WHERE login.login_userName = '$enteredUsername' 
+        AND (
+            admin.admin_password = '$enteredPassword' 
+            OR expert.expert_password = '$enteredPassword' 
+            OR user.user_password = '$enteredPassword'
+        );
 ";
+
 
 // Execute the query
 $result = mysqli_query($link, $query) or die(mysqli_error($link));
@@ -29,24 +48,30 @@ if (mysqli_num_rows($result) > 0) {
 	$row = mysqli_fetch_assoc($result);
 	$loginID = $row["login_ID"];
 	$adminID = $row["admin_ID"];
+	$expertID = $row["expert_ID"];
+	$userID = $row["user_ID"];
 	$adminUsername = $row["admin_userName"];
+	$expertUsername = $row["expert_userName"];
+	$userUsername = $row["user_userName"];
 
 	// Store the user's login ID and admin ID in session variables for further use
 	session_start();
 	$_SESSION["loginID"] = $loginID;
 	$_SESSION["adminID"] = $adminID;
+	$_SESSION["expertID"] = $expertID;
+	$_SESSION["userID"] = $userID;
 	
 	// Redirect to the next page based on the chosen role
-	if ($chosenRole == "Admin") {
-		$alert_message = "Admin Successful Login!";
-	echo "<script>alert('$alert_message');</script>";
-		// Redirect to the admin page
-		header("Location: indexAdmin.php");
-		exit();
+if ($chosenRole == "Admin") {
+    $alert_message = "Admin Successful Login!";
+    echo "<script>alert('$alert_message');</script>";
+    echo "<script>setTimeout(function() { window.location.href = 'indexAdmin.php'; }, 250);</script>";
+    exit();
 	} elseif ($chosenRole == "Expert") {
-		// Redirect to the expert page
-		header("Location: expert_page.php");
-		exit();
+	$alert_message = "Expert Successful Login!";
+    echo "<script>alert('$alert_message');</script>";
+    echo "<script>setTimeout(function() { window.location.href = 'expertHome.php'; }, 250);</script>";
+    exit();
 	} elseif ($chosenRole == "User") {
 		// Redirect to the user page
 		header("Location: user_page.php");
@@ -64,59 +89,3 @@ if (!$loginSuccessful) {
 
 ?>
 
-
-while ($row = mysqli_fetch_assoc($result)) {
-
-    // Check if entered username and password match with the database values
-    if ($enteredUsername == $user_name && $enteredPassword == $password) {
-        $loginSuccessful = true;
-        break;
-    }
-}
-
-
-// Check if the login was successful
-if ($loginSuccessful) {
-    // If correct, start the session and set the "Login" session variable to "YES"
-    session_start();
-    $_SESSION["Login"] = "YES";
-	$alert_message = "Successful Login!";
-	echo "<script>alert('$alert_message');</script>";
-    echo "<p>Welcome " . $name . ".</p> Click here to <a href='logout.php'> Logout </a>";
-	
-	  // Check if the logout is clicked
-    if (isset($_REQUEST["logout"])) {
-        // Destroy the session
-        session_destroy();
-     
-    }
-	
-} else {
-    // If not correct, set the "Login" session variable to "NO"
-    session_start();
-    $_SESSION["Login"] = "NO";
-	
-    echo "<h2 align='center'>No User Data in Database.</h2>";
-    echo "<h3 align='center'><a href='lab10_q1.php'>Login Page</a></h3>";
-}
-
-/*
-// Check if username and password are correct
-if ($enteredUsername == $user_name && $enteredPassword == $password) {
-// If correct, we set the session to YES
- session_start();
- $_SESSION["Login"] = "YES";
- echo "<p>Welcome " . $name  . ".</p> Click here to <a href='lab10_q1.php'> Logout</a>" ;
-}
-else {
-	
-// If not correct, we set the session to NO
- session_start();
- $_SESSION["Login"] = "NO";
- echo "<h3>You are NOT logged correctly in </h3>";
- echo "<p><a href='lab10_q1.php'>Login Page</a></p>";
-}
-*/
-
-
-?>
