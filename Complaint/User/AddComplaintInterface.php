@@ -18,6 +18,7 @@ $row = mysqli_fetch_assoc($result);
 	$type = $row["complaint_Type"];
 	$desc = $row["complaint_Desc"];
   $date = $row["complaint_DateTime"];
+  $status = $row["complaintStatus_ID"];
 ?>	
 
 <html>
@@ -46,11 +47,11 @@ $row = mysqli_fetch_assoc($result);
 <hr style="box-shadow: 5px 0px 1px #6DE4EA;">
 
 <!-- YOUR CONTENT -->
-<div class="div">
+<div class="center">
 <h1>Make a complaint</h1>
 <br>
 <form method="post" action="Add_action.php">
-  <table>
+  <table class="center1">
     <tr>
       <td>
         ID
@@ -58,9 +59,10 @@ $row = mysqli_fetch_assoc($result);
     </tr>
     <tr>
       <td>
-        <input type="text" name="id" size="7" value="<?php echo $iduser; ?>">
+        <input class="textbox-10" type="text" name="id" size="7" value="<?php echo $iduser; ?>">
       </td>
     </tr>
+    <tr><td><br></td></tr>
     <tr>
       <td>
         Type of complaint
@@ -68,13 +70,14 @@ $row = mysqli_fetch_assoc($result);
     </tr>      
     <tr>
       <td>
-        <select name="complainttype" class="form-control">
+        <select  class="textbox-10" name="complainttype" class="form-control">
           <option value="" disabled selected>Select type of complaint</option>
           <option value="Wrongly Assigned Research Area">Wrongly Assigned Research Area</option>
           <option value="Unsatisfied Expert's Feedback">Unsatisfied Expert's Feedback</option>
         </select>
       </td>
     </tr>
+    <tr><td><br></td></tr>
     <tr>
       <td>
         Your complaint
@@ -82,12 +85,12 @@ $row = mysqli_fetch_assoc($result);
     </tr>      
     <tr>
       <td colspan="2">
-        <textarea style="width: 100%;" name="description" value="<?php echo $desc; ?>"></textarea>
+        <textarea class="textbox-10" style="width: 100%;" name="description" value="<?php echo $desc; ?>"></textarea>
       </td>
     </tr>
   </table>
-
-  <button type="submit">
+<br>
+  <button class="button-81" type="submit">
     Submit
   </button>
 

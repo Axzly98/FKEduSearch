@@ -55,11 +55,11 @@ $result = mysqli_query($link, $query);
 }
 ?>
 
-<div class="div">
+<div class="center">
 <h1>Make a complaint</h1>
 <br>
 <form method="post">
-  <table>
+  <table class="center1">
     <tr>
       <td>
         ID
@@ -67,9 +67,10 @@ $result = mysqli_query($link, $query);
     </tr>
     <tr>
       <td>
-        <input type="text" name="id" size="7" placeholder="<?php echo $userid; ?>" readonly>
+        <input class="textbox-10" type="text" name="id" size="7" placeholder="<?php echo $userid; ?>" readonly>
       </td>
     </tr>
+    <tr><td><br></td></tr>
     <tr>
       <td>
         Type of complaint
@@ -77,9 +78,10 @@ $result = mysqli_query($link, $query);
     </tr>      
     <tr>
       <td>
-      <input type="text" name="complainttype" placeholder="<?php echo $type; ?>" readonly>
+      <input class="textbox-10" type="text" name="complainttype" placeholder="<?php echo $type; ?>" readonly>
       </td>
     </tr>
+    <tr><td><br></td></tr>
     <tr>
       <td>
         Your complaint
@@ -87,12 +89,13 @@ $result = mysqli_query($link, $query);
     </tr>      
     <tr>
       <td colspan="2">
-        <textarea style="width: 100%;" name="description" placeholder="<?php echo $desc; ?>" readonly></textarea>
+        <textarea class="textbox-10" style="width: 100%;" name="description" placeholder="<?php echo $desc; ?>" readonly></textarea>
       </td>
     </tr>
+    <tr><td><br></td></tr>
   </table>
 
-  <button type="button" onclick="window.location.href='/FKEduSearch/Complaint/User/ComplaintInterface.php';">
+  <button class="button-81" type="button" onclick="window.location.href='/FKEduSearch/Complaint/User/ComplaintInterface.php';">
     Back
   </button>
   </form>

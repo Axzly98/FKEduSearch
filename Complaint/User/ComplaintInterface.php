@@ -67,15 +67,15 @@ $result = mysqli_query($link, $query);
         </table>
     </div>
     <br>
-<table border="1" style="width: 100%">
-<tr>
-  <th scope="col">No</th>
-  <th scope="col">ID</th>
-  <th scope="col">Date</th>
-  <th scope="col">Type of complaint</th>
-  <th scope="col">Description</th>
-  <th scope="col">Status</th>
-  <th scope="col">Action</th>
+<table border="1" class="table" style="width: 100%">
+<tr class="thread">
+  <th class="th" scope="col">No</th>
+  <th class="th" scope="col">ID</th>
+  <th class="th" scope="col">Date</th>
+  <th class="th" scope="col">Type of complaint</th>
+  <th class="th" scope="col">Description</th>
+  <th class="th" scope="col">Status</th>
+  <th class="th" scope="col">Action</th>
             </tr>
             <tr>
 <?php  if (mysqli_num_rows($result) > 0){
@@ -91,16 +91,16 @@ $result = mysqli_query($link, $query);
 	$status = $row["complaintStatus_ID"];
 ?>	
 	
-    <td><?php echo $no; ?></td>
-		<td><?php echo $userid; ?></td>
-		<td><?php echo $date; ?></td>
-    <td><?php echo $type; ?></td>
-    <td><?php echo $desc; ?></td>
-    <td><?php echo $status; ?></td>
-		<td>
-			<a><button type="button" onclick="window.location.href='/FKEduSearch/Complaint/User/update.php?id=<?php echo $complainid; ?>';">✏️</button></a> 
-      <a><button type="button" onclick="window.location.href='/FKEduSearch/Complaint/User/view.php?id=<?php echo $complainid; ?>';">👀</button></a> 
-			<a><button type="button" onclick="window.location.href='/FKEduSearch/Complaint/User/delete.php?id=<?php echo $complainid; ?>';">🗑</button></a>
+    <td class="td"><?php echo $no; ?></td>
+		<td class="td"><?php echo $userid; ?></td>
+		<td class="td"><?php echo $date; ?></td>
+    <td class="td"><?php echo $type; ?></td>
+    <td class="td"><?php echo $desc; ?></td>
+    <td class="td"><?php echo $status; ?></td>
+		<td class="td">
+			<a><button class="button-48" type="button" onclick="window.location.href='/FKEduSearch/Complaint/User/update.php?id=<?php echo $complainid; ?>';">✏️</button></a> 
+      <a><button class="button-48" type="button" onclick="window.location.href='/FKEduSearch/Complaint/User/view.php?id=<?php echo $complainid; ?>';">👀</button></a> 
+			<a><button class="button-48" type="button" onclick="window.location.href='/FKEduSearch/Complaint/User/delete.php?id=<?php echo $complainid; ?>';">🗑</button></a>
 		</td>
 	</tr>
 <?php
