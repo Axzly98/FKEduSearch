@@ -2,101 +2,8 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-}
+<link rel="stylesheet" href="/FKEduSearch/styleHeadFoot.css">
 
-footer {
-  text-align: center;
-  padding: 3px;
-  background-color: #343434;
-  color: white;
-  height: 100px;
-  display: block;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-}
-
-.input{
-    outline: none;
-    box-shadow: 0px 0px 2px #18A0FB;
-}
-
-.topnav {
-  overflow: hidden;
-  background-color: none;
-}
-
-.topnav a {
-  float: left;
-  color: #18A0FB;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
-}
-
-.topnav a:hover {
-  background-color: #ddd;
-  color: none;
-}
-
-.topnav a.active {
-  color: rgb(255, 0, 0);
-}
-
-.topnav .search-container {
-  float: right;
-  border-color: #18A0FB;
-}
-
-.topnav input[type=text] {
-  padding: 6px;
-  margin-top: 8px;
-  font-size: 17px;
-  border: none;
-}
-
-.topnav .search-container button {
-  float: right;
-  padding: 6px;
-  margin-top: 8px;
-  margin-right: 16px;
-  background: #ddd;
-  font-size: 17px;
-  border: none;
-  cursor: pointer;
-  background-color: #18A0FB;
-  color: white;
-}
-
-.topnav .search-container button:hover {
-  background: #9ef2ff;
-}
-
-/*footer*/
-.foot {
-  overflow: hidden;
-  background-color: #333;
-}
-
-.foot a {
-  float: left;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
-}
-
-.foot a:hover {
-  background-color: #868686;
-  color: black;
-}
-</style>
 </head>
 <body>
 
@@ -105,7 +12,7 @@ footer {
   <a><img src="https://umplive.ump.edu.my/images/2020/07/26/logo-ump-transparent-blue__1122x561.png" style="width: 40px;"></a>
   <a href="#home" style="margin-left: 400px;">Home</a>
   <a href="#news">Your Post</a>
-  <a class="active" href="/Complaint/User/">Complaint</a>
+  <a class="active" href="/FKEduSearch/Complaint/User/ComplaintInterface.php">Complaint</a>
   <a href="#about">Profile</a>
   <a href="#about">Logout</a>
   <div class="search-container">
