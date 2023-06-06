@@ -5,19 +5,21 @@ $link = mysqli_connect("localhost", "root", "") or die(mysqli_connect_error());
 //Select the database.
 mysqli_select_db($link, "miniproject") or die(mysqli_error($link));
 
+$complainid = $_GET['id'];
+
 //SQL query
-$query = "SELECT * FROM complaint"
+$query = "SELECT * FROM complaint WHERE complaint_ID = '$complainid'"
 	or die(mysqli_connect_error());
 	
 //Execute the query (the recordset $rs contains the result)
 $result = mysqli_query($link, $query);
 
-$row = mysqli_fetch_assoc($result);
+ $row = mysqli_fetch_assoc($result);
 
-	$iduser = $row["user_ID"];
+    $userid = $row["user_ID"];
 	$type = $row["complaint_Type"];
 	$desc = $row["complaint_Desc"];
-  $date = $row["complaint_DateTime"];
+
 ?>	
 
 <html>
@@ -46,10 +48,12 @@ $row = mysqli_fetch_assoc($result);
 <hr style="box-shadow: 5px 0px 1px #6DE4EA;">
 
 <!-- YOUR CONTENT -->
+
+
 <div class="div">
 <h1>Make a complaint</h1>
 <br>
-<form method="post" action="Add_action.php">
+<form method="post" action="update_action.php">
   <table>
     <tr>
       <td>
@@ -58,7 +62,7 @@ $row = mysqli_fetch_assoc($result);
     </tr>
     <tr>
       <td>
-        <input type="text" name="id" size="7" value="<?php echo $iduser; ?>">
+        <input type="text" name="id" size="7" value="<?php echo $userid; ?>">
       </td>
     </tr>
     <tr>
@@ -69,7 +73,6 @@ $row = mysqli_fetch_assoc($result);
     <tr>
       <td>
         <select name="complainttype" class="form-control">
-          <option value="" disabled selected>Select type of complaint</option>
           <option value="Wrongly Assigned Research Area">Wrongly Assigned Research Area</option>
           <option value="Unsatisfied Expert's Feedback">Unsatisfied Expert's Feedback</option>
         </select>
@@ -82,17 +85,18 @@ $row = mysqli_fetch_assoc($result);
     </tr>      
     <tr>
       <td colspan="2">
-        <textarea style="width: 100%;" name="description" value="<?php echo $desc; ?>"></textarea>
+        <textarea style="width: 100%;" name="description"><?php echo $desc;?></textarea>
       </td>
     </tr>
   </table>
+  <input type="hidden" name="complain" value="<?php echo $complainid; ?>">
 
-  <button type="submit">
-    Submit
-  </button>
-
-  
-
+  <a><button type="submit">
+    Update
+  </button></a>
+  <a><button type="reset">
+  Reset
+  </button></a>
   </form>
 </div>
 </div>

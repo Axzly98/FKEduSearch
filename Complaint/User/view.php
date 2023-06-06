@@ -5,19 +5,14 @@ $link = mysqli_connect("localhost", "root", "") or die(mysqli_connect_error());
 //Select the database.
 mysqli_select_db($link, "miniproject") or die(mysqli_error($link));
 
+$complainid = $_GET['id'];
+
 //SQL query
-$query = "SELECT * FROM complaint"
+$query = "SELECT * FROM complaint WHERE complaint_ID = '$complainid'"
 	or die(mysqli_connect_error());
 	
 //Execute the query (the recordset $rs contains the result)
 $result = mysqli_query($link, $query);
-
-$row = mysqli_fetch_assoc($result);
-
-	$iduser = $row["user_ID"];
-	$type = $row["complaint_Type"];
-	$desc = $row["complaint_Desc"];
-  $date = $row["complaint_DateTime"];
 ?>	
 
 <html>
@@ -46,10 +41,24 @@ $row = mysqli_fetch_assoc($result);
 <hr style="box-shadow: 5px 0px 1px #6DE4EA;">
 
 <!-- YOUR CONTENT -->
+<?php  if (mysqli_num_rows($result) > 0){
+    // output data of each row
+    $row = mysqli_fetch_assoc($result);
+
+    $complainid = $row["complaint_ID"];
+    $userid = $row["user_ID"];
+	$type = $row["complaint_Type"];
+	$desc = $row["complaint_Desc"];
+} else {
+    echo "0 results";
+
+}
+?>
+
 <div class="div">
 <h1>Make a complaint</h1>
 <br>
-<form method="post" action="Add_action.php">
+<form method="post">
   <table>
     <tr>
       <td>
@@ -58,7 +67,7 @@ $row = mysqli_fetch_assoc($result);
     </tr>
     <tr>
       <td>
-        <input type="text" name="id" size="7" value="<?php echo $iduser; ?>">
+        <input type="text" name="id" size="7" placeholder="<?php echo $userid; ?>" readonly>
       </td>
     </tr>
     <tr>
@@ -68,11 +77,7 @@ $row = mysqli_fetch_assoc($result);
     </tr>      
     <tr>
       <td>
-        <select name="complainttype" class="form-control">
-          <option value="" disabled selected>Select type of complaint</option>
-          <option value="Wrongly Assigned Research Area">Wrongly Assigned Research Area</option>
-          <option value="Unsatisfied Expert's Feedback">Unsatisfied Expert's Feedback</option>
-        </select>
+      <input type="text" name="complainttype" placeholder="<?php echo $type; ?>" readonly>
       </td>
     </tr>
     <tr>
@@ -82,17 +87,14 @@ $row = mysqli_fetch_assoc($result);
     </tr>      
     <tr>
       <td colspan="2">
-        <textarea style="width: 100%;" name="description" value="<?php echo $desc; ?>"></textarea>
+        <textarea style="width: 100%;" name="description" placeholder="<?php echo $desc; ?>" readonly></textarea>
       </td>
     </tr>
   </table>
 
-  <button type="submit">
-    Submit
+  <button type="button" onclick="window.location.href='/FKEduSearch/Complaint/User/ComplaintInterface.php';">
+    Back
   </button>
-
-  
-
   </form>
 </div>
 </div>
