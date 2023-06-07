@@ -100,7 +100,7 @@ $result = mysqli_query($link, $query);
 		<td class="td">
 			<a><button class="button-48" type="button" onclick="window.location.href='/FKEduSearch/Complaint/User/update.php?id=<?php echo $complainid; ?>';">✏️</button></a> 
       <a><button class="button-48" type="button" onclick="window.location.href='/FKEduSearch/Complaint/User/view.php?id=<?php echo $complainid; ?>';">👀</button></a> 
-			<a><button class="button-48" type="button" onclick="window.location.href='/FKEduSearch/Complaint/User/delete.php?id=<?php echo $complainid; ?>';">🗑</button></a>
+			<a><button class="button-48" type="button" onclick="window.location.href='/FKEduSearch/Complaint/User/delete.php?id=<?php echo $complainid; ?>';">🗑️</button></a>
 		</td>
 	</tr>
 <?php
