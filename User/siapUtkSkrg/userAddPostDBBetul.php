@@ -1,6 +1,5 @@
 <html> 
 
-
 <?php
 
 $page = 'add post';
@@ -10,16 +9,19 @@ $page = 'add post';
 <body>
  
  <?php 
-$link = mysqli_connect("localhost", "root") or die(mysqli_connect_error());
+$link = mysqli_connect("localhost", "root") or die(mysqli_connect_error($link));
 mysqli_select_db($link, "miniproject") or die(mysqli_error());
 
   // Get the current date and time
-	$publicationCreatedDate = date('Y-m-d');
+	$post_createdDate = date('Y-m-d');
 
+$post_categories = $_REQUEST["category"];
 $postTitle = $_REQUEST["postTitle"];
 $postQuestion = $_REQUEST["postQuestion"];
 
-$query = "INSERT INTO post VALUES('', '', '', '$postTitle', '$postQuestion', '$publicationCreatedDate', '', '', '', '')"
+// insert into maksudnya masukkan data dalam db
+
+$query = "INSERT INTO post VALUES('', '', '', '$postTitle', '$postQuestion', '$post_createdDate', '$post_categories', '', '', '')"
   or die(mysqli_connect_error());
 
 $result = mysqli_query($link, $query);
