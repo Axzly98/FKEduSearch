@@ -8,7 +8,7 @@ include 'footer.php'
 
 
 
-<form action="userAddPostDB.php" method="post">
+<form action="userAddPostDBBetul.php" method="post">
 <table align=center>
 
 <tr>
