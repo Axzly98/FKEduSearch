@@ -1,6 +1,6 @@
 <?php
 $page = 'publication';
-include 'header.php';
+include 'headerExpert.php';
 ?>
 
    <div data-aos="fade" class="page-title">
@@ -19,14 +19,11 @@ include 'header.php';
 	
 	.th{
 		font-weight: bold;
+		text-transform: uppercase;
+		 width: auto;
 		
 	}
 	
-	.thlist {
-		text-transform: uppercase;
-		 width: auto;
-		 
-	}
 
 	
 	  .publication-table {
@@ -40,7 +37,7 @@ include 'header.php';
 	
 													<!-- enctype utk file upload -->
 	<form action="publicationAdd.php" method="post"  enctype="multipart/form-data">
-	<table class="publication-table" border="1"> 
+	<table class="publication-table" border="0"> 
 	
 	<tr>
 	<th class="th">Add Publication</th>  
@@ -81,7 +78,7 @@ include 'header.php';
 	<td></td>  
 	<td></td>
 	<td></td>
-	<td> <input type="submit" style="background-color: #18A0FB; color: #FFFFFF; border-radius: 5px;" value="SAVE"></td> 
+	<td> <input type="submit" style="background-color: #18A0FB; color: #FFFFFF; border-radius: 5px; width: 70px; height: 25px; font-size: 18px;" value="SAVE"></td> 
 	
 	
 	</tr>
@@ -99,8 +96,6 @@ include 'header.php';
 	</tr>
 	
 	<tr>
-	<td>.</td>
-	<td></td>
 	</tr>
 	
 
@@ -119,12 +114,12 @@ if (mysqli_num_rows($result) > 0) {
 
     <table border="2" style="width: 100%;">
       	<tr>
-	<th class="thlist">No. </th>  
-	<th class="thlist">publication title</th> 
-	<th class="thlist">publisher name</th> 
-	<th class="thlist">categories</th> 
-	<th class="thlist">date uploaded</th> 
-	<th class="thlist">       </th> 
+	<th class="th">No. </th>  
+	<th class="th">publication title</th> 
+	<th class="th">publisher name</th> 
+	<th class="th">categories</th> 
+	<th class="th">date uploaded</th> 
+	<th>       </th> 
 	
 	</tr>
 
@@ -133,12 +128,11 @@ if (mysqli_num_rows($result) > 0) {
             ?>
             <tr class="trlist">
                 <td><?php echo $numberIncrement; ?></td>
-                <td><?php echo $row['publicationTitle']; ?></td>
-                <td><?php echo $row['publisherName']; ?></td>
-                <td><?php echo $row['publicationType']; ?></td>
-                <td><?php echo $row['publicationDate']; ?></td>
-                <td><a href="uploads/<?php echo $row['publicationFile']; ?>" download>DOWNLOAD</a> <a href="publicationDelete.php?id=<?php echo $row['publication_ID']; ?>">DELETE</a>
-<td>
+                <td align="center"><?php echo $row['publicationTitle']; ?></td>
+                <td align="center"><?php echo $row['publisherName']; ?></td>
+                <td align="center"><?php echo $row['publicationType']; ?></td>
+                <td align="center"><?php echo $row['publicationDate']; ?></td>
+                <td class="th" align="center"><a href="uploads/<?php echo $row['publicationFile']; ?>" download>DOWNLOAD</a> <a href="publicationDelete.php?id=<?php echo $row['publication_ID']; ?>">DELETE</a>
 				<?php // echo $row['publicationFile']; ?>
 				
             </tr>
@@ -153,8 +147,9 @@ if (mysqli_num_rows($result) > 0) {
 } else {
     echo "No Data in Database -----";
 }
+
 ?>
 
-	
+<br><br>	
 
-<?php include 'footer.php'; ?>
+<?php include 'footerExpert.php'; ?>

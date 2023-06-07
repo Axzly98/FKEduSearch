@@ -1,14 +1,12 @@
 <?php
 $page = 'home';
-include 'header.php';
+include 'headerExpert.php';
 ?>
 
 
+      
 
 
 
 
-
-
-
-<?php include 'footer.php'; ?>
+<?php include 'footerExpert.php'; ?>
