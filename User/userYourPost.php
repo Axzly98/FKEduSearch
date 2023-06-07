@@ -2,7 +2,7 @@
 $page = 'home';
 include 'header.php';
 ?>
-
+<!-- FETCH DATA DRPD ADDPOSTUI -->
 <style>
     .addContainer{
         display: flex;
