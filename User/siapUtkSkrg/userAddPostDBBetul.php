@@ -10,7 +10,7 @@ $page = 'add post';
  
  <?php 
 $link = mysqli_connect("localhost", "root") or die(mysqli_connect_error($link));
-mysqli_select_db($link, "miniproject") or die(mysqli_error());
+mysqli_select_db($link, "miniproject") or die(mysqli_error($link)); //'link' tu main letak sebab kalau tkde, error
 
   // Get the current date and time
 	$post_createdDate = date('Y-m-d');

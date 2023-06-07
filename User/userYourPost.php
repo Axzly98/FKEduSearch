@@ -13,47 +13,31 @@ include 'footer.php';
 
 </style>
 
-<!-- drpd Amin -->
-<?php
-$link = mysqli_connect("localhost", "root") or die(mysqli_connect_error());
-mysqli_select_db($link, "miniproject") or die(mysqli_error());
-
-$query = "SELECT * FROM post" or die(mysqli_connect_error());
-$result = mysqli_query($link, $query);
-
-if (mysqli_num_rows($result) > 0) {
-    $numberIncrement = 1;
-    $numberIncrement++; // Increment the numberIncrement variable
-    ?>
-<!-- drpd Amin -->
-
 <form action="insertNewPost.php"></form>
 <div class="container">
     <div class="card">
         <div class="card-header">
             <div class="row">
-            <div class="col"><?php echo $numberIncrement; ?>
-            <div class="col"><?php echo $row['post_categories']; ?></div>
-            <div class="col"><?php echo $row['post_title']; ?></div>
-            <div class="col"><?php echo $row['post_content']; ?></div>
-            <div class="col"><?php echo $row['post_createdDate']; ?></div>
-            <div class="col"><?php echo $row['post_status']; ?></div>
+                <div class="col">Username1</div>
+                <div class="col">Category</div>
+                <div class="col">Post Date</div>
+                <div class="col">Status Post</div>
             </div>
         </div>
         <div class="card-body">
-            <h3><?php echo $row['post_title']; ?></h3>
+            <h3>Title</h3>
             <br>
-            <p><?php echo $row['post_content']; ?></p>
+            <p>Blockchain is having.......</p>
         </div>
         <hr>
         <div class="card-body">
             <br>
-            <p style="width: 100%;"></p>
+            <p style="width: 100%;">Hi Username1, thanks for asking...</p>
         </div>
         <hr>
         <div class="card-body">
             <div>
-                <a href=""><?php echo $row['post_likes']; ?></a>
+                <a href="">Total Like</a>
                 <a class="ms-5" href="">View Comment</a>
                 <a class="ms-5" href="">Rate/Feedback</a>
             </div>
@@ -61,11 +45,12 @@ if (mysqli_num_rows($result) > 0) {
     </div>
 
     <div class="addContainer">
-    <a href="/FKEduSearch/User/addPostUI.php">ADD</a>
+    <a href="/FKEduSearch/User/userYourPost.php">ADD</a>
     
     </div>
 </div>
 
 <form>
+
 
 <?php include 'footer.php'; ?>
