@@ -73,8 +73,11 @@ if ($chosenRole == "Admin") {
     echo "<script>setTimeout(function() { window.location.href = 'expertHome.php'; }, 250);</script>";
     exit();
 	} elseif ($chosenRole == "User") {
-		// Redirect to the user page
-		header("Location: user_page.php");
+		// Redirect to the user 
+		$alert_message = "User Successful Login!";
+    echo "<script>alert('$alert_message');</script>";
+    echo "<script>setTimeout(function() { window.location.href = 'userHome.php'; }, 250);</script>";
+		header("Location: userHome.php");
 		exit();
 	}
 } else {
