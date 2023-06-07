@@ -13,10 +13,13 @@ $page = 'add post';
 $link = mysqli_connect("localhost", "root") or die(mysqli_connect_error());
 mysqli_select_db($link, "miniproject") or die(mysqli_error());
 
+  // Get the current date and time
+	$publicationCreatedDate = date('Y-m-d');
+
 $postTitle = $_REQUEST["postTitle"];
 $postQuestion = $_REQUEST["postQuestion"];
 
-$query = "INSERT INTO post VALUES('', '', '', '$postTitle', '$postQuestion', '', '', '', '', '')"
+$query = "INSERT INTO post VALUES('', '', '', '$postTitle', '$postQuestion', '$publicationCreatedDate', '', '', '', '')"
   or die(mysqli_connect_error());
 
 $result = mysqli_query($link, $query);
