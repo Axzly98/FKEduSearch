@@ -17,4 +17,4 @@ include 'header.php';
 
 </form>
 
-<!-- "background-color: #18A0FB;  -->
+<!-- “value=“php echo fuser”” -->
