@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -69,8 +70,6 @@
     <div class="container-fluid d-flex align-items-center justify-content-between">
 
    <!--    <a href=" " class="logo d-flex align-items-center me-auto me-xl-0"> -->
-
-        <p>Sini Profile Picture Expert, Social Media, Current Active (drpd database)</p>
        
     <!--  </a> -->
 	  
@@ -85,8 +84,11 @@
     <li <?php if ($page == 'home') echo 'class="active"'; ?>>
       <a href="userHome.php" style="<?php if ($page == 'home') echo 'color: red;'; else echo 'color: #18A0FB;'; ?> font-weight: bold" id="home">Home</a>
     </li>
-    <li <?php if ($page == 'post') echo 'class="active"'; ?>>
-      <a href="userPost.php" style="<?php if ($page == 'post') echo 'color: red;'; else echo 'color: #18A0FB;'; ?> font-weight: bold" id="post">Post</a>
+    <li <?php if ($page == 'your post') echo 'class="active"'; ?>>
+      <a href="userYourPost.php" style="<?php if ($page == 'your post') echo 'color: red;'; else echo 'color: #18A0FB;'; ?> font-weight: bold" id="post">Your Post</a>
+    </li>
+    <li <?php if ($page == 'complaint') echo 'class="active"'; ?>>
+      <a href="complaint.php" style="<?php if ($page == 'complaint') echo 'color: red;'; else echo 'color: #18A0FB;'; ?> font-weight: bold" id="publication">Complaint</a>
     </li>
     <li <?php if ($page == 'profile') echo 'class="active"'; ?>>
       <a href="userProfile.php" style="<?php if ($page == 'profile') echo 'color: red;'; else echo 'color: #18A0FB;'; ?> font-weight: bold" id="profile">Profile</a>

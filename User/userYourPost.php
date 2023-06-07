@@ -3,7 +3,16 @@ $page = 'home';
 include 'header.php';
 ?>
 
-<!-- BS5 -->
+<style>
+    .addContainer{
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 50px;
+    }
+
+</style>
+
+<form action="insertNewPost.php"></form>
 <div class="container">
     <div class="card">
         <div class="card-header">
@@ -27,21 +36,20 @@ include 'header.php';
         <hr>
         <div class="card-body">
             <div>
-                <a href="">Like</a>
-                <a class="ms-5" href="">Comment</a>
+                <a href="">Total Like</a>
+                <a class="ms-5" href="">View Comment</a>
+                <a class="ms-5" href="">Rate/Feedback</a>
             </div>
         </div>
-        
-        
+    </div>
+
+    <div class="addContainer">
+    <a href="">ADD</a>
+    
     </div>
 </div>
 
-
-
-
-
-
+<form>
 
 
 <?php include 'footer.php'; ?>
-
