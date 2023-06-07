@@ -1,17 +1,14 @@
 <?php
 $page = 'profile';
-include 'header.php';
+include 'headerExpert.php';
 ?>
 
-
-
-
-<div data-aos="fade" class="page-title">
+<div class="page-title">
           
       <nav class="breadcrumbs">
         <div class="container">
           <ol>
-            <li><a href="expertHome.php">Home</a></li>
+            <li ><a href="expertHome.php">Home</a></li>
             <li>Profile</li>
           </ol>
         </div>
@@ -20,6 +17,8 @@ include 'header.php';
 	
 	
 	<style>
+	
+	
 	
 	.th{
 		font-weight: bold;
@@ -69,8 +68,10 @@ include 'header.php';
 		
 	?>
 	
+
+	
 	<form action="expertProfileUpdate.php" method="post"  enctype="multipart/form-data">
-	<table class="profile-table" border="1"> 
+	<table class="profile-table" border="0"> 
 	
 	<tr>
 	<th class="th">expert profile information</th>  
@@ -138,4 +139,4 @@ include 'header.php';
 	
 
 
-<?php include 'footer.php'; ?>
+<?php include 'footerExpert.php'; ?>
