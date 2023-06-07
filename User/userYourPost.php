@@ -45,7 +45,7 @@ include 'footer.php';
     </div>
 
     <div class="addContainer">
-    <a href="">ADD</a>
+    <a href="/FKEduSearch/User/userYourPost.php">ADD</a>
     
     </div>
 </div>
