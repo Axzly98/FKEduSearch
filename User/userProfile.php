@@ -1,6 +1,7 @@
 <?php
 $page = 'userProfile';
 include 'header.php';
+include 'footer.php';
 ?>
 
 <div class="container">

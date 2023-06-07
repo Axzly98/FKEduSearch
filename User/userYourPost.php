@@ -1,6 +1,7 @@
 <?php
 $page = 'home';
 include 'header.php';
+include 'footer.php';
 ?>
 <!-- FETCH DATA DRPD ADDPOSTUI -->
 <style>

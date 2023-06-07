@@ -1,6 +1,7 @@
 <?php
 $page = 'addPostUI';
 include 'header.php';
+include 'footer.php';
 require 'connection.php';
 ?>
 

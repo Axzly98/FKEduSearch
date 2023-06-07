@@ -25,8 +25,10 @@ $category = $_REQUEST['category'];
 
 // Performing insert query execution
 // here our table name is addPost
-$query = "INSERT INTO addpost VALUES('', '$category', '$title', '$post')"
+$query = "INSERT INTO post VALUES('', '', '', '$title', '$post', '', '', '', '', '')"
   or die(mysqli_connect_error());
+//$query = "INSERT INTO addpost VALUES('', '$category', '$title', '$post')"
+//   or die(mysqli_connect_error());
 
   $result = mysqli_query($link, $query);
 
