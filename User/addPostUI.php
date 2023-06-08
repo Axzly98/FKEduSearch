@@ -1,35 +1,37 @@
 <?php
-$page = 'addPostUI';
+
+$page = 'add post';
+
 include 'header.php';
-include 'footer.php';
-require 'connection.php';
 ?>
 
 
-<!-- //SINI SATU -->
-<form>
-  <div class="form-group" action="insertPostDB.php" method="post"> 
-    <label for="formGroupExampleInput">Title</label>
-    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Write your title here" name="title">
-  </div>
 
-  <div class="form-group">
-    <label for="formGroupExampleInput2">Post</label>
-    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Write your post here" name="post">
-  </div>
+<form action="userAddPost.php" method="post">
+<table align=center>
 
-  <div class="form-group">
-  <label for="category">Category</label>
-  <select class="form-control" id="category" name="category">
-    <option value="option1">Networking</option>
-    <option value="option2">Security</option>
-    <option value="option3">Computer System</option>
-    <!-- Add more options as needed -->
-  </select>
-</div>
+   <td>Post Title:</td>  
+    <td><input type="text" name="postTitle" placeholder="Write Your Post Title Here" style="width: 300px;"> </td> 
+   
+   </tr>
 
-    <td><br><br><br><input type="submit" style="color:black ; border-radius: 5px; float: right" value="Submit"></td>
+   <td>Post:</td>
+<td>   <textarea name ="postQuestion"  placeholder="Write Your Post Here..." 
+   rows = "7" cols = "40"></textarea></td>
+   </tr>
+   
+   <tr>
+   <td><input type="submit" align="center" value="Submit"></td>
+   
+   </tr>
+
+</table>
+</form>
+
+
+ 
+   <!--  <td><br><input type="submit" style="color:black ; border-radius: 5px; float: right" value="Submit"></td> -->
 
 </form>
 
-<!-- “value=“php echo fuser”” -->
+<!-- "background-color: #18A0FB;  -->

@@ -1,14 +1,11 @@
 <?php
 $page = 'home';
 include 'header.php';
+include 'footer.php';
 ?>
 
 
-      
 
 
 
 
-
-
-<?php include 'footer.php'; ?>

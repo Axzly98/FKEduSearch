@@ -1,6 +1,6 @@
 <?php
 $page = 'post';
-include 'header.php';
+include 'headerExpert.php';
 ?>
 
 
@@ -99,4 +99,4 @@ include 'header.php';
 
 
 
-<?php include 'footer.php'; ?>
+<?php include 'footerExpert.php'; ?>

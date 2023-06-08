@@ -1,3 +1,6 @@
+<?php
+	include'headerAdmin.php';
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -51,13 +54,8 @@
 			<td></td>
 		</tr>
 	</table>
-	<div class=footer>
-		<table>
-			<td><a href="#">UMP.Official<a></td>
-			<td><a href="#">Kalam</a></td>
-			<td><a href="#">E-Comm</a></td>
-		</table>
-		
-	</div>
 </body>
 </html>
+<?php
+	include'footerAdmin.php';
+?>

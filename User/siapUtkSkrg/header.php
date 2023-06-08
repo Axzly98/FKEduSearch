@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -38,110 +37,21 @@
 
 <body class="blog-page">
 
-  <!-- ======= Header ======= -->
-  <header id="header" class="header position-relative d-flex align-items-center scroll-up-sticky">
-    <div class="container-fluid d-flex align-items-center justify-content-between">
+<link rel="stylesheet" href="/FKEduSearch/User/styleHeadFoot.css">
 
-      <a href="https://ump.edu.my/en" target="_blank" class="logo d-flex align-items-center me-auto me-xl-0">
-
-        <img src="assets/img/logoUMP.png" alt="Logo UMP" width="auto" height="auto" class="image-class" id="image-id">
-        <span></span>
-      </a>
-	  
-	  <nav id="navmenu" class="navmenu">
-        <ul>
-          <li style="color : #18A0FB ; font-weight: bold">Universiti Malaysia Pahang</li>
-        </ul>
-		
-		
-
-       
-      </nav>
-
-      <a style="color : #18A0FB"><?php echo "<b> Date Today: ".date("j F ,  Y")."</b>"; ?></a>
-
-    </div>
-  </header><!-- End Header -->
-  
-<hr>
-
-  <!-- ======= Header ======= -->
-  <header id="header" class="header position-relative d-flex align-items-center scroll-up-sticky">
-    <div class="container-fluid d-flex align-items-center justify-content-between">
-
-   <!--    <a href=" " class="logo d-flex align-items-center me-auto me-xl-0"> -->
-       
-    <!--  </a> -->
-	  
-	  
-
-
-	  
-        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
-    <!-- Nav Menu -->
-<nav id="navmenu" class="navmenu">
-  <ul>
-    <li <?php if ($page == 'home') echo 'class="active"'; ?>>
-      <a href="userHome.php" style="<?php if ($page == 'home') echo 'color: red;'; else echo 'color: #18A0FB;'; ?> font-weight: bold" id="home">Home</a>
-    </li>
-    <li <?php if ($page == 'your post') echo 'class="active"'; ?>>
-      <a href="userYourPost.php" style="<?php if ($page == 'your post') echo 'color: red;'; else echo 'color: #18A0FB;'; ?> font-weight: bold" id="post">Your Post</a>
-    </li>
-    <li <?php if ($page == 'complaint') echo 'class="active"'; ?>>
-      <a href="complaint.php" style="<?php if ($page == 'complaint') echo 'color: red;'; else echo 'color: #18A0FB;'; ?> font-weight: bold" id="publication">Complaint</a>
-    </li>
-    <li <?php if ($page == 'profile') echo 'class="active"'; ?>>
-      <a href="userProfile.php" style="<?php if ($page == 'profile') echo 'color: red;'; else echo 'color: #18A0FB;'; ?> font-weight: bold" id="profile">Profile</a>
-    </li>
-    <li><a href="logout.php" style="color: #18A0FB; font-weight: bold">Logout</a></li>
-  </ul>
-</nav>
-
-		
-
-
-      
-        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
-      </nav><!-- End Nav Menu -->
-	<div class="sidebar">
-      <div class="sidebar-item search-form">
-                <form action="" class="mt-3">
-                  <input type="text" placeholder="Search Publication">
-                  <button type="submit"><i class="bi bi-search"></i></button>
-                </form>
-              </div><!-- End sidebar search form-->
-
-    </div>
-  </header><!-- End Header Second -->
-  
-<hr>
-
-
-  <!-- Scroll Top Button -->
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-
-  <!-- Preloader -->
-  <div id="preloader">
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
+<!-- HEADER -->
+<div class="topnav">
+  <a><img src="https://umplive.ump.edu.my/images/2020/07/26/logo-ump-transparent-blue__1122x561.png" style="width: 40px;"></a>
+  <a class="" href="/FKEduSearch/User/userHome.php" style="margin-left: 400px;">Home</a>
+  <a href="/FKEduSearch/User/userYourPost.php">Your Post</a>
+  <a href="/FKEduSearch/Complaint/User/ComplaintInterface.php">Complaint</a>
+  <a href="/FKEduSearch/User/userProfile.php">Profile</a>
+  <a href="#about">Logout</a>
+  <div class="search-container">
+    <form action="/action_page.php">
+      <input class="input" type="text" name="search">
+      <button type="submit">Search</button>
+    </form>
   </div>
-  
-    <!-- Vendor JS Files -->
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-
-  <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
-     
-
-</body>
-
-</html>
+</div>
+<hr style="box-shadow: 5px 0px 1px #6DE4EA;">

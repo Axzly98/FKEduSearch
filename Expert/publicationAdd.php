@@ -35,10 +35,11 @@ $page = 'publication';
   $type = $_REQUEST["publicationCategories"];
   
 
-  
-  	
+	$query = "insert into publication values('', '', '$title','$publicationCreatedDate', '$name', '$type', '$fileName')"
 	
-	$query = "insert into publication values('', '', '$title','$publicationCreatedDate', '$name', '$type', '$destinationPath')"
+	/*  $query = "INSERT INTO publication (publicationTitle, publicationDate, publisherName, publicationType, publicationFile)
+              VALUES ('$title', '$publicationCreatedDate', '$name', '$type', '')" */
+    
 		or die(mysqli_connect_error());
   
 	$result = mysqli_query($link, $query);
