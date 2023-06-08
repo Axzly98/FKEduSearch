@@ -1,23 +1,8 @@
 <?php
 $page = 'profile';
 include 'header.php';
+include 'footer.php';
 ?>
-
-
-
-
-<div data-aos="fade" class="page-title">
-          
-      <nav class="breadcrumbs">
-        <div class="container">
-          <ol>
-            <li><a href="userHome.php">Home</a></li>
-            <li>Profile</li>
-          </ol>
-        </div>
-      </nav>
-    </div><!-- End Page Title -->
-	
 	
 	<style>
 	
@@ -121,9 +106,3 @@ include 'header.php';
   </table>
 </form>
 	
-	
-	
-	
-
-
-<?php include 'footer.php'; ?>
