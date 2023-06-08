@@ -1,8 +1,12 @@
+<?php
+	include'headerAdmin.php';
+?>
 <!DOCTYPE html>
 <html>
 <head>
 	<title>LOGIN</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" type="text/css" href="styleHeadFoot.css">
 </head>
 <body>
 	<form action="login.php" method="post" align="center">
@@ -28,13 +32,8 @@
 		<p><a href="#">Forgot username or password?</a></p>
 		<button type="submit">Login</button>
 	</form>
-	<div class=footer align="center">
-		<table>
-			<td><a href="#">UMP.Official<a></td>
-			<td><a href="#">Kalam</a></td>
-			<td><a href="#">E-Comm</a></td>
-		</table>
-		
-	</div>
 </body>
 </html>
+<?php
+	include'footerAdmin.php';
+?>
