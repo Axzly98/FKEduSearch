@@ -5,12 +5,22 @@ $link = mysqli_connect("localhost", "root", "") or die(mysqli_connect_error());
 //Select the database.
 mysqli_select_db($link, "miniproject") or die(mysqli_error($link));
 
+$userid = $_GET['id'];
+
 //SQL query
-$query = "SELECT * FROM complaint"
+$query = "SELECT * FROM complaint WHERE user_ID = '$userid'"
 	or die(mysqli_connect_error());
-	
+
+$queryUser = "SELECT user_fullName FROM user WHERE user_ID = '$userid'"
+	or die(mysqli_connect_error());
+
 //Execute the query (the recordset $rs contains the result)
 $result = mysqli_query($link, $query);
+$resultUser = mysqli_query($link, $queryUser);
+
+
+$rowUser = mysqli_fetch_assoc($resultUser);
+
 ?>	
 
 <html>
@@ -67,10 +77,11 @@ $result = mysqli_query($link, $query);
         </table>
     </div>
     <br>
+    <form method="post">
 <table border="1" class="table" style="width: 100%">
 <tr class="thread">
   <th class="th" scope="col">No</th>
-  <th class="th" scope="col">ID</th>
+  <th class="th" scope="col">Name</th>
   <th class="th" scope="col">Date</th>
   <th class="th" scope="col">Type of complaint</th>
   <th class="th" scope="col">Description</th>
@@ -81,26 +92,29 @@ $result = mysqli_query($link, $query);
 <?php  if (mysqli_num_rows($result) > 0){
     // output data of each row
     $no = 0;
-    while($row = mysqli_fetch_assoc($result)){
+    while($row = mysqli_fetch_assoc($result) ){
     $no = $no + 1;
     $complainid = $row["complaint_ID"];
-    $userid = $row["user_ID"];
+    $name = $rowUser["user_fullName"];
     $date = $row["complaint_DateTime"];
-	$type = $row["complaint_Type"];
-  $desc = $row["complaint_Desc"];
-	$status = $row["complaintStatus_ID"];
+	  $type = $row["complaint_Type"];
+    $desc = $row["complaint_Desc"];
+    $status = $row["complaintStatus_ID"];
+      
+    
 ?>	
 	
     <td class="td"><?php echo $no; ?></td>
-		<td class="td"><?php echo $userid; ?></td>
+    <td class="td"><?php echo $name; ?></td>
 		<td class="td"><?php echo $date; ?></td>
     <td class="td"><?php echo $type; ?></td>
     <td class="td"><?php echo $desc; ?></td>
     <td class="td"><?php echo $status; ?></td>
 		<td class="td">
-			<a><button class="button-48" type="button" onclick="window.location.href='/FKEduSearch/Complaint/User/update.php?id=<?php echo $complainid; ?>';">✏️</button></a> 
-      <a><button class="button-48" type="button" onclick="window.location.href='/FKEduSearch/Complaint/User/view.php?id=<?php echo $complainid; ?>';">👀</button></a> 
-			<a><button class="button-48" type="button" onclick="window.location.href='/FKEduSearch/Complaint/User/delete.php?id=<?php echo $complainid; ?>';">🗑</button></a>
+    <input type="hidden" name="comid" value="<?php echo $complainid; ?>">
+			<a><button class="button-48" type="button" onclick="window.location.href='/FKEduSearch/Complaint/User/update.php?comid=<?php echo $complainid; ?>';">✏️</button></a> 
+      <a><button class="button-48" type="button" onclick="window.location.href='/FKEduSearch/Complaint/User/view.php?comid=<?php echo $complainid; ?>';">👀</button></a> 
+			<a><button class="button-48" type="button" onclick="window.location.href='/FKEduSearch/Complaint/User/delete.php?comid=<?php echo $complainid; ?>';">🗑️</button></a>
 		</td>
 	</tr>
 <?php
@@ -111,6 +125,7 @@ $result = mysqli_query($link, $query);
 }
 ?>
 </table>
+</form>
 </div>
 
 <!-- FOOTER -->

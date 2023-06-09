@@ -5,7 +5,7 @@ $link = mysqli_connect("localhost", "root", "") or die(mysqli_connect_error());
 //Select the database.
 mysqli_select_db($link, "miniproject") or die(mysqli_error($link));
 
-$complainid = $_GET['id'];
+$complainid = $_GET['comid'];
 
 //SQL query
 $query = "SELECT * FROM complaint WHERE complaint_ID = '$complainid'"
@@ -50,11 +50,11 @@ $result = mysqli_query($link, $query);
 <!-- YOUR CONTENT -->
 
 
-<div class="div">
-<h1>Make a complaint</h1>
+<div class="center">
+<h1>Complaint</h1>
 <br>
 <form method="post" action="update_action.php">
-  <table>
+  <table class="center1">
     <tr>
       <td>
         ID
@@ -62,7 +62,7 @@ $result = mysqli_query($link, $query);
     </tr>
     <tr>
       <td>
-        <input type="text" name="id" size="7" value="<?php echo $userid; ?>">
+        <input class="textbox-10" type="text" name="id" size="10" value="<?php echo $userid; ?>" readonly>
       </td>
     </tr>
     <tr>
@@ -72,7 +72,7 @@ $result = mysqli_query($link, $query);
     </tr>      
     <tr>
       <td>
-        <select name="complainttype" class="form-control">
+        <select class="textbox-10" name="complainttype" class="form-control">
           <option value="Wrongly Assigned Research Area">Wrongly Assigned Research Area</option>
           <option value="Unsatisfied Expert's Feedback">Unsatisfied Expert's Feedback</option>
         </select>
@@ -85,18 +85,14 @@ $result = mysqli_query($link, $query);
     </tr>      
     <tr>
       <td colspan="2">
-        <textarea style="width: 100%;" name="description"><?php echo $desc;?></textarea>
+        <textarea class="textbox-10" style="width: 100%;" name="description"><?php echo $desc;?></textarea>
       </td>
     </tr>
   </table>
   <input type="hidden" name="complain" value="<?php echo $complainid; ?>">
 
-  <a><button type="submit">
-    Update
-  </button></a>
-  <a><button type="reset">
-  Reset
-  </button></a>
+  <a><button class="button-81" type="submit">Update</button></a>
+  <a><button class="button-81" type="reset">Reset</button></a>
   </form>
 </div>
 </div>
