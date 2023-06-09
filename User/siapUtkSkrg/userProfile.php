@@ -3,34 +3,33 @@ $page = 'profile';
 include 'header.php';
 include 'footer.php';
 ?>
-	
-	<style>
-	
-	.th{
-		font-weight: bold;
-		text-transform: uppercase;
-		
-	}
-	
-	.optionCenter {
-		align: center;
-		
-	}
-	  .profile-table {
+
+<style>
+  .th {
+    font-weight: bold;
+    text-transform: uppercase;
+
+  }
+
+  .optionCenter {
+    align: center;
+
+  }
+
+  .profile-table {
     width: 100%;
 
-	}
-	
-	</style>
-	
-	
+  }
+</style>
 
-	<?php 
-	
-			$link = mysqli_connect("localhost", "root") or die(mysqli_connect_error());
-			mysqli_select_db($link, "miniproject") or die(mysqli_error());
-			
-			$query = "SELECT user.user_email AS user_email, research_area.researchAreaName AS researchAreaName, academic_status.academicStatus_type AS academicStatus_type, socialmedia.instagram_userName AS instagram_userName, socialmedia.linkedin_userName AS linkedin_userName
+
+
+<?php
+
+$link = mysqli_connect("localhost", "root") or die(mysqli_connect_error());
+mysqli_select_db($link, "miniproject") or die(mysqli_error());
+
+$query = "SELECT user.user_email AS user_email, research_area.researchAreaName AS researchAreaName, academic_status.academicStatus_type AS academicStatus_type, socialmedia.instagram_userName AS instagram_userName, socialmedia.linkedin_userName AS linkedin_userName
 					  FROM user
 					  JOIN research_areauserexpert ON user.user_ID = research_areauserexpert.user_ID
 					  JOIN research_area ON research_areauserexpert.researchArea_ID = research_area.researchArea_ID
@@ -38,26 +37,26 @@ include 'footer.php';
 					  JOIN academic_status ON academic_statususerexpert.academicStatus_ID = academic_status.academicStatus_ID
 					  JOIN socialmedia ON user.user_ID = socialmedia.user_ID
 					  WHERE user.user_ID = 10" or die(mysqli_connect_error());
-					  
-			$result = mysqli_query($link, $query);
-			
-			$row = mysqli_fetch_assoc($result);
-			
-			$academicStatus_type = $row["academicStatus_type"];
-			
-			$academicStatus_type = explode(',', $academicStatus_type);
-			
-		
-	?>
-	
-	<form action="userProfileUpdate.php" method="post">
-  <table class="profile-table" border="1"> 
+
+$result = mysqli_query($link, $query);
+
+$row = mysqli_fetch_assoc($result);
+
+$academicStatus_type = $row["academicStatus_type"];
+
+$academicStatus_type = explode(',', $academicStatus_type);
+
+
+?>
+
+<form action="userProfileUpdate.php" method="post">
+  <table class="profile-table" border="1">
     <tr>
-      <th class="th">User profile information</th>  
+      <th class="th">User profile information</th>
     </tr>
-    
+
     <tr>
-      <th class="th">Research Area:</th>  
+      <th class="th">Research Area:</th>
       <td>
         <select name="researchAreaName">
           <option value="" selected align="center"> -Select Research Area- </option>
@@ -68,10 +67,10 @@ include 'footer.php';
         </select>
       </td>
     </tr>
-    
+
     <tr>
       <th class="th">Academic Status: </th>
-      <td> 
+      <td>
         <select name="academicStatus_type[]" multiple>
           <option value="Diploma" <?php if (in_array('Diploma', $academicStatus_type)) echo 'selected'; ?>>Diploma</option>
           <option value="Degree" <?php if (in_array('Degree',  $academicStatus_type)) echo 'selected'; ?>>Degree</option>
@@ -80,24 +79,24 @@ include 'footer.php';
         </select>
       </td>
     </tr>
-    
+
     <tr>
-      <th class="th">Instagram Username:</th>  
-      <td> 
+      <th class="th">Instagram Username:</th>
+      <td>
         <input type="text" name="instagram_userName" style="width: 210px;" placeholder="Enter Instagram Username" value="<?php echo $row['instagram_userName']; ?>">
       </td>
     </tr>
-    
+
     <tr>
-      <th class="th">LinkedIn Username:</th>  
-      <td> 
+      <th class="th">LinkedIn Username:</th>
+      <td>
         <input type="text" name="linkedin_userName" style="width: 210px;" placeholder="Enter LinkedIn Username" value="<?php echo $row['linkedin_userName']; ?>">
       </td>
     </tr>
-    
+
     <tr>
-      <th class="th">Email:</th>  
-      <td> 
+      <th class="th">Email:</th>
+      <td>
         <input type="email" name="email" style="width: 300px;" placeholder="Enter Your Email" value="<?php echo $row['user_email']; ?>">
       </td>
       <td></td>
@@ -105,4 +104,3 @@ include 'footer.php';
     </tr>
   </table>
 </form>
-	
