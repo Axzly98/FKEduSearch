@@ -5,7 +5,7 @@ $link = mysqli_connect("localhost", "root", "") or die(mysqli_connect_error());
 //Select the database.
 mysqli_select_db($link, "miniproject") or die(mysqli_error($link));
 
-$complainid = $_GET['id'];
+$complainid = $_GET['comid'];
 
 //SQL query
 $query = "SELECT * FROM complaint WHERE complaint_ID = '$complainid'"
@@ -26,10 +26,10 @@ $result = mysqli_query($link, $query);
 <!-- HEADER -->
 <div class="topnav">
   <a><img src="https://umplive.ump.edu.my/images/2020/07/26/logo-ump-transparent-blue__1122x561.png" style="width: 40px;"></a>
-  <a href="#home" style="margin-left: 400px;">Home</a>
-  <a href="#news">Your Post</a>
+  <a href="/FKEduSearch/User/userHome.php" style="margin-left: 400px;">Home</a>
+  <a href="/FKEduSearch/User/userYourPost.php">Your Post</a>
   <a class="active" href="/FKEduSearch/Complaint/User/ComplaintInterface.php">Complaint</a>
-  <a href="#about">Profile</a>
+  <a href="/FKEduSearch/User/userProfile.php">Profile</a>
   <a href="#about">Logout</a>
   <div class="search-container">
     <form action="/action_page.php">
@@ -57,7 +57,7 @@ $result = mysqli_query($link, $query);
 
 <div class="center">
 <h1>Make a complaint</h1>
-<br>
+
 <form method="post">
   <table class="center1">
     <tr>
@@ -92,10 +92,9 @@ $result = mysqli_query($link, $query);
         <textarea class="textbox-10" style="width: 100%;" name="description" placeholder="<?php echo $desc; ?>" readonly></textarea>
       </td>
     </tr>
-    <tr><td><br></td></tr>
   </table>
 
-  <button class="button-81" type="button" onclick="window.location.href='/FKEduSearch/Complaint/User/ComplaintInterface.php';">
+  <button class="button-81" type="button" onclick="history.back();">
     Back
   </button>
   </form>

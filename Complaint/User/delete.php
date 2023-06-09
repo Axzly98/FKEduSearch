@@ -5,7 +5,8 @@ $link = mysqli_connect("localhost", "root", "") or die(mysqli_connect_error());
 //Select the database.
 mysqli_select_db($link, "miniproject") or die(mysqli_error($link));
 
-$complainid = $_GET['id'];
+$complainid = $_GET['comid'];
+$iduser = $_POST["id"];
 
 //SQL query
 $query = "SELECT * FROM complaint WHERE complaint_ID = '$complainid'"
@@ -20,7 +21,7 @@ $row = mysqli_fetch_assoc($result);
 $del = "DELETE FROM complaint WHERE complaint_ID='$complainid'";
 
 if (mysqli_query($link, $del)) {
-    header("Refresh:0; url=ComplaintInterface.php");
+    header('Location: ' . $_SERVER['HTTP_REFERER']);
 } else {
   echo "Error deleting record: " . mysqli_error($link);
 }

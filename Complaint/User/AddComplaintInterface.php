@@ -13,12 +13,15 @@ $query = "SELECT * FROM complaint"
 $result = mysqli_query($link, $query);
 
 $row = mysqli_fetch_assoc($result);
-
+  
 	$iduser = $row["user_ID"];
+  $idadmin = $row["admin_ID"];
+  $idexpert = $row["expert_ID"];
 	$type = $row["complaint_Type"];
 	$desc = $row["complaint_Desc"];
   $date = $row["complaint_DateTime"];
-  $status = $row["complaintStatus_ID"];
+  $statusid = $row["complaintStatus_ID"];
+  
 ?>	
 
 <html>
@@ -59,7 +62,7 @@ $row = mysqli_fetch_assoc($result);
     </tr>
     <tr>
       <td>
-        <input class="textbox-10" type="text" name="id" size="7" value="<?php echo $iduser; ?>">
+        <input class="textbox-10" type="text" name="id" size="10" value="<?php echo $iduser; ?>">
       </td>
     </tr>
     <tr><td><br></td></tr>
@@ -89,10 +92,12 @@ $row = mysqli_fetch_assoc($result);
       </td>
     </tr>
   </table>
-<br>
   <button class="button-81" type="submit">
     Submit
   </button>
+  <input type="hidden" name="idadmin" value="<?php echo $idadmin = 1; ?>">
+  <input type="hidden" name="idexpert" value="<?php echo $idexpert = 12; ?>">
+  <input type="hidden" name="complain" value="<?php echo $statusid = 1; ?>">
 
   
 

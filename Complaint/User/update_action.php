@@ -14,6 +14,6 @@ $query = "UPDATE complaint SET user_ID = '$iduser', complaint_Type = '$type', co
 
 $result = mysqli_query($link,$query) or die ("Could not execute query in update.php");
 if($result){
-	echo "<script type = 'text/javascript'> window.location='ComplaintInterface.php' </script>";
+	echo "<script type = 'text/javascript'> window.location='ComplaintInterface.php?id=$iduser' </script>";
 }
 ?>
