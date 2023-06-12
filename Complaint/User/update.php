@@ -51,7 +51,11 @@ $result = mysqli_query($link, $query);
 
 
 <div class="center">
+<<<<<<< Updated upstream
 <h1>Complaint</h1>
+=======
+<h1>Make a complaint</h1>
+>>>>>>> Stashed changes
 <br>
 <form method="post" action="update_action.php">
   <table class="center1">
@@ -62,7 +66,11 @@ $result = mysqli_query($link, $query);
     </tr>
     <tr>
       <td>
+<<<<<<< Updated upstream
         <input class="textbox-10" type="text" name="id" size="10" value="<?php echo $userid; ?>" readonly>
+=======
+        <input class="textbox-10" type="text" name="id" size="7" value="<?php echo $userid; ?>">
+>>>>>>> Stashed changes
       </td>
     </tr>
     <tr>
@@ -91,8 +99,17 @@ $result = mysqli_query($link, $query);
   </table>
   <input type="hidden" name="complain" value="<?php echo $complainid; ?>">
 
+<<<<<<< Updated upstream
   <a><button class="button-81" type="submit">Update</button></a>
   <a><button class="button-81" type="reset">Reset</button></a>
+=======
+  <a><button class="button-81" type="submit">
+    Update
+  </button></a>
+  <a><button class="button-81" type="reset">
+  Reset
+  </button></a>
+>>>>>>> Stashed changes
   </form>
 </div>
 </div>
