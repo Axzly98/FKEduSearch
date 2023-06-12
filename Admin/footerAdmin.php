@@ -1,6 +1,6 @@
 <!-- FOOTER -->
 <footer>
-
+<link rel="stylesheet" href="/FKEduSearch/Admin/styleHeadFoot.css">
       <div class="foot">
         <a>
           <img src="https://icon.ump.edu.my/images/ICoN/logo-pusat-jaringan-industri-dan-masyarakat.png" style="width: 80px;">

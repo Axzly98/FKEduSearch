@@ -38,7 +38,7 @@ $rowUser = mysqli_fetch_assoc($resultUser);
   <a href="/FKEduSearch/User/userYourPost.php">Your Post</a>
   <a class="active" href="/FKEduSearch/Complaint/User/ComplaintInterface.php">Complaint</a>
   <a href="/FKEduSearch/User/userProfile.php">Profile</a>
-  <a href="#about">Logout</a>
+  <a href="/FKEduSearch/Admin/logout.php">Logout</a>
   <div class="search-container">
     <form action="/action_page.php">
       <input class="input" type="text" name="search">
@@ -111,16 +111,10 @@ $rowUser = mysqli_fetch_assoc($resultUser);
     <td class="td"><?php echo $desc; ?></td>
     <td class="td"><?php echo $status; ?></td>
 		<td class="td">
-<<<<<<< Updated upstream
     <input type="hidden" name="comid" value="<?php echo $complainid; ?>">
 			<a><button class="button-48" type="button" onclick="window.location.href='/FKEduSearch/Complaint/User/update.php?comid=<?php echo $complainid; ?>';">✏️</button></a> 
       <a><button class="button-48" type="button" onclick="window.location.href='/FKEduSearch/Complaint/User/view.php?comid=<?php echo $complainid; ?>';">👀</button></a> 
 			<a><button class="button-48" type="button" onclick="window.location.href='/FKEduSearch/Complaint/User/delete.php?comid=<?php echo $complainid; ?>';">🗑️</button></a>
-=======
-			<a><button class="button-48" type="button" onclick="window.location.href='/FKEduSearch/Complaint/User/update.php?id=<?php echo $complainid; ?>';">✏️</button></a> 
-      <a><button class="button-48" type="button" onclick="window.location.href='/FKEduSearch/Complaint/User/view.php?id=<?php echo $complainid; ?>';">👀</button></a> 
-			<a><button class="button-48" type="button" onclick="window.location.href='/FKEduSearch/Complaint/User/delete.php?id=<?php echo $complainid; ?>';">🗑️</button></a>
->>>>>>> Stashed changes
 		</td>
 	</tr>
 <?php

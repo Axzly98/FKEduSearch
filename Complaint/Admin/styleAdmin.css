@@ -3,6 +3,69 @@ body {
     font-family: Arial, Helvetica, sans-serif;
   }
 
+.button-1 {
+  background-color: #18A0FB;
+  border-radius: 8px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  height: 40px;
+  line-height: 20px;
+  list-style: none;
+  margin: 0;
+  outline: none;
+  padding: 10px 16px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: color 100ms;
+  vertical-align: baseline;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-1:hover,
+.button-1:focus {
+  background-color: #0053a6;
+}
+
+.button-2 {
+  background-color: #E3E3E3;
+  border-radius: 8px;
+  border-style: none;
+  box-sizing: border-box;
+  color: black;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  height: 40px;
+  line-height: 20px;
+  list-style: none;
+  margin: 0;
+  outline: none;
+  padding: 10px 16px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: color 100ms;
+  vertical-align: baseline;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-2:hover,
+.button-2:focus {
+  background-color: #afafaf;
+}
   .button-81 {
     background-color: #18A0FB;
     border: 0 solid #e2e8f0;
@@ -91,7 +154,18 @@ body {
     padding: 10px;
     text-align: left;
   }
-  
+  .delete{
+    border-style: solid;
+    border-color: #18A0FB;
+    position: absolute;
+    margin-left: 600px;
+    margin-top: 100px;
+    border-radius: 10px;
+    background-color: white;
+  }
+  .delete1{
+    margin: 10px;
+  }
   .input{
       outline: none;
       box-shadow: 0px 0px 2px #18A0FB;
@@ -112,6 +186,10 @@ body {
   .th, .td {
     border-color: #868686;
     padding: 8px;
+  }
+  .td1{
+    margin-left: 10px; 
+    padding-top: 10px;
   }
 
   .textbox-10 {
@@ -177,6 +255,18 @@ body {
   
   .topnav .search-container button:hover {
     background: #9ef2ff;
+  }
+  .trash{
+    background-color: #ff9999;
+    border: none;
+    border-radius: 5px;
+    width: 35px;
+    height: 35px;
+  }
+  .trash1{
+    float: right;
+    background-color: white;
+    border: none;
   }
   
   /*footer*/

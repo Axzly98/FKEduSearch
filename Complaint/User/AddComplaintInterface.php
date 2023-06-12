@@ -39,7 +39,7 @@ $row = mysqli_fetch_assoc($result);
   <a href="/FKEduSearch/User/userYourPost.php">Your Post</a>
   <a class="active" href="/FKEduSearch/Complaint/User/ComplaintInterface.php">Complaint</a>
   <a href="/FKEduSearch/User/userProfile.php">Profile</a>
-  <a href="#about">Logout</a>
+  <a href="/FKEduSearch/Admin/logout.php">Logout</a>
   <div class="search-container">
     <form action="/action_page.php">
       <input class="input" type="text" name="search">

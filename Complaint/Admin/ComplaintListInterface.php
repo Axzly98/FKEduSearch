@@ -5,13 +5,11 @@ $link = mysqli_connect("localhost", "root", "") or die(mysqli_connect_error());
 //Select the database.
 mysqli_select_db($link, "miniproject") or die(mysqli_error($link));
 
-$userid = $_GET['id'];
-
 //SQL query
-$query = "SELECT * FROM complaint WHERE user_ID = '$userid'"
+$query = "SELECT * FROM complaint"
 	or die(mysqli_connect_error());
 
-$queryUser = "SELECT user_fullName FROM user WHERE user_ID = '$userid'"
+$queryUser = "SELECT user_fullName FROM user WHERE user_ID "
 	or die(mysqli_connect_error());
 
 //Execute the query (the recordset $rs contains the result)
@@ -26,11 +24,23 @@ $rowUser = mysqli_fetch_assoc($resultUser);
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="/FKEduSearch/Complaint/styleUser.css">
+<link rel="stylesheet" href="/FKEduSearch/Complaint/Admin/styleAdmin.css">
 
 </head>
-<body>
+<script>
+  function display(a){
 
+    if (a == 1){
+      document.getElementById("popDelete").style.display="block";
+    }
+
+    if (a == 2){
+      document.getElementById("popDelete").style.display="none";
+    }
+
+  }
+</script>
+<body>
 <!-- HEADER -->
 <div class="topnav">
   <a><img src="https://umplive.ump.edu.my/images/2020/07/26/logo-ump-transparent-blue__1122x561.png" style="width: 40px;"></a>
@@ -38,7 +48,7 @@ $rowUser = mysqli_fetch_assoc($resultUser);
   <a href="/FKEduSearch/User/userYourPost.php">Your Post</a>
   <a class="active" href="/FKEduSearch/Complaint/User/ComplaintInterface.php">Complaint</a>
   <a href="/FKEduSearch/User/userProfile.php">Profile</a>
-  <a href="#about">Logout</a>
+  <a href="/FKEduSearch/Admin/logout.php">Logout</a>
   <div class="search-container">
     <form action="/action_page.php">
       <input class="input" type="text" name="search">
@@ -76,13 +86,45 @@ $rowUser = mysqli_fetch_assoc($resultUser);
             </tr>
         </table>
     </div>
+
+    <div class="delete" id="popDelete" style="display: none">
+      <div class="delete1">
+      <button class="trash1" type="button" onclick="display(2)">❌</button>
+      <table>
+        <tr>
+          <td>
+              <button class="trash">🗑️</button>
+          </td>
+
+          <td >
+            <h3 class="td1"><b>Are you sure you want to delete?</b></h3>
+          </td>
+
+        </tr>
+
+        <tr>
+        <td></td>
+
+          <td>
+            <p class="td1" style="color: red">Note that the item will be gone forever!</p>
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><a><button class="button-1 td1" type="button" onclick="window.location.href='/FKEduSearch/Complaint/Admin/delete.php?comid=<?php echo $complainid; ?>';">Yes</button></a>
+          <a><button class="button-2 td1" type="button" onclick="display(2)">No</button></a></td>
+        </tr>
+      </table>
+      </div>
+    </div>
+
     <br>
     <form method="post">
 <table border="1" class="table" style="width: 100%">
 <tr class="thread">
   <th class="th" scope="col">No</th>
   <th class="th" scope="col">Name</th>
-  <th class="th" scope="col">Date</th>
+  <th class="th" scope="col">Date & Time</th>
   <th class="th" scope="col">Type of complaint</th>
   <th class="th" scope="col">Description</th>
   <th class="th" scope="col">Status</th>
@@ -112,9 +154,10 @@ $rowUser = mysqli_fetch_assoc($resultUser);
     <td class="td"><?php echo $status; ?></td>
 		<td class="td">
     <input type="hidden" name="comid" value="<?php echo $complainid; ?>">
-			<a><button class="button-48" type="button" onclick="window.location.href='/FKEduSearch/Complaint/User/update.php?comid=<?php echo $complainid; ?>';">✏️</button></a> 
-      <a><button class="button-48" type="button" onclick="window.location.href='/FKEduSearch/Complaint/User/view.php?comid=<?php echo $complainid; ?>';">👀</button></a> 
-			<a><button class="button-48" type="button" onclick="window.location.href='/FKEduSearch/Complaint/User/delete.php?comid=<?php echo $complainid; ?>';">🗑️</button></a>
+    <a><button class="button-48" type="button" onclick="window.location.href='/FKEduSearch/Complaint/Admin/add.php?comid=<?php echo $complainid; ?>';">➕</button></a> 
+			<a><button class="button-48" type="button" onclick="window.location.href='/FKEduSearch/Complaint/Admin/update.php?comid=<?php echo $complainid; ?>';">✏️</button></a> 
+      <a><button class="button-48" type="button" onclick="window.location.href='/FKEduSearch/Complaint/Admin/view.php?comid=<?php echo $complainid; ?>';">👀</button></a> 
+			<a><button class="button-48" type="button" onclick="display(1)">🗑️</button></a>
 		</td>
 	</tr>
 <?php
