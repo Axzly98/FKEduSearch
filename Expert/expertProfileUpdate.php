@@ -30,7 +30,7 @@ $academicStatus_type = implode(',', $academicStatusType);
 $instagram_userName = $_REQUEST['instagram_userName'];
 $linkedin_userName = $_REQUEST['linkedin_userName'];
 
-// Begin the transaction.
+// Begin the transaction ..
 mysqli_query($link, "START TRANSACTION") or die(mysqli_error($link));
 
 $query = "
