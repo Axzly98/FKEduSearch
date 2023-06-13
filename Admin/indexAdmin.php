@@ -9,9 +9,6 @@
 </head>
 <body>
 	<div>
-		<h5>Universiti Malaysia Pahang</h5>
-	</div>
-	<div>
 		<table>
 			<tr>
 				<td><a href="#">Reactivate Acc</a></td>
