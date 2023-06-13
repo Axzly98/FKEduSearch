@@ -148,13 +148,12 @@ navmenu {
 
 /*footer*/
 .foot {
-  overflow: hidden;
+ 
   background-color: #333;
    padding-bottom: 50px;
 }
 
 .foot a {
-  float: left;
   color: #f2f2f2;
   text-align: center;
   padding: 14px 16px;
@@ -166,6 +165,7 @@ navmenu {
   background-color: #868686;
   color: black;
 }
+
 
 
 /*--------------------------------------------------------------

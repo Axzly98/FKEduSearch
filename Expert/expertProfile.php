@@ -1,4 +1,7 @@
 <?php
+
+session_start();
+
 $page = 'profile';
 include 'headerExpert.php';
 ?>

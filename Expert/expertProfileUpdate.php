@@ -1,4 +1,7 @@
 <?php
+
+session_start();
+
 //Connect to the database server.
 $link = mysqli_connect("localhost", "root", "") or die(mysqli_connect_error());
 
@@ -10,6 +13,9 @@ $profilePicture = $_FILES['profilePicture']['name'];
 $profilePictureTmp = $_FILES['profilePicture']['tmp_name'];
 $targetPath = 'uploads/' . $profilePicture;
 move_uploaded_file($profilePictureTmp, $targetPath);
+
+// Store the uploaded file name in the session variable
+$_SESSION['uploaded_file'] = $profilePicture;
 
 $expertCV = $_FILES['expertCV']['name'];
 $expertCVTmp = $_FILES['expertCV']['tmp_name'];

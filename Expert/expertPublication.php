@@ -1,4 +1,5 @@
 <?php
+session_start();
 $page = 'publication';
 include 'headerExpert.php';
 ?>
@@ -21,6 +22,7 @@ include 'headerExpert.php';
 		font-weight: bold;
 		text-transform: uppercase;
 		 width: auto;
+
 		
 	}
 	
@@ -127,13 +129,70 @@ if (mysqli_num_rows($result) > 0) {
         while ($row = mysqli_fetch_assoc($result)) {
             ?>
             <tr class="trlist">
-                <td><?php echo $numberIncrement; ?></td>
+                <td align="center"><?php echo $numberIncrement; ?></td>
                 <td align="center"><?php echo $row['publicationTitle']; ?></td>
                 <td align="center"><?php echo $row['publisherName']; ?></td>
                 <td align="center"><?php echo $row['publicationType']; ?></td>
                 <td align="center"><?php echo $row['publicationDate']; ?></td>
                 <td class="th" align="center"><a href="uploads/<?php echo $row['publicationFile']; ?>" download>DOWNLOAD</a> <a href="publicationDelete.php?id=<?php echo $row['publication_ID']; ?>">DELETE</a>
 				<?php // echo $row['publicationFile']; ?>
+				
+            </tr>
+            <?php
+            $numberIncrement++; // Increment the numberIncrement variable
+        }
+        ?>
+
+    </table>
+
+    <?php
+} else {
+    echo "No Data in Database -----";
+}
+?>
+
+
+<br><br><br><br>
+
+<table class="publication-table" border="1"> 
+	
+		<tr>
+	<th class="th">Total Publication Based on Date Created</th>  
+	</tr>
+	
+	<tr>
+	</tr>
+
+
+
+<?php
+$link = mysqli_connect("localhost", "root") or die(mysqli_connect_error());
+mysqli_select_db($link, "miniproject") or die(mysqli_error());
+
+$queryCreated = "SELECT publicationDate, COUNT(*) AS publicationCount FROM publication GROUP BY publicationDate" or die(mysqli_connect_error());
+
+$resultCreated = mysqli_query($link, $queryCreated);
+
+if (mysqli_num_rows($resultCreated) > 0) {
+    $numberIncrement = 1;
+    ?>
+
+    <table border="2" style="width: 100%;">
+      	<tr>
+	<th class="th">No. </th>  
+	<th class="th">Date Publication Created</th>
+	<th class="th">Total Publication</th>
+	
+	</tr>
+
+        <?php
+        while ($row = mysqli_fetch_assoc($resultCreated)) {
+            ?>
+            <tr class="trlist">
+                <td align="center"><?php echo $numberIncrement; ?></td>
+                <td align="center"><?php echo $row['publicationDate']; ?></td>
+				<td align="center"><?php echo $row['publicationCount']; ?></td>
+            
 				
             </tr>
             <?php

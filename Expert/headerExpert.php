@@ -26,12 +26,22 @@
 <a href="https://ump.edu.my/en" target="_blank"><img src="https://umplive.ump.edu.my/images/2020/07/26/logo-ump-transparent-blue__1122x561.png"  style="width: 100px;"></a>
 <p  style="text-align:center ; color: #18A0FB; font-weight: bold">Universiti Malaysia Pahang</p>
 <p class="date"><?php echo "<b> Date Today: ".date("j F ,  Y")."</b>"; ?></p>
-<hr>
-        
+<hr>    
 </div>
+
 <div class="topnav">
   <nav id="navmenu" class="navmenu" style="display: flex; justify-content: center;">
     <ul>
+<?php
+$uploadedFile = $_SESSION['uploaded_file'];
+if (!empty($uploadedFile) && file_exists("uploads/$uploadedFile")) {
+    echo '<img src="uploads/' . $uploadedFile . '" alt="Profile Picture" style="width: 70px; height: auto;">';
+} else {
+    echo 'Profile picture not available.';
+}
+?>
+
+
       <li <?php if ($page == 'home') echo 'class="active"'; ?>>
         <a href="expertHome.php" style="<?php if ($page == 'home') echo 'color: red;'; else echo 'color: #18A0FB;'; ?> font-weight: bold" id="home">Home</a>
       </li>
