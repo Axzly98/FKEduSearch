@@ -95,7 +95,7 @@ $result = mysqli_query($link, $query);
   </table>
 
   <button class="button-81" type="button" onclick="history.back();">
-    Back
+    Return
   </button>
   </form>
 </div>

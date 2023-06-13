@@ -16,6 +16,9 @@ $queryUser = "SELECT user_fullName FROM user WHERE user_ID "
 $result = mysqli_query($link, $query);
 $resultUser = mysqli_query($link, $queryUser);
 
+$sql="SELECT count(*) as total from complaint";
+$resultall=mysqli_query($link,$sql);
+$data=mysqli_fetch_assoc($resultall);
 
 $rowUser = mysqli_fetch_assoc($resultUser);
 
@@ -40,7 +43,7 @@ $rowUser = mysqli_fetch_assoc($resultUser);
 
   }
 </script>
-<body>
+<body style="overflow:auto;">
 <!-- HEADER -->
 <div class="topnav">
   <a><img src="https://umplive.ump.edu.my/images/2020/07/26/logo-ump-transparent-blue__1122x561.png" style="width: 40px;"></a>
@@ -61,10 +64,11 @@ $rowUser = mysqli_fetch_assoc($resultUser);
 <!-- YOUR CONTENT -->
 <div class="div">
     <br>
+    
     <div>
         <table style="width:50%; margin-left:20px;">
             <tr>
-                <td>All ()</td>
+                <td>All (<?php echo $data['total']; ?>)</td>
                 <td>Sort</td>
                 <td>
                     <select name="sort" class="form-control">
@@ -111,7 +115,10 @@ $rowUser = mysqli_fetch_assoc($resultUser);
         </tr>
         <tr>
           <td></td>
-          <td><a><button class="button-1 td1" type="button" onclick="window.location.href='/FKEduSearch/Complaint/Admin/delete.php?comid=<?php echo $complainid; ?>';">Yes</button></a>
+          <td><div>
+            
+          </div>
+            <a><button class="button-1 td1" type="button" onclick="window.location.href='/FKEduSearch/Complaint/Admin/delete.php?id=<?php echo $complainid; ?>';">Yes</button></a>
           <a><button class="button-2 td1" type="button" onclick="display(2)">No</button></a></td>
         </tr>
       </table>
@@ -142,7 +149,7 @@ $rowUser = mysqli_fetch_assoc($resultUser);
 	  $type = $row["complaint_Type"];
     $desc = $row["complaint_Desc"];
     $status = $row["complaintStatus_ID"];
-      
+    $adminid = $row["admin_ID"];;
     
 ?>	
 	
@@ -153,11 +160,11 @@ $rowUser = mysqli_fetch_assoc($resultUser);
     <td class="td"><?php echo $desc; ?></td>
     <td class="td"><?php echo $status; ?></td>
 		<td class="td">
-    <input type="hidden" name="comid" value="<?php echo $complainid; ?>">
-    <a><button class="button-48" type="button" onclick="window.location.href='/FKEduSearch/Complaint/Admin/add.php?comid=<?php echo $complainid; ?>';">➕</button></a> 
-			<a><button class="button-48" type="button" onclick="window.location.href='/FKEduSearch/Complaint/Admin/update.php?comid=<?php echo $complainid; ?>';">✏️</button></a> 
-      <a><button class="button-48" type="button" onclick="window.location.href='/FKEduSearch/Complaint/Admin/view.php?comid=<?php echo $complainid; ?>';">👀</button></a> 
-			<a><button class="button-48" type="button" onclick="display(1)">🗑️</button></a>
+    
+    <a><button class="button-48" type="button" onclick="window.location.href='/FKEduSearch/Complaint/Admin/add.php?id=<?php echo $complainid; ?>';">➕</button></a> 
+			<a><button class="button-48" type="button" onclick="window.location.href='/FKEduSearch/Complaint/Admin/update.php?id=<?php echo $complainid; ?>';">✏️</button></a> 
+      <a><button class="button-48" type="button" onclick="window.location.href='/FKEduSearch/Complaint/Admin/view.php?id=<?php echo $complainid; ?>';">👀</button></a> 
+			<a><button class="button-48" type="button" onclick="window.location.href='/FKEduSearch/Complaint/Admin/delete.php?id=<?php echo $complainid; ?>';">🗑️</button></a>
 		</td>
 	</tr>
 <?php
@@ -172,7 +179,7 @@ $rowUser = mysqli_fetch_assoc($resultUser);
 </div>
 
 <!-- FOOTER -->
-<footer>
+<footer style="position: static">
 
       <div class="foot">
         <a>

@@ -1,22 +1,33 @@
+<?php
+//Connect to the database server.
+$link = mysqli_connect("localhost", "root", "") or die(mysqli_connect_error());
+
+//Select the database.
+mysqli_select_db($link, "miniproject") or die(mysqli_error($link));
+
+$complainid = $_GET["id"];
+
+//SQL query
+$query = "SELECT * FROM complaint_reply"
+	or die(mysqli_connect_error());
+	
+//Execute the query (the recordset $rs contains the result)
+$result = mysqli_query($link, $query);
+
+$row = mysqli_fetch_assoc($result);
+  
+  $adminid = $row["admin_ID"];
+  $desc = $row["CR_reply"];
+  $date = $row["CR_datetime"];
+  
+
+?>	
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="/FKEduSearch/Complaint/Admin/styleAdmin.css">
 
 </head>
-<script>
-  function display(a){
-
-    if (a == 1){
-      document.getElementById("popDelete").style.display="block";
-    }
-
-    if (a == 2){
-      document.getElementById("popDelete").style.display="none";
-    }
-
-  }
-</script>
 <body>
 <!-- HEADER -->
 <div class="topnav">
@@ -34,6 +45,36 @@
   </div>
 </div>
 <hr style="box-shadow: 5px 0px 1px #6DE4EA;">
+
+<!--YOUR CONTENT-->
+<div class="center">
+<h1>Reply Complaint</h1>
+<br>
+<form method="post" action="add_action.php?id=<?php echo $complainid; ?>;">
+  <table class="center1">
+    <tr><td><br></td></tr>
+    <tr><td><br></td></tr>
+    <tr>
+      <td>
+        Your reply
+      </td>
+    </tr>      
+    <tr>
+      <td colspan="2">
+        <textarea class="textbox-10" style="width: 100%;" name="description" value="<?php echo $desc; ?>"></textarea>
+      </td>
+    </tr>
+  </table>
+  <input type="hidden" name="idadmin" value="<?php echo $adminid = 1; ?>">
+  <button class="button-81" type="submit">
+    Submit
+  </button>
+
+  
+
+  </form>
+</div>
+</div>
 
 <!-- FOOTER -->
 <footer>

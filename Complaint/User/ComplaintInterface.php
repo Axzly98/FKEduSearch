@@ -18,6 +18,9 @@ $queryUser = "SELECT user_fullName FROM user WHERE user_ID = '$userid'"
 $result = mysqli_query($link, $query);
 $resultUser = mysqli_query($link, $queryUser);
 
+$sql="SELECT count(*) as total from complaint where user_ID = '$userid'";
+$resultall=mysqli_query($link,$sql);
+$data=mysqli_fetch_assoc($resultall);
 
 $rowUser = mysqli_fetch_assoc($resultUser);
 
@@ -29,9 +32,8 @@ $rowUser = mysqli_fetch_assoc($resultUser);
 <link rel="stylesheet" href="/FKEduSearch/Complaint/styleUser.css">
 
 </head>
-<body>
-
 <!-- HEADER -->
+<div class="div">
 <div class="topnav">
   <a><img src="https://umplive.ump.edu.my/images/2020/07/26/logo-ump-transparent-blue__1122x561.png" style="width: 40px;"></a>
   <a href="/FKEduSearch/User/userHome.php" style="margin-left: 400px;">Home</a>
@@ -47,14 +49,21 @@ $rowUser = mysqli_fetch_assoc($resultUser);
   </div>
 </div>
 <hr style="box-shadow: 5px 0px 1px #6DE4EA;">
+</div>
+
+
+<body style="overflow:auto;">
+
+
 
 <!-- YOUR CONTENT -->
-<div class="div">
+<div>
+<div>
     <br>
     <div>
         <table style="width:50%; margin-left:20px;">
             <tr>
-                <td>All ()</td>
+                <td>All (<?php echo $data['total']; ?>)</td>
                 <td>Sort</td>
                 <td>
                     <select name="sort" class="form-control">
@@ -77,7 +86,8 @@ $rowUser = mysqli_fetch_assoc($resultUser);
         </table>
     </div>
     <br>
-    <form method="post">
+<div>
+<form method="post">
 <table border="1" class="table" style="width: 100%">
 <tr class="thread">
   <th class="th" scope="col">No</th>
@@ -126,10 +136,15 @@ $rowUser = mysqli_fetch_assoc($resultUser);
 ?>
 </table>
 </form>
+
+</div>
+    
+</div>
 </div>
 
+
 <!-- FOOTER -->
-<footer>
+<footer style="position: static">
 
       <div class="foot">
         <a>
@@ -142,4 +157,5 @@ $rowUser = mysqli_fetch_assoc($resultUser);
       </div>
 </footer>
 </body>
+
 </html>

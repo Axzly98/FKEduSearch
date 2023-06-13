@@ -1,6 +1,7 @@
 body {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
+
   }
 
   .button-81 {
@@ -91,12 +92,14 @@ body {
     padding: 10px;
     text-align: left;
   }
-  
+  .div{
+    position: sticky;
+  }
   .input{
       outline: none;
       box-shadow: 0px 0px 2px #18A0FB;
   }
-  
+
   .table {
     border-collapse: collapse;
     border: 2px solid black;
@@ -187,10 +190,11 @@ body {
     color: white;
     height: 100px;
     display: block;
-    position: fixed;
+    position: relative;
     bottom: 0;
     width: 100%;
   }
+
   .foot {
     overflow: hidden;
     background-color: #333;

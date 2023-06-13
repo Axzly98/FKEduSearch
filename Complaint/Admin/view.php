@@ -1,3 +1,20 @@
+<?php
+//Connect to the database server.
+$link = mysqli_connect("localhost", "root", "") or die(mysqli_connect_error());
+
+//Select the database.
+mysqli_select_db($link, "miniproject") or die(mysqli_error($link));
+
+$complainid = $_GET['id'];
+
+//SQL query
+$query = "SELECT * FROM complaint_reply WHERE complaint_ID = '$complainid'"
+	or die(mysqli_connect_error());
+	
+//Execute the query (the recordset $rs contains the result)
+$result = mysqli_query($link, $query);
+?>	
+
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -35,6 +52,44 @@
 </div>
 <hr style="box-shadow: 5px 0px 1px #6DE4EA;">
 
+<!-- YOUR CONTENT -->
+<?php  if (mysqli_num_rows($result) > 0){
+    // output data of each row
+    $row = mysqli_fetch_assoc($result);
+
+    $complainid = $row["complaint_ID"];
+	$desc = $row["CR_reply"];
+} else {
+    echo "0 results";
+
+}
+?>
+
+<div class="center">
+<h1>Reply</h1>
+<br>
+<form method="post">
+  <table class="center1">
+    <tr>
+      <td>
+        Your reply to the complaint
+      </td>
+    </tr>      
+    <tr>
+      <td colspan="2">
+        <textarea class="textbox-10" style="width: 100%;" name="description" placeholder="<?php echo $desc;?>" readonly></textarea>
+      </td>
+    </tr>
+  </table>
+  <input type="hidden" name="complain" value="<?php echo $complainid; ?>">
+<br>
+  <button class="button-81" type="button" onclick="history.back();">
+    Return
+  </button>
+
+  </form>
+</div>
+</div>
 
 <!-- FOOTER -->
 <footer>
