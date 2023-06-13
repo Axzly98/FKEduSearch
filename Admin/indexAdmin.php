@@ -1,5 +1,5 @@
 <?php
-	include'headerAdmin.php';
+	include'headerAdminUpper.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -7,20 +7,7 @@
 	<title>ADMIN</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
-<body>
-	<div>
-		<table>
-			<tr>
-				<td><a href="#">Reactivate Acc</a></td>
-				<td><a href="#">Complaint</td>
-			</tr>
-			<tr>
-				<td><a href="#">Manage Acc</td>
-				<td><a href="#">Logout</td>
-			</tr>
-		</table>
-	</div>
-	
+<body align="center">
 	<form action="admin.php" method="post">
 		<h2>Registerd New User</h2>
 		
@@ -46,7 +33,7 @@
 		<p><a href="#">Log in here</a></p>
 		<button type="submit">Add Registration</button><br><br>
 	</form>
-	<table border='1'>
+	<table border='1' align="center">
 		<tr>
 			<td>No.</td>
 			<td>Username</td>
