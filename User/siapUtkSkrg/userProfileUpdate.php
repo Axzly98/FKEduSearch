@@ -27,10 +27,6 @@ $query = "
     SET researchAreaName = '$researchAreaName'
     WHERE researchArea_ID = 10;
 
-    UPDATE academic_status
-    SET academicStatus_type = '$academicStatus_type'
-    WHERE academicStatus_ID = 10;
-
     UPDATE socialmedia
     SET instagram_userName = '$instagram_userName',
         linkedin_userName = '$linkedin_userName'
