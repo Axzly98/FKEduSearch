@@ -1,7 +1,6 @@
 <?php
 $page = 'profile';
-include 'header.php';
-include 'footer.php';
+include 'headerUser.php';
 ?>
 
 <style>
@@ -29,7 +28,7 @@ include 'footer.php';
 $link = mysqli_connect("localhost", "root") or die(mysqli_connect_error());
 mysqli_select_db($link, "miniproject") or die(mysqli_error());
 
-$query = "SELECT user.user_email AS user_email, research_area.researchAreaName AS researchAreaName, socialmedia.instagram_userName AS instagram_userName, socialmedia.linkedin_userName AS linkedin_userName
+$query = "SELECT user.user_email AS user_email, research_area.researchAreaName AS researchAreaName, academic_status.academicStatus_type AS academicStatus_type, socialmedia.instagram_userName AS instagram_userName, socialmedia.linkedin_userName AS linkedin_userName
 					  FROM user
 					  JOIN research_areauserexpert ON user.user_ID = research_areauserexpert.user_ID
 					  JOIN research_area ON research_areauserexpert.researchArea_ID = research_area.researchArea_ID
@@ -42,15 +41,15 @@ $result = mysqli_query($link, $query);
 
 $row = mysqli_fetch_assoc($result);
 
-//$academicStatus_type = $row["academicStatus_type"];
+$academicStatus_type = $row["academicStatus_type"];
 
-//$academicStatus_type = explode(',', $academicStatus_type);
+$academicStatus_type = explode(',', $academicStatus_type);
 
 
 ?>
 
 <form action="userProfileUpdate.php" method="post">
-  <table class="profile-table" border="1">
+  <table class="profile-table" border="0">
     <tr>
       <th class="th">User profile information</th>
     </tr>
@@ -67,6 +66,17 @@ $row = mysqli_fetch_assoc($result);
         </select>
       </td>
     </tr>
+	
+	<tr>
+	  <th class="th">Academic Status: </th>
+    <td> <select name = "academicStatus_type[]" multiple>
+  <option value="Diploma" <?php if (in_array('Diploma', $academicStatus_type)) echo 'selected'; ?>>Diploma</option>
+  <option value ="Degree" <?php if (in_array('Degree',  $academicStatus_type)) echo 'selected';  ?>>Degree</option>
+  <option value ="Master" <?php if (in_array('Master',  $academicStatus_type)) echo 'selected';  ?>>Master</option>
+  <option value ="Phd" <?php if (in_array('Phd', $academicStatus_type)) echo 'selected';  ?>>Phd</option>
+  </select> </td>
+
+	</tr>
 
 
 
@@ -94,3 +104,9 @@ $row = mysqli_fetch_assoc($result);
     </tr>
   </table>
 </form>
+
+<?php
+
+include 'footerUser.php';
+
+?>
