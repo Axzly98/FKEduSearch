@@ -29,7 +29,7 @@ $result = mysqli_query($link, $query);
 if($result) {
   $alert_message = "Post has been submitted!";
   echo "<script>alert('$alert_message');</script>";
-  echo "<script type='text/javascript'>window.location='addPost.php'</script>";
+  echo "<script type='text/javascript'>window.location='addPostUIAminBetul.php'</script>";
 } else {
   $alert_message = "Post not submitted!";
   echo "<script>alert('$alert_message');</script>";
