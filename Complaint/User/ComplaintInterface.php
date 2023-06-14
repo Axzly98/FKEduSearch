@@ -8,7 +8,7 @@ mysqli_select_db($link, "miniproject") or die(mysqli_error($link));
 $userid = $_GET['id'];
 
 //SQL query
-$query = "SELECT * FROM complaint WHERE user_ID = '$userid'"
+$query = "SELECT c.*, cs.complaintStatus_type FROM complaint c INNER JOIN complaint_status cs ON c.complaintStatus_ID = cs.complaintStatus_ID WHERE user_ID = '$userid'"
 	or die(mysqli_connect_error());
 
 $queryUser = "SELECT user_fullName FROM user WHERE user_ID = '$userid'"
@@ -61,27 +61,10 @@ $rowUser = mysqli_fetch_assoc($resultUser);
 <div>
     <br>
     <div>
-        <table style="width:50%; margin-left:20px;">
+        <table style="width:100%; margin-left:20px;">
             <tr>
                 <td>All (<?php echo $data['total']; ?>)</td>
-                <td>Sort</td>
-                <td>
-                    <select name="sort" class="form-control">
-                    <option value="Day">Day</option>
-                    <option value="Month">Month</option>
-                    <option value="Year">Year</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td></td>
-                <td>Complain Type</td>
-                <td>
-                    <select name="sort_type" class="form-control">
-                    <option value="Wrongly Assigned Research Area">Wrongly Assigned Research Area</option>
-                    <option value="Unsatisfied Expert's Feedback">Unsatisfied Expert's Feedback</option>
-                    </select>
-                </td>
+                <td style="float:right; margin-right:30px"><button class="button-78" type="button" onclick="window.location.href='/FKEduSearch/Complaint/User/update.php?comid=<?php echo $complainid; ?>';">Report</button></td>
             </tr>
         </table>
     </div>
@@ -109,7 +92,7 @@ $rowUser = mysqli_fetch_assoc($resultUser);
     $date = $row["complaint_DateTime"];
 	  $type = $row["complaint_Type"];
     $desc = $row["complaint_Desc"];
-    $status = $row["complaintStatus_ID"];
+    $status = $row["complaintStatus_type"];
       
     
 ?>	

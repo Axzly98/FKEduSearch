@@ -6,21 +6,19 @@ $link = mysqli_connect("localhost", "root", "") or die(mysqli_connect_error());
 mysqli_select_db($link, "miniproject") or die(mysqli_error($link));
 
 //SQL query
-$query = "SELECT * FROM complaint"
+$query = "SELECT c.*, cs.complaintStatus_type, u.user_fullName FROM complaint c INNER JOIN complaint_status cs ON c.complaintStatus_ID = cs.complaintStatus_ID INNER JOIN user u ON c.user_ID = u.user_ID"
 	or die(mysqli_connect_error());
 
-$queryUser = "SELECT user_fullName FROM user WHERE user_ID "
+$queryUser = "SELECT FROM complaint c"
 	or die(mysqli_connect_error());
 
 //Execute the query (the recordset $rs contains the result)
 $result = mysqli_query($link, $query);
-$resultUser = mysqli_query($link, $queryUser);
 
 $sql="SELECT count(*) as total from complaint";
 $resultall=mysqli_query($link,$sql);
 $data=mysqli_fetch_assoc($resultall);
 
-$rowUser = mysqli_fetch_assoc($resultUser);
 
 ?>	
 
@@ -69,24 +67,6 @@ $rowUser = mysqli_fetch_assoc($resultUser);
         <table style="width:50%; margin-left:20px;">
             <tr>
                 <td>All (<?php echo $data['total']; ?>)</td>
-                <td>Sort</td>
-                <td>
-                    <select name="sort" class="form-control">
-                    <option value="Day">Day</option>
-                    <option value="Month">Month</option>
-                    <option value="Year">Year</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td></td>
-                <td>Complain Type</td>
-                <td>
-                    <select name="sort_type" class="form-control">
-                    <option value="Wrongly Assigned Research Area">Wrongly Assigned Research Area</option>
-                    <option value="Unsatisfied Expert's Feedback">Unsatisfied Expert's Feedback</option>
-                    </select>
-                </td>
             </tr>
         </table>
     </div>
@@ -144,11 +124,11 @@ $rowUser = mysqli_fetch_assoc($resultUser);
     while($row = mysqli_fetch_assoc($result) ){
     $no = $no + 1;
     $complainid = $row["complaint_ID"];
-    $name = $rowUser["user_fullName"];
+    $name = $row["user_fullName"];
     $date = $row["complaint_DateTime"];
 	  $type = $row["complaint_Type"];
     $desc = $row["complaint_Desc"];
-    $status = $row["complaintStatus_ID"];
+    $status = $row["complaintStatus_type"];
     $adminid = $row["admin_ID"];;
     
 ?>	
