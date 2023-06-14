@@ -28,9 +28,9 @@
 		</select><br><br>
 		
 		<label>Email</label>
-		<input type="text" name="fname" placeholder="Fullname"><br><br>
+		<input type="text" name="email" placeholder="Email"><br><br>
 		
-		<p><a href="#">Log in here</a></p>
+		<p><a href="/FKEduSearch/Admin/index.php">Log in here</a></p>
 		<button type="submit">Add Registration</button><br><br>
 	</form>
 	<table border='1' align="center">
