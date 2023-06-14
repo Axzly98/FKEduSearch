@@ -1,5 +1,4 @@
 <?php
-	include'headerAdminUpper.php';
 	include'headerAdmin.php';
 ?>
 <!DOCTYPE html>
