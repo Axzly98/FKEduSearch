@@ -34,32 +34,25 @@
 		<button type="submit">Add Registration</button><br><br>
 	</form>
 	<table border='1' align="center">
-		<tr>
-			<td>No.</td>
-			<td>Username</td>
-			<td>Fullname</td>
-			<td>Role</td>
-			<td>Email</td>
-			<td colspan='2'><button>Update</button></td>
-		</tr>
-		<tr>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-		</tr>
-		<tr>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-		</tr>
+	<?php
+		// Fetch registered users from the database
+		$sql = "SELECT * FROM users";
+		$result = $conn->query($sql);
+		if ($result->num_rows > 0) {
+   		 $counter = 1;
+   		 while ($row = $result->fetch_assoc()) {
+       		 echo "<tr>";
+        	 echo "<td>" . $counter . "</td>";
+       		 echo "<td>" . $row["username"] . "</td>";
+       		 echo "<td>" . $row["fullname"] . "</td>";
+       		 echo "<td>" . $row["role"] . "</td>";
+       		 echo "<td>" . $row["email"] . "</td>";
+       		 echo "<td colspan='2'><button>Update</button></td>";
+       		 echo "</tr>";
+        $counter++;
+    }
+	}
+?>
 	</table>
 </body>
 </html>
