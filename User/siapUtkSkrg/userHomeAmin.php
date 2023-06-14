@@ -1,10 +1,20 @@
 <?php
 $page = 'home';
-include 'header.php';
-include 'footer.php';
+include 'headerUser.php';
+
 ?>
 
 
+
+<!-- Content Here --->
+
+
+
+<?php
+
+include 'footerUser.php';
+
+?>
 
 
 

@@ -8,33 +8,37 @@
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body align="center">
-	<form action="admin.php" method="post">
-		<h2>Registerd New User</h2>
+	<form action="register.php" method="post">
+		<h2>Registered New User</h2>
 		
 		<?php if(isset($_GET['error'])) { ?>
 			<p class="error"><?php echo $_GET['error']; ?></p> 
 		<?php } ?>
 		
-		<label>Username</label>
+		<label>Username :</label>
 		<input type="text" name="uname" placeholder="Username"><br><br>
-		<label>Full Name</label>
+		<label>Full Name: </label>
 		<input type="text" name="fname" placeholder="Fullname"><br><br>
 		
+		<label>Select Role :</label>
 		<select name="role">
 			<option value="">Role</option>
-			<option value="admin">Admin</option>
-			<option value="expert">Expert</option>
-			<option value="student">Student</option>
+			<option value="Admin">Admin</option>
+			<option value="Expert">Expert</option>
+			<option value="User">User</option>
 		</select><br><br>
 		
-		<label>Email</label>
+		<label>Email :</label>
 		<input type="text" name="email" placeholder="Email"><br><br>
 		
-		<p><a href="/FKEduSearch/Admin/index.php">Log in here</a></p>
+		<label>Password :</label>
+		<input type="text" name="password" placeholder="Password"><br><br>
+		
+		<p><a href="index.php">Log in here</a></p>
 		<button type="submit">Add Registration</button><br><br>
 	</form>
 	<table border='1' align="center">
-	<?php
+	<?php /*
 		// Fetch registered users from the database
 		$sql = "SELECT * FROM users";
 		$result = $conn->query($sql);
@@ -51,11 +55,14 @@
        		 echo "</tr>";
         $counter++;
     }
-	}
+	}	*/
 ?>
 	</table>
 </body>
 </html>
+
+
+
 <?php
 	include'footerAdmin.php';
 ?>

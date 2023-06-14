@@ -1,9 +1,9 @@
 <?php
 
-$page = 'add post';
+$page = 'post';
 
-include 'header.php';
-include 'footer.php'
+include 'headerUser.php';
+
 ?>
 
 
@@ -16,10 +16,11 @@ include 'footer.php'
 <td><label for="category">Category:</label></td>
 
 <td>
-<select name="category" id="category">
-   <option value="network">network</option>
-   <option value="security">security</option>
-   <option value="graphics">graphics</option>
+<select name="category">
+<option value="" selected align="center">-Select Categories-</option>
+   <option value="Networking">Networking</option>
+   <option value="Security">Security</option>
+   <option value="Multimedia and Graphic">Multimedia and Graphic</option>
    </select>
 </td> 
  
@@ -38,7 +39,7 @@ include 'footer.php'
    </tr>
    
    <tr>
-   <td><input type="submit" align="center" value="Submit"></td>
+   <td><input type="submit" align="center" style="background-color: #18A0FB; color: #FFFFFF; border-radius: 5px;" value="Submit"></td>
    
    </tr>
 
@@ -52,3 +53,9 @@ include 'footer.php'
 </form>
 
 <!-- "background-color: #18A0FB;  -->
+
+<?php
+
+include 'footerUser.php';
+
+?>
