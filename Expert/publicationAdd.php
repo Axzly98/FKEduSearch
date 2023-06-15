@@ -38,12 +38,12 @@ $expertID = $_REQUEST['expertID'];
   
   
   $query = "INSERT INTO publication (expert_ID, publicationTitle, publicationDate, publisherName, publicationType, publicationFile)
-          VALUES ('$expertID', '$title', '$publicationCreatedDate', '$name', '$type', '$fileName')"
+          VALUES ('$expertID', '$title', '$publicationCreatedDate', '$name', '$type', '$fileName')";
 
 	/*  $query = "INSERT INTO publication (publicationTitle, publicationDate, publisherName, publicationType, publicationFile)
               VALUES ('$title', '$publicationCreatedDate', '$name', '$type', '')" */
     
-		or die(mysqli_connect_error());
+		
   
 	$result = mysqli_query($link, $query);
 	     
@@ -70,8 +70,7 @@ $expertID = $_REQUEST['expertID'];
 		  
   //Close the database connection
 mysqli_close($link);
-  
-  
+ 
  
   ?>
   </body>

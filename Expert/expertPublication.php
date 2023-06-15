@@ -108,7 +108,9 @@ include 'headerExpert.php';
 <?php
 $link = mysqli_connect("localhost", "root") or die(mysqli_connect_error());
 mysqli_select_db($link, "miniproject") or die(mysqli_error());
+
 $expert_ID = $_SESSION["expertID"];
+
 $query = "SELECT * FROM publication WHERE expert_ID = $expert_ID" or die(mysqli_connect_error());
 $result = mysqli_query($link, $query)or die(mysqli_error($link));
 
@@ -170,7 +172,9 @@ if (mysqli_num_rows($result) > 0) {
 <?php
 $link = mysqli_connect("localhost", "root") or die(mysqli_connect_error());
 mysqli_select_db($link, "miniproject") or die(mysqli_error());
+
 $expert_ID = $_SESSION["expertID"];
+
 $queryCreated = "SELECT publicationDate, COUNT(*) AS publicationCount FROM publication where expert_ID = $expert_ID GROUP BY publicationDate" or die(mysqli_connect_error());
 
 $resultCreated = mysqli_query($link, $queryCreated);
