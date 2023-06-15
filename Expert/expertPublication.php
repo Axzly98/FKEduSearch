@@ -1,8 +1,9 @@
 <?php
-session_start();
 $page = 'publication';
 include 'headerExpert.php';
 ?>
+
+
 
    <div data-aos="fade" class="page-title">
           
@@ -77,7 +78,8 @@ include 'headerExpert.php';
 	
 	
 	<tr>
-	<td></td>  
+	<td> <!-- Add the expert ID as a hidden input field -->
+  <input type="hidden" name="expertID" value="<?php echo $_SESSION['expertID']; ?>"></td>  
 	<td></td>
 	<td></td>
 	<td> <input type="submit" style="background-color: #18A0FB; color: #FFFFFF; border-radius: 5px; width: 70px; height: 25px; font-size: 18px;" value="SAVE"></td> 
@@ -106,9 +108,9 @@ include 'headerExpert.php';
 <?php
 $link = mysqli_connect("localhost", "root") or die(mysqli_connect_error());
 mysqli_select_db($link, "miniproject") or die(mysqli_error());
-
-$query = "SELECT * FROM publication" or die(mysqli_connect_error());
-$result = mysqli_query($link, $query);
+$expert_ID = $_SESSION["expertID"];
+$query = "SELECT * FROM publication WHERE expert_ID = $expert_ID" or die(mysqli_connect_error());
+$result = mysqli_query($link, $query)or die(mysqli_error($link));
 
 if (mysqli_num_rows($result) > 0) {
     $numberIncrement = 1;
@@ -168,8 +170,8 @@ if (mysqli_num_rows($result) > 0) {
 <?php
 $link = mysqli_connect("localhost", "root") or die(mysqli_connect_error());
 mysqli_select_db($link, "miniproject") or die(mysqli_error());
-
-$queryCreated = "SELECT publicationDate, COUNT(*) AS publicationCount FROM publication GROUP BY publicationDate" or die(mysqli_connect_error());
+$expert_ID = $_SESSION["expertID"];
+$queryCreated = "SELECT publicationDate, COUNT(*) AS publicationCount FROM publication where expert_ID = $expert_ID GROUP BY publicationDate" or die(mysqli_connect_error());
 
 $resultCreated = mysqli_query($link, $queryCreated);
 

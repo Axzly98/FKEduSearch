@@ -1,7 +1,4 @@
 <?php
-session_start();
-
-
 $page = 'home';
 include 'headerExpert.php';
 ?>
@@ -10,13 +7,16 @@ include 'headerExpert.php';
 $link = mysqli_connect("localhost", "root") or die(mysqli_connect_error());
 mysqli_select_db($link, "miniproject") or die(mysqli_error());
 
-$query = "SELECT COUNT(*) as total FROM publication";
+// untuk link kan dengan expert account yang kita login...gune session 
+//kena letak ni sebelom query yg dalam tag php......WAJIB !!!
+$expertID = $_SESSION["expertID"];
+
+$query = "SELECT COUNT(*) as total FROM publication where expert_ID = '$expertID' ";
 $result = mysqli_query($link, $query);
 $row = mysqli_fetch_assoc($result);
 $totalPublications = $row['total'];
 
-// Untuk dapatkan total rating value for expert_ID = 200
-$queryRating = "SELECT SUM(rating_value) AS total_rating, COUNT(*) AS rating_count FROM rating WHERE expert_ID = 200";
+$queryRating = "SELECT SUM(rating_value) AS total_rating, COUNT(*) AS rating_count FROM rating WHERE expert_ID = '$expertID'";
 $result = mysqli_query($link, $queryRating);
 $row = mysqli_fetch_assoc($result);
 $rating_sum = $row['total_rating'];
@@ -69,7 +69,8 @@ $average_rating = ($rating_count > 0) ? ($rating_sum / $rating_count) : 0;
 				
 
   <!-- Guna <div> element for the chart -->
-  <div class="publicationChart" style="width: 50%; height: 400px; margin-bottom: 50px;"></div>
+<div class="publicationChart" style="width: 50%; height: 400px; margin-bottom: 50px;" data-expertid="<?php echo $expertID; ?>"></div>
+
 		
 		<h2 style="margin-left: 20%;">For Example Only.....</h2>
 		<h3 style="margin-left: 20%;">Rating (Calculation Part)</h3>
@@ -155,7 +156,8 @@ mysqli_close($link);
   <!-- Gune JavaScript code to create the bar chart -->
 <script>
   // guna name variable container ..untuk dapatkan .publicationChart dari atas.....
-  var container = document.querySelector('.publicationChart');
+  var container = document.querySelector('.publicationChart[data-expertid="<?php echo $expertID; ?>"]');
+
 
   // Buat bar chart gune Highcharts
   Highcharts.chart(container, {

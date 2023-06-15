@@ -1,6 +1,4 @@
 <?php
-session_start();
-
 $page = 'post';
 include 'headerExpert.php';
 ?>

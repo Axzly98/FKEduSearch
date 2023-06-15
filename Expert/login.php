@@ -55,7 +55,7 @@ if (mysqli_num_rows($result) > 0) {
 	$userUsername = $row["user_userName"];
 
 	// Store the user's login ID and admin ID in session variables for further use
-	session_start();
+	
 	$_SESSION["loginID"] = $loginID;
 	$_SESSION["adminID"] = $adminID;
 	$_SESSION["expertID"] = $expertID;
