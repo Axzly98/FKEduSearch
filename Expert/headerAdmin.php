@@ -5,6 +5,6 @@
   <a href="#news">Manage Acc</a>
   <a class="active" href="/FKEduSearch/Complaint/Admin/ComplaintListInterface.php">Complaint</a>
   <a href="#about">Profile</a>
-  <a href="/FKEduSearch/Admin/logout.php">Logout</a>
+  <a href="logout.php">Logout</a>
 </div>
 <hr style="box-shadow: 5px 0px 1px #6DE4EA;">
