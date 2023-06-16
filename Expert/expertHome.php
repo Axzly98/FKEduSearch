@@ -108,9 +108,9 @@ $average_rating = ($rating_count > 0) ? ($rating_sum / $rating_count) : 0;
     // gune isset untuk elak dari automatically insert ... isset = untuk check input dah fill in ke belom
     if (isset($_POST['rating_number'])) {
      
-
+	  $expertID = $_SESSION["expertID"];
       $rating_number = $_POST["rating_number"];
-      $query = "INSERT INTO rating VALUES('', '200', '', '', '$rating_number', '')";
+      $query = "INSERT INTO rating VALUES('', '$expertID', '', '', '$rating_number', '')";
 
 	
 	/* untuk reference...SQL Statement 

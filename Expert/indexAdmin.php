@@ -20,13 +20,7 @@
 		<label>Full Name: </label>
 		<input type="text" name="fname" placeholder="Fullname"><br><br>
 		
-		<label>Select Role :</label>
-		<select name="role">
-			<option value="">Role</option>
-			<option value="Admin">Admin</option>
-			<option value="Expert">Expert</option>
-			<option value="User">User</option>
-		</select><br><br>
+	
 		
 		<label>Email :</label>
 		<input type="text" name="email" placeholder="Email"><br><br>
@@ -34,8 +28,19 @@
 		<label>Password :</label>
 		<input type="text" name="password" placeholder="Password"><br><br>
 		
+			<label>Select Role :</label>
+		<select name="role">
+			<option value="">Role</option>
+			<option value="Admin">Admin</option>
+			<option value="Expert">Expert</option>
+			<option value="User">User</option>
+		</select><br><br>
+		
 		<p><a href="index.php">Log in here</a></p>
 		<button type="submit">Add Registration</button><br><br>
+		
+		
+		
 	</form>
 	<table border='1' align="center">
 	<?php /*

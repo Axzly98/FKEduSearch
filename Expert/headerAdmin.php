@@ -1,5 +1,5 @@
 <div class="topnav">
-<link rel="stylesheet" href="/FKEduSearch/Admin/styleHeadFoot.css">
+<link rel="stylesheet" href="styleSheets/styleHeadFoot.css">
   <a><img src="https://umplive.ump.edu.my/images/2020/07/26/logo-ump-transparent-blue__1122x561.png" style="width: 40px;"></a>
   <a href="FKEduSearch/Admin/ReactivateAcc.php" style="margin-left: 400px;">Reactivate Acc</a>
   <a href="#news">Manage Acc</a>

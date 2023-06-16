@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>FK-EduSearch</title>
-<link rel="stylesheet" type="text/css" href="style.css">
+<link rel="stylesheet" type="text/css" href="styleSheets/style.css">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <link href="styleSheets/img/logoUMPIcon.jpeg" rel="icon">

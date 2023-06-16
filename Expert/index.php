@@ -5,8 +5,8 @@
 <html>
 <head>
 	<title>LOGIN</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
-	<link rel="stylesheet" type="text/css" href="styleHeadFoot.css">
+	<link rel="stylesheet" type="text/css" href="styleSheets/style.css">
+	<link rel="stylesheet" type="text/css" href="styleSheets/styleHeadFoot.css">
 </head>
 <body>
 	<form action="login.php" method="post" align="center">

@@ -1,6 +1,9 @@
 <?php
 $page = 'publication';
 include 'headerExpert.php';
+
+// Retrieve the search query from the URL parameter
+$searchQuery = $_REQUEST['searchQuery'] ?? '';
 ?>
 
 
@@ -36,7 +39,10 @@ include 'headerExpert.php';
   
 	</style>
 	
-	
+	<form method="get" action="expertPublication.php" style="text-align: center;">
+    <input type="text" name="searchQuery" style="width: 30%; height: 20px" placeholder="Search Publications Title Or Publisher Name">
+    <input type="submit" value="Search">
+	</form>
 	
 													<!-- enctype utk file upload -->
 	<form action="publicationAdd.php" method="post"  enctype="multipart/form-data">
@@ -101,6 +107,7 @@ include 'headerExpert.php';
 	
 	<tr>
 	</tr>
+	</table>
 	
 
 	
@@ -151,7 +158,7 @@ if (mysqli_num_rows($result) > 0) {
 
     <?php
 } else {
-    echo "No Data in Database -----";
+    echo "No Publications Uploaded Yet -----";
 }
 ?>
 
@@ -166,6 +173,9 @@ if (mysqli_num_rows($result) > 0) {
 	
 	<tr>
 	</tr>
+	</table>
+
+
 
 
 
@@ -210,11 +220,94 @@ if (mysqli_num_rows($resultCreated) > 0) {
 
     <?php
 } else {
-    echo "No Data in Database -----";
+    echo "No Publications Data in Database -----";
 }
 
 ?>
 
 <br><br>	
+<br><br>
+
+
+
+
+
+ <?php
+    $link = mysqli_connect("localhost", "root") or die(mysqli_connect_error());
+    mysqli_select_db($link, "miniproject") or die(mysqli_error());
+
+  if (isset($_REQUEST['searchQuery']) && !empty($_REQUEST['searchQuery'])) {
+    $searchQuery = $_GET['searchQuery'];
+
+    $querySearch = "SELECT * FROM publication WHERE publicationTitle LIKE '%$searchQuery%' OR publisherName LIKE '%$searchQuery%'";
+    $resultSearch = mysqli_query($link, $querySearch) or die(mysqli_error($link));
+
+    if (mysqli_num_rows($resultSearch) > 0) {
+        $numberIncrement = 1;
+        ?>
+
+        <table class="publication-table" border="1"> 
+            <tr>
+                <th class="th">Result of Searched Publications</th>  
+            </tr>
+            <tr></tr>
+        </table>
+
+        <table border="2" style="width: 100%;">
+            <tr>
+                <th class="th">No.</th>
+                <th class="th">Publication Title</th>
+                <th class="th">Publisher Name</th>
+                <th class="th">Categories</th>
+                <th class="th">Date Uploaded</th>
+                <th></th>
+            </tr>
+
+            <?php
+            while ($row = mysqli_fetch_assoc($resultSearch)) {
+                ?>
+                <tr class="trlist">
+                    <td align="center"><?php echo $numberIncrement; ?></td>
+                    <td align="center"><?php echo $row['publicationTitle']; ?></td>
+                    <td align="center"><?php echo $row['publisherName']; ?></td>
+                    <td align="center"><?php echo $row['publicationType']; ?></td>
+                    <td align="center"><?php echo $row['publicationDate']; ?></td>
+                    <td class="th" align="center"><a href="uploads/<?php echo $row['publicationFile']; ?>" download>DOWNLOAD</a>
+                        <?php // echo $row['publicationFile']; ?>
+                    </td>
+                </tr>
+                <?php
+                $numberIncrement++; // Increment the numberIncrement variable
+            }
+            ?>
+
+        </table>
+
+        <?php
+    } else {
+        ?>
+        <table class="publication-table" border="1"> 
+            <tr>
+                <th class="th">Result of Searched Publications</th>  
+            </tr>
+            <tr>
+                <td align="center">No Publications Found.</td>
+            </tr>
+        </table>
+        <?php
+    }
+} else {
+    ?>
+    <table class="publication-table" border="1"> 
+        <tr>
+            <th class="th">Result of Searched Publications</th>  
+        </tr>
+        <tr>
+            <td align="center">Please Search Publication's Title or Publisher's Name .</td>
+        </tr>
+    </table>
+    <?php
+}
+    ?>
 
 <?php include 'footerExpert.php'; ?>
