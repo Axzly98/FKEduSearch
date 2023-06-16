@@ -1,12 +1,9 @@
-<html> 
-
-
 <?php
 session_start();
 $page = 'publication';
 
 ?>
-
+<html> 
 <body>
  
   <?php 
@@ -17,7 +14,7 @@ $page = 'publication';
 	mysqli_select_db($link, "miniproject") or die(mysqli_error());
   
   // Get the expert ID from the form data
-$expertID = $_REQUEST['expertID'];
+$expertID = $_POST['expertID'];
   
   // Get the current date and time
 	$publicationCreatedDate = date('Y-m-d');

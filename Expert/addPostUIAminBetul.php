@@ -8,7 +8,7 @@ include 'headerUser.php';
 
 
 
-<form action="userAddPostDBBetul.php?user_ID=<?php echo $_SESSION['userID']; ?>" method="post">
+<form action="userAddPostDBBetul.php?userID=<?php echo $_SESSION['userID']; ?>" method="post">
 <table align=center>
 
 <tr>

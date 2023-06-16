@@ -12,9 +12,9 @@ include 'headerUser.php';
 $link = mysqli_connect("localhost", "root") or die(mysqli_connect_error());
 mysqli_select_db($link, "miniproject") or die(mysqli_error());
 
-$user_ID = $_SESSION["userID"];
+ $user_ID = $_SESSION['userID'];
 
-$query = "SELECT * FROM post where user_ID = '$user_ID' ";
+$query = "SELECT * FROM post WHERE user_ID = '$user_ID'";
 
 
 $result = mysqli_query($link, $query) or die(mysqli_error($link));
@@ -64,9 +64,9 @@ if (mysqli_num_rows($result) > 0) {
 <br>
 <br>
 
-<form action="addPostUIAminBetul.php">
+<form action="addPostUIAminBetul.php?userID=<?php echo $_SESSION['userID']; ?>">
 <div style="text-align: center;">
-  <!-- <input type="hidden" name="userID" value="<?php echo $_SESSION['userID']; ?>"></td>   -->
+ <!--  <input type="hidden" name="userID" value="<?php // echo $_SESSION['userID']; ?>"></td>   -->
 <input type="submit" style="background-color: #18A0FB; color: #FFFFFF; border-radius: 5px; width: 130px; height: 25px; font-size: 12px;" value="CREATE NEW POST">
 </div>
 </form>
@@ -86,12 +86,12 @@ if (mysqli_num_rows($result) > 0) {
 $link = mysqli_connect("localhost", "root", "") or die(mysqli_connect_error());
 mysqli_select_db($link, "miniproject") or die(mysqli_error($link));
 
-// $user_ID = $_SESSION['userID'];
+$user_ID = $_SESSION['userID'];
 
 
 // SQL Statement to fetch the total number of posts by post_categories and post_createdDate
 $queryDisplay = "SELECT post_categories, post_createdDate, COUNT(*) AS totalPosts 
-          FROM post where user_ID = '$user_ID'
+          FROM post WHERE user_ID = '$user_ID'
           GROUP BY post_categories, post_createdDate";
 
 $resultDisplay = mysqli_query($link, $queryDisplay);

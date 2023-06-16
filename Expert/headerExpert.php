@@ -1,6 +1,6 @@
 <?php
 session_start();
-$expert_ID = $_SESSION['expertID'];
+$expertID = $_SESSION['expertID'];
 ?>
 
 <!DOCTYPE html>
@@ -37,12 +37,50 @@ $expert_ID = $_SESSION['expertID'];
   <nav id="navmenu" class="navmenu" style="display: flex; justify-content: center;">
     <ul>
 <?php
-$uploadedFile = $_SESSION['uploaded_file'];
+
+$expertID = $_SESSION['expertID']; // Retrieve the expert ID from the session
+
+// Retrieve the expert's profile picture or use a default picture if not available
+//$profilePicture = ""; // Initialize variable
+
+// Add your logic here to fetch the expert's profile picture based on the expert ID
+
+/* if (!empty($profilePicture) && file_exists("uploads/$profilePicture")) {
+    echo '<img src="uploads/' . $profilePicture . '" alt="Profile Picture" style="width: 70px; height: auto;">';
+} else {
+    echo 'Profile picture not available.';
+} */
+
+/*
+$query = "SELECT expert_profilePicture FROM expert WHERE expert_ID = $expertID";
+$result = mysqli_query($link, $query) or die(mysqli_error($link));
+
+if (mysqli_num_rows($result) > 0) {
+    $row = mysqli_fetch_assoc($result);
+    $profilePicture = $row['expert_profilePicture']; // Get the profile picture file name
+} else {
+    $profilePicture = ""; // Set a default profile picture or a placeholder image file name
+}
+
+if (!empty($profilePicture) && file_exists("uploads/$profilePicture")) {
+    echo '<img src="uploads/' . $profilePicture . '" alt="Profile Picture" style="width: 70px; height: auto;">';
+} else {
+    echo 'Profile picture not available.';
+}
+
+*/
+
+
+
+ $uploadedFile = $_SESSION['uploaded_file'];
+ 
 if (!empty($uploadedFile) && file_exists("uploads/$uploadedFile")) {
     echo '<img src="uploads/' . $uploadedFile . '" alt="Profile Picture" style="width: 70px; height: auto;">';
 } else {
     echo 'Profile picture not available.';
 }
+
+
 ?>
 
 

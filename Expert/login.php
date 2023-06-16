@@ -9,32 +9,32 @@ $enteredUsername = $_REQUEST["userName"];
 $enteredPassword = $_REQUEST["password"];
 $chosenRole = $_REQUEST["role"];
 
-// SQL query to check if the entered username and password match with the data in the login and admin tables
+
+// Define the table name based on the chosen role
+$tableName = "";
+if ($chosenRole == "Admin") {
+    $tableName = "admin";
+} elseif ($chosenRole == "Expert") {
+    $tableName = "expert";
+} elseif ($chosenRole == "User") {
+    $tableName = "user";
+}
+
+
+
+// SQL query to check if the entered username and password match with the data in the login table and the specific role table
 $query = "
     SELECT 
         login.login_ID, 
-        login.login_userName, 
-        admin.admin_ID, 
-        admin.admin_userName, 
-        admin.admin_password,
-        expert.expert_ID,
-        expert.expert_userName,
-        expert.expert_password,
-        user.user_ID,
-        user.user_userName,
-        user.user_password
+        login.login_userName,
+        $tableName.${tableName}_ID,
+        $tableName.${tableName}_userName,
+        $tableName.${tableName}_password
     FROM login
-    LEFT JOIN admin ON login.admin_ID = admin.admin_ID
-    LEFT JOIN expert ON login.expert_ID = expert.expert_ID
-    LEFT JOIN user ON login.user_ID = user.user_ID
+    INNER JOIN $tableName ON login.${tableName}_ID = $tableName.${tableName}_ID
     WHERE login.login_userName = '$enteredUsername' 
-        AND (
-            admin.admin_password = '$enteredPassword' 
-            OR expert.expert_password = '$enteredPassword' 
-            OR user.user_password = '$enteredPassword'
-        );
+        AND $tableName.${tableName}_password = '$enteredPassword';
 ";
-
 
 // Execute the query
 $result = mysqli_query($link, $query) or die(mysqli_error($link));
@@ -45,8 +45,10 @@ if (mysqli_num_rows($result) > 0) {
 	$loginSuccessful = true;
 
 	// Get the logged-in user's details
-	$row = mysqli_fetch_assoc($result);
-	$loginID = $row["login_ID"];
+    $row = mysqli_fetch_assoc($result);
+    $loginID = $row["login_ID"];
+    $roleID = $row["${tableName}_ID"];
+    $roleUsername = $row["${tableName}_userName"];
 	$adminID = $row["admin_ID"];
 	$expertID = $row["expert_ID"];
 	$userID = $row["user_ID"];
@@ -54,32 +56,38 @@ if (mysqli_num_rows($result) > 0) {
 	$expertUsername = $row["expert_userName"];
 	$userUsername = $row["user_userName"];
 
-	// Store the user's login ID and admin ID in session variables for further use
-	
-	$_SESSION["loginID"] = $loginID;
-	$_SESSION["adminID"] = $adminID;
-	$_SESSION["expertID"] = $expertID;
-	$_SESSION["userID"] = $userID;
-	
-	// Redirect to the next page based on the chosen role
-if ($chosenRole == "Admin") {
-    $alert_message = "Admin Successful Login!";
-    echo "<script>alert('$alert_message');</script>";
-    echo "<script>setTimeout(function() { window.location.href = 'indexAdmin.php'; }, 250);</script>";
-    exit();
-	} elseif ($chosenRole == "Expert") {
-	$alert_message = "Expert Successful Login!";
-    echo "<script>alert('$alert_message');</script>";
-    echo "<script>setTimeout(function() { window.location.href = 'expertHome.php'; }, 250);</script>";
-    exit();
-	} elseif ($chosenRole == "User") {
-		// Redirect to the user 
+// Store the user's login ID and role ID in session variables for further use
+    $_SESSION["loginID"] = $loginID;
+    $_SESSION["roleID"] = $roleID;
+
+    // Redirect to the next page based on the chosen role
+    if ($chosenRole == "Admin") {
+        $_SESSION["adminID"] = $roleID;
+        $_SESSION["adminUsername"] = $roleUsername;
+		 $alert_message = "Admin Successful Login!";
+		echo "<script>alert('$alert_message');</script>";
+		echo "<script>setTimeout(function() { window.location.href = 'indexAdmin.php'; }, 250);</script>";
+		exit();
+        // Redirect to admin page
+    } elseif ($chosenRole == "Expert") {
+       // $_SESSION["expertID"] = $roleID;
+	   $_SESSION['expertID'] = $row['expert_ID'];
+        $_SESSION["expertUsername"] = $roleUsername;
+		$alert_message = "Expert Successful Login!";
+		echo "<script>alert('$alert_message');</script>";
+		echo "<script>setTimeout(function() { window.location.href = 'expertHome.php'; }, 250);</script>";
+		exit();
+        // Redirect to expert page
+    } elseif ($chosenRole == "User") {
+        $_SESSION["userID"] = $roleID;
+        $_SESSION["userUsername"] = $roleUsername;
 		$alert_message = "User Successful Login!";
-    echo "<script>alert('$alert_message');</script>";
-    echo "<script>setTimeout(function() { window.location.href = 'userHomeAmin.php'; }, 250);</script>";
+		echo "<script>alert('$alert_message');</script>";
+		echo "<script>setTimeout(function() { window.location.href = 'userHomeAmin.php'; }, 250);</script>";
 		header("Location: userHomeAmin.php");
 		exit();
-	}
+        // Redirect to user page
+    }
 } else {
 	// Authentication failed
 	$loginSuccessful = false;

@@ -44,11 +44,19 @@ $query = "
 
     UPDATE research_area
     SET researchAreaName = '$researchAreaName'
-    WHERE researchArea_ID = '$expertID';
+    WHERE researchArea_ID IN (
+	SELECT researchArea_ID 
+	FROM research_areauserexpert
+	WHERE expert_ID = '$expertID'
+	);
 
-    UPDATE academic_status
+	UPDATE academic_status
     SET academicStatus_type = '$academicStatus_type'
-    WHERE academicStatus_ID = '$expertID';
+    WHERE academicStatus_ID IN (
+    SELECT academicStatus_ID
+    FROM academic_statususerexpert
+    WHERE expert_ID = '$expertID'
+    );
 
     UPDATE socialmedia
     SET instagram_userName = '$instagram_userName',

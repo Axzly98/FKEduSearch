@@ -33,7 +33,11 @@ $query = "
 
     UPDATE academic_status
     SET academicStatus_type = '$academicStatus_type'
-    WHERE academicStatus_ID = '$userID';
+    WHERE academicStatus_ID IN (
+    SELECT academicStatus_ID
+    FROM academic_statususerexpert
+    WHERE user_ID = '$userID'
+    );
 	
     UPDATE socialmedia
     SET instagram_userName = '$instagram_userName',

@@ -83,11 +83,11 @@ $searchQuery = $_REQUEST['searchQuery'] ?? '';
 	</tr>
 	
 	
-	<tr>
-	<td> <!-- Add the expert ID as a hidden input field -->
-  <input type="hidden" name="expertID" value="<?php echo $_SESSION['expertID']; ?>"></td>  
+	<tr> 
 	<td></td>
 	<td></td>
+	<td></td>
+	<input type="hidden" name="expertID" value="<?php echo $_SESSION['expertID']; ?>">
 	<td> <input type="submit" style="background-color: #18A0FB; color: #FFFFFF; border-radius: 5px; width: 70px; height: 25px; font-size: 18px;" value="SAVE"></td> 
 	
 	
@@ -116,9 +116,9 @@ $searchQuery = $_REQUEST['searchQuery'] ?? '';
 $link = mysqli_connect("localhost", "root") or die(mysqli_connect_error());
 mysqli_select_db($link, "miniproject") or die(mysqli_error());
 
-$expert_ID = $_SESSION["expertID"];
+$expertID = $_SESSION["expertID"];
 
-$query = "SELECT * FROM publication WHERE expert_ID = $expert_ID" or die(mysqli_connect_error());
+$query = "SELECT * FROM publication WHERE expert_ID = $expertID" or die(mysqli_connect_error());
 $result = mysqli_query($link, $query)or die(mysqli_error($link));
 
 if (mysqli_num_rows($result) > 0) {
@@ -183,9 +183,9 @@ if (mysqli_num_rows($result) > 0) {
 $link = mysqli_connect("localhost", "root") or die(mysqli_connect_error());
 mysqli_select_db($link, "miniproject") or die(mysqli_error());
 
-$expert_ID = $_SESSION["expertID"];
+$expertID = $_SESSION["expertID"];
 
-$queryCreated = "SELECT publicationDate, COUNT(*) AS publicationCount FROM publication where expert_ID = $expert_ID GROUP BY publicationDate" or die(mysqli_connect_error());
+$queryCreated = "SELECT publicationDate, COUNT(*) AS publicationCount FROM publication where expert_ID = $expertID GROUP BY publicationDate" or die(mysqli_connect_error());
 
 $resultCreated = mysqli_query($link, $queryCreated);
 
