@@ -1,28 +1,15 @@
 <?php
 
 session_start();
-
 //Connect to the database server.
-$link = mysqli_connect("localhost", "root") or die(mysqli_connect_error());
+$link = mysqli_connect("localhost", "root", "") or die(mysqli_connect_error());
 
 //Select the database.
 mysqli_select_db($link, "miniproject") or die(mysqli_error($link));
 
-$expertID = $_REQUEST['expertID'];
+$userID = $_REQUEST['userID'];
 
 $email = $_REQUEST['email'];
-$profilePicture = $_FILES['profilePicture']['name'];
-$profilePictureTmp = $_FILES['profilePicture']['tmp_name'];
-$targetPath = 'uploads/' . $profilePicture;
-move_uploaded_file($profilePictureTmp, $targetPath);
-
-// Store the uploaded file name in the session variable
-$_SESSION['uploaded_file'] = $profilePicture;
-
-$expertCV = $_FILES['expertCV']['name'];
-$expertCVTmp = $_FILES['expertCV']['tmp_name'];
-$destinationPath = 'uploads/' . $expertCV;
-move_uploaded_file($expertCVTmp, $destinationPath);
 
 $researchAreaName = $_REQUEST['researchAreaName'];
 
@@ -32,31 +19,29 @@ $academicStatus_type = implode(',', $academicStatusType);
 $instagram_userName = $_REQUEST['instagram_userName'];
 $linkedin_userName = $_REQUEST['linkedin_userName'];
 
-// Begin the transaction ..
+// Begin the transaction.
 mysqli_query($link, "START TRANSACTION") or die(mysqli_error($link));
 
 $query = "
-    UPDATE expert
-    SET expert_email = '$email',
-        expert_profilePicture = '$profilePicture',
-        expert_CV = '$expertCV'
-    WHERE expert_ID = '$expertID';
+    UPDATE user
+    SET user_email = '$email'
+    WHERE user_ID = '$userID';
 
     UPDATE research_area
     SET researchAreaName = '$researchAreaName'
-    WHERE researchArea_ID = '$expertID';
+    WHERE researchArea_ID = '$userID';
 
     UPDATE academic_status
     SET academicStatus_type = '$academicStatus_type'
-    WHERE academicStatus_ID = '$expertID';
-
+    WHERE academicStatus_ID = '$userID';
+	
     UPDATE socialmedia
     SET instagram_userName = '$instagram_userName',
         linkedin_userName = '$linkedin_userName'
-    WHERE expert_ID = '$expertID';
+    WHERE user_ID = '$userID';
 ";
 
-$result = mysqli_multi_query($link, $query) or die("Could not execute query in expertProfile.php");
+$result = mysqli_multi_query($link, $query) or die("Could not execute query in userProfile.php");
 
 // Iterate over the result sets and discard them
 while (mysqli_more_results($link) && mysqli_next_result($link)) {
@@ -68,7 +53,7 @@ while (mysqli_more_results($link) && mysqli_next_result($link)) {
 // Commit the transaction if all operations are successful.
 mysqli_query($link, "COMMIT") or die(mysqli_error($link));
 
-$alert_message = "Expert Profile Information has been updated!";
+$alert_message = "User Profile Information has been updated!";
 echo "<script>alert('$alert_message');</script>";
-echo "<script type='text/javascript'> window.location='expertProfile.php' </script>";
+echo "<script type='text/javascript'> window.location='userProfile.php' </script>";
 ?>

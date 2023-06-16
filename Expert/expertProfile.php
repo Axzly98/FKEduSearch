@@ -57,7 +57,7 @@ include 'headerExpert.php';
 					  JOIN academic_statususerexpert ON expert.expert_ID = academic_statususerexpert.expert_id
 					  JOIN academic_status ON academic_statususerexpert.academicStatus_ID = academic_status.academicStatus_ID
 					  JOIN socialmedia ON expert.expert_ID = socialmedia.expert_ID
-					  WHERE expert.expert_ID = $expert_ID" or die(mysqli_connect_error());
+					  WHERE expert.expert_ID = '$expert_ID' " or die(mysqli_connect_error());
 					  
 			$result = mysqli_query($link, $query);
 			
