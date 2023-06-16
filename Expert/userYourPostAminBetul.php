@@ -86,7 +86,7 @@ if (mysqli_num_rows($result) > 0) {
 $link = mysqli_connect("localhost", "root", "") or die(mysqli_connect_error());
 mysqli_select_db($link, "miniproject") or die(mysqli_error($link));
 
-$user_ID = $_SESSION['userID'];
+// $user_ID = $_SESSION['userID'];
 
 
 // SQL Statement to fetch the total number of posts by post_categories and post_createdDate
