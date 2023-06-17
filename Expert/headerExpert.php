@@ -71,17 +71,21 @@ if (!empty($profilePicture) && file_exists("uploads/$profilePicture")) {
 */
 
 
+      // Check if uploaded_file is set in the session
+    if (isset($_SESSION['uploaded_file'])) {
+    $uploadedFile = $_SESSION['uploaded_file'];
 
- $uploadedFile = $_SESSION['uploaded_file'];
- 
-if (!empty($uploadedFile) && file_exists("uploads/$uploadedFile")) {
-    echo '<img src="uploads/' . $uploadedFile . '" alt="Profile Picture" style="width: 70px; height: auto;">';
+    if (!empty($uploadedFile) && file_exists("uploads/$uploadedFile")) {
+        echo '<a href="expertProfile.php"> <img src="uploads/' . $uploadedFile . '" alt="Profile Picture" style="width: 70px; height: auto;"></a>';
+    } else {
+        echo 'Profile picture not available.';
+    }
 } else {
-    echo 'Profile picture not available.';
+    // Provide a default profile picture
+    echo '<a href="expertProfile.php"><img src="uploads/profile_default.png" alt="Profile Picture" style="width: 70px; height: auto;"></a>';
 }
 
-
-?>
+      ?>
 
 
       <li <?php if ($page == 'home') echo 'class="active"'; ?>>

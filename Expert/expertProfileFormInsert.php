@@ -75,6 +75,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     move_uploaded_file($_FILES['profilePicture']['tmp_name'], $profilePictureTarget);
     move_uploaded_file($_FILES['expertCV']['tmp_name'], $expertCVTarget);
 
+	$_SESSION['uploaded_file'] = $profilePicture;
+
     // Check if expert record already exists
     $queryCheckExpert = "SELECT * FROM expert WHERE expert_ID = '$expertID'";
     $resultCheckExpert = mysqli_query($link, $queryCheckExpert);
