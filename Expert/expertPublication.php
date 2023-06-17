@@ -58,14 +58,14 @@ $searchQuery = $_REQUEST['searchQuery'] ?? '';
 	
 	<tr>
 	<th class="th">Publication Title:</th>  
-	<td> <input type="text" name="publicationTitle" style="width: 400px;" placeholder="Enter Publication Title"></td>
+	<td> <input type="text" name="publicationTitle" style="width: 400px;" placeholder="Enter Publication Title" required></td>
 	<th class="th">Publication File:</th> 
-	<td> <input type="file" name="publicationFile"></td>
+	<td> <input type="file" name="publicationFile" required></td>
 	</tr>
 	
 	<tr>
 	<th class="th">Publisher Name:</th>  
-	<td> <input type="text" name="publisherName" placeholder="Enter Publisher Name" style="width: 340px;"></td>
+	<td> <input type="text" name="publisherName" placeholder="Enter Publisher Name" style="width: 340px;" required></td>
 	<td></td>
 	<td></td> 
 	</tr>
@@ -73,7 +73,7 @@ $searchQuery = $_REQUEST['searchQuery'] ?? '';
 	
 	<tr>
 	<th class="th">Categories:</th>  
-	<td><select name="publicationCategories">
+	<td><select name="publicationCategories" required>
 	<option value="" selected align="center">-Select Categories-</option>
   <option value="Networking">Networking</option>
   <option value="Software Engineering">Software Engineering</option>
@@ -145,7 +145,7 @@ if (mysqli_num_rows($result) > 0) {
                 <td align="center"><?php echo $row['publisherName']; ?></td>
                 <td align="center"><?php echo $row['publicationType']; ?></td>
                 <td align="center"><?php echo $row['publicationDate']; ?></td>
-                <td class="th" align="center"><a href="uploads/<?php echo $row['publicationFile']; ?>" download>DOWNLOAD</a> <a href="publicationDelete.php?id=<?php echo $row['publication_ID']; ?>">DELETE</a>
+                <td class="th" align="center"><a href="uploads/<?php echo $row['publicationFile']; ?>" download>DOWNLOAD</a> <a href="publicationDelete.php?id=<?php echo $row['publication_ID']; ?>">DELETE</a></td>
 				<?php // echo $row['publicationFile']; ?>
 				
             </tr>

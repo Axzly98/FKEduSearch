@@ -77,7 +77,7 @@ include 'headerExpert.php';
 			$academicStatus_type = [];  // Empty array for academic status types
 
 			// Display an error message or redirect the user
-			$error_message = "No profile data found!";
+			$error_message = "Expert Profile First Time Access !";
 			echo "<script>alert('$error_message');</script>";
 			echo "<script type='text/javascript'>window.location='expertProfileForm.php'</script>";
 }

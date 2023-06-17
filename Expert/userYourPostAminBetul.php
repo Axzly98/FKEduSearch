@@ -32,6 +32,7 @@ if (mysqli_num_rows($result) > 0) {
 	<th class="thlist">Post Question </th>
     <th class="thlist">Post Date Created</th>  
 	<th class="thlist">Total Likes </th> 
+	<th class="thlist">Post Status</th>
 	<!-- <th class="thlist">Total Comments </th>  -->
 
 	
@@ -47,6 +48,8 @@ if (mysqli_num_rows($result) > 0) {
                 <td><?php echo $row['post_content']; ?></td>
                 <td align="center"><?php echo $row['post_createdDate']; ?></td>
 				 <td align="center"><?php echo $row['post_likes']; ?></td>	
+				 <td align="center"><?php echo $row['post_status']; ?></td>
+				 <td style="font-weight: bold; text-transform: uppercase" align="center"><a href="postDelete.php?id=<?php echo $row['post_ID']; ?>">DELETE</a></td>
             </tr>
             <?php
             $numberIncrement++; // Increment the numberIncrement variable
@@ -105,7 +108,7 @@ if (mysqli_num_rows($resultDisplay) > 0) {
             <th class="th">No. </th>  
             <th class="th">Post Categories</th>
             <th class="th">Post Created Date</th>
-            <th class="th">Total Posts</th>
+            <th class="th">Total Posts</th>		
         </tr>
 
         <?php

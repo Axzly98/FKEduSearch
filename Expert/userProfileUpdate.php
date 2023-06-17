@@ -1,4 +1,25 @@
 <?php
+/*
+    UPDATE research_area
+    SET researchAreaName = '$researchAreaName'
+    WHERE researchArea_ID IN (
+	SELECT researchArea_ID 
+	FROM research_areauserexpert
+	WHERE user_ID = '$user_ID'
+	); 
+	
+	UPDATE academic_status
+    SET academicStatus_type = '$academicStatus_type'
+    WHERE academicStatus_ID IN (
+    SELECT academicStatus_ID
+    FROM academic_statususerexpert
+    WHERE user_ID = '$user_ID'
+    );
+	
+
+	
+
+	*/
 
 session_start();
 //Connect to the database server.
@@ -23,25 +44,24 @@ $linkedin_userName = $_REQUEST['linkedin_userName'];
 mysqli_query($link, "START TRANSACTION") or die(mysqli_error($link));
 
 $query = "
+
     UPDATE user
     SET user_email = '$email'
     WHERE user_ID = '$user_ID';
 
-    UPDATE research_area
-    SET researchAreaName = '$researchAreaName'
-    WHERE researchArea_ID IN (
-	SELECT researchArea_ID 
-	FROM research_areauserexpert
-	WHERE user_ID = '$user_ID'
-	);
+
 	
-    UPDATE academic_status
-    SET academicStatus_type = '$academicStatus_type'
-    WHERE academicStatus_ID IN (
-    SELECT academicStatus_ID
-    FROM academic_statususerexpert
-    WHERE user_ID = '$user_ID'
-    );
+	UPDATE research_areauserexpert
+    INNER JOIN research_area ON research_areauserexpert.researchArea_ID = research_area.researchArea_ID
+    SET research_area.researchAreaName = '$researchAreaName'
+    WHERE research_areauserexpert.user_ID = '$user_ID';
+	
+
+	UPDATE academic_statususerexpert
+    INNER JOIN academic_status ON academic_statususerexpert.academicStatus_ID = academic_status.academicStatus_ID
+    SET academic_status.academicStatus_type = '$academicStatus_type'
+    WHERE academic_statususerexpert.user_ID = '$user_ID';
+
 	
     UPDATE socialmedia
     SET instagram_userName = '$instagram_userName',

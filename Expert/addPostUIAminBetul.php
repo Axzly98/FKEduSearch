@@ -18,10 +18,12 @@ include 'headerUser.php';
 <td>
 <select name="category">
 <option value="" selected align="center">-Select Categories-</option>
-   <option value="Networking">Networking</option>
-   <option value="Security">Security</option>
-   <option value="Multimedia and Graphic">Multimedia and Graphic</option>
-   </select>
+     <option value="" selected disabled required>- Select Research Area -</option>
+          <option value="Computer Systems and Networking">Computer Systems and Networking</option>
+          <option value="Software Engineering">Software Engineering</option>
+          <option value="Graphic and Multimedia">Graphic and Multimedia</option>
+          <option value="Cyber Security">Cyber Security</option>
+        </select>
 </td> 
  
 </tr>

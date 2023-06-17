@@ -2,6 +2,24 @@
 
 session_start();
 
+/*
+    UPDATE research_area
+    SET researchAreaName = '$researchAreaName'
+    WHERE researchArea_ID IN (
+	SELECT researchArea_ID 
+	FROM research_areauserexpert
+	WHERE expert_ID = '$expertID'
+	);
+
+	UPDATE academic_status
+    SET academicStatus_type = '$academicStatus_type'
+    WHERE academicStatus_ID IN (
+    SELECT academicStatus_ID
+    FROM academic_statususerexpert
+    WHERE expert_ID = '$expertID'
+    );
+*/
+
 //Connect to the database server.
 $link = mysqli_connect("localhost", "root") or die(mysqli_connect_error());
 
@@ -42,21 +60,18 @@ $query = "
         expert_CV = '$expertCV'
     WHERE expert_ID = '$expertID';
 
-    UPDATE research_area
-    SET researchAreaName = '$researchAreaName'
-    WHERE researchArea_ID IN (
-	SELECT researchArea_ID 
-	FROM research_areauserexpert
-	WHERE expert_ID = '$expertID'
-	);
 
-	UPDATE academic_status
-    SET academicStatus_type = '$academicStatus_type'
-    WHERE academicStatus_ID IN (
-    SELECT academicStatus_ID
-    FROM academic_statususerexpert
-    WHERE expert_ID = '$expertID'
-    );
+	UPDATE research_areauserexpert
+    INNER JOIN research_area ON research_areauserexpert.researchArea_ID = research_area.researchArea_ID
+    SET research_area.researchAreaName = '$researchAreaName'
+    WHERE research_areauserexpert.expert_ID = '$expertID';
+	
+
+	UPDATE academic_statususerexpert
+    INNER JOIN academic_status ON academic_statususerexpert.academicStatus_ID = academic_status.academicStatus_ID
+    SET academic_status.academicStatus_type = '$academicStatus_type'
+    WHERE academic_statususerexpert.expert_ID = '$expertID';
+
 
     UPDATE socialmedia
     SET instagram_userName = '$instagram_userName',

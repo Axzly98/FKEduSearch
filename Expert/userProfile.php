@@ -61,7 +61,7 @@ $row = mysqli_fetch_assoc($result);
 			$academicStatus_type = [];  // Empty array for academic status types
 
 			// Display an error message or redirect the user
-			$error_message = "No User Profile Data Found!";
+			$error_message = "User Profile First Time Access !";
 			echo "<script>alert('$error_message');</script>";
 			echo "<script type='text/javascript'>window.location='userProfileForm.php'</script>";
 }
