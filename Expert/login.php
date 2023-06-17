@@ -59,6 +59,10 @@ if (mysqli_num_rows($result) > 0) {
 // Store the user's login ID and role ID in session variables for further use
     $_SESSION["loginID"] = $loginID;
     $_SESSION["roleID"] = $roleID;
+	
+	    // Update the login_date in the login table
+    $updateLoginDateQuery = "UPDATE login SET login_date = NOW() WHERE login_ID = '$loginID'";
+    $updateLoginDateResult = mysqli_query($link, $updateLoginDateQuery);
 
     // Redirect to the next page based on the chosen role
     if ($chosenRole == "Admin") {
