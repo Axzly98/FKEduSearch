@@ -91,7 +91,7 @@ include 'headerExpert.php';
 	
 
 	
-	<form action="expertProfileUpdate.php?expertID=<?php echo $_SESSION['expertID']; ?>" method="post" enctype="multipart/form-data">
+	<form action="expertProfileUpdate.php" method="post" enctype="multipart/form-data">
 	<table class="profile-table" border="0"> 
 	
 	<tr>
@@ -157,6 +157,7 @@ include 'headerExpert.php';
 	<th class="th">Email:</th>  
 	<td> <input type="email" name="email" style="width: 300px;" placeholder="Enter Your Email" value="<?php echo ($row) ? $row['expert_email'] : ''; ?>"></td>
 	<td></td>
+	<input type="hidden" name="expertID" value="<?php echo $_SESSION['expertID']; ?>"></td>   
 	<!-- <td><a href="expertProfileUpdate.php?id=12 <?php ?>">UPDATE</a></td> -->
 	 <td><input type="submit" style="background-color: #18A0FB; color: #FFFFFF ; border-radius: 5px;" value="UPDATE"></td>
 	</tr>

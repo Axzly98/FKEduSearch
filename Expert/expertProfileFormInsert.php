@@ -3,7 +3,7 @@ session_start();
 
 $link = mysqli_connect("localhost", "root") or die(mysqli_connect_error());
 
-//Select the database.
+// Select the database.
 mysqli_select_db($link, "miniproject") or die(mysqli_error($link));
 
 $expertID = $_REQUEST['expertID'];
@@ -15,22 +15,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $academicStatus = $_REQUEST['academicStatus_type'];
     $instagramUsername = $_REQUEST['instagram_userName'];
     $linkedinUsername = $_REQUEST['linkedin_userName'];
-    $email = $_REQUEST['email'];
-	
-	
-  
-	
 
     // Insert research area into research_area table
     $queryResearch = "INSERT INTO research_area (researchAreaName) VALUES ('$researchAreaName')";
     mysqli_query($link, $queryResearch);
     $researchAreaID = mysqli_insert_id($link);
-	
-	  // Insert research area and expert IDs into research_areauserexpert table
+
+    // Insert research area and expert IDs into research_areauserexpert table
     $queryResearchID = "INSERT INTO research_areauserexpert (researchArea_ID, expert_ID) VALUES ('$researchAreaID', '$expertID')";
     mysqli_query($link, $queryResearchID);
 
-   // Insert academic status into academic_status table and expert IDs into academic_statususerexpert table
+    // Insert academic status into academic_status table and expert IDs into academic_statususerexpert table
     foreach ($academicStatus as $status) {
         $queryAcademicStatusType = "INSERT INTO academic_status (academicStatus_type) VALUES ('$status')";
         mysqli_query($link, $queryAcademicStatusType);
@@ -56,17 +51,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     move_uploaded_file($_FILES['profilePicture']['tmp_name'], $profilePictureTarget);
     move_uploaded_file($_FILES['expertCV']['tmp_name'], $expertCVTarget);
 
-    $queryExpert = "INSERT INTO expert (expert_email, expert_profilePicture, expert_CV) VALUES ('$email', '$profilePicture', '$expertCV' )";
-    mysqli_query($link, $queryExpert);
+    // Check if expert record already exists
+    $queryCheckExpert = "SELECT * FROM expert WHERE expert_ID = '$expertID'";
+    $resultCheckExpert = mysqli_query($link, $queryCheckExpert);
+
+    if (mysqli_num_rows($resultCheckExpert) == 0) {
+        // Insert profile picture, expert CV, and expert ID into expert table
+        $queryExpert = "INSERT INTO expert (expert_ID, expert_profilePicture, expert_CV) VALUES ('$expertID', '$profilePicture', '$expertCV')";
+        mysqli_query($link, $queryExpert);
+    } else {
+        $queryUpdateExpert = "
+            UPDATE expert
+            SET expert_profilePicture = '$profilePicture',
+                expert_CV = '$expertCV'
+            WHERE expert_ID = '$expertID'";
+        mysqli_query($link, $queryUpdateExpert);
+    }
 
     // Close the database connection
     mysqli_close($link);
-	
-	$alert_message = "Information Details Has Been Insert";
-echo "<script>alert('$alert_message');</script>";
-echo "<script type='text/javascript'>window.location='expertProfile.php';</script>";
+
+    $alert_message = "Information Details Has Been Inserted";
+    echo "<script>alert('$alert_message');</script>";
+    echo "<script type='text/javascript'>window.location='expertProfile.php';</script>";
 }
 ?>
-
-
-

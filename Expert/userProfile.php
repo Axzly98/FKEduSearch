@@ -68,7 +68,7 @@ $row = mysqli_fetch_assoc($result);
 
 ?>
 
-<form action="userProfileUpdate.php?userID=<?php echo $_SESSION['userID']; ?>" method="post">
+<form action="userProfileUpdate.php" method="post">
   <table class="profile-table" border="0">
     <tr>
       <th class="th">User profile information</th>
@@ -120,6 +120,7 @@ $row = mysqli_fetch_assoc($result);
         <input type="email" name="email" style="width: 300px;" placeholder="Enter Your Email" value="<?php echo ($row) ? $row['user_email'] : ''; ?>">
       </td>
       <td></td>
+	   <input type="hidden" name="userID" value="<?php echo $_SESSION['userID']; ?>"></td>   
       <td><input type="submit" style="background-color: #18A0FB; color: #FFFFFF; border-radius: 5px;" value="UPDATE"></td>
     </tr>
   </table>

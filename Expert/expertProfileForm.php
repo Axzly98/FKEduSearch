@@ -39,7 +39,7 @@ include 'headerExpert.php';
 	
 	
 	
-	<form action="expertProfileFormInsert.php?expertID=<?php echo $_SESSION['expertID']; ?>" method="POST" enctype="multipart/form-data">
+	<form action="expertProfileFormInsert.php" method="POST" enctype="multipart/form-data">
   
   <table>
     
@@ -65,7 +65,8 @@ include 'headerExpert.php';
           <option value="Cyber Security">Cyber Security</option>
         </select>
       </td>
-	  
+	  <td></td>
+	  <td></td>
 	    <th class="th">Profile Picture:</th>
       <td>
         <input type="file" name="profilePicture">
@@ -83,7 +84,8 @@ include 'headerExpert.php';
           <option value="Phd">Phd</option>
         </select>
       </td>
-	  
+	  <td></td>
+	  <td></td>
 	     <th class="th">CV:</th>
       <td>
         <input type="file" name="expertCV" required>
@@ -107,13 +109,13 @@ include 'headerExpert.php';
     </tr>
   
   <tr>
-      <th class="th">Email:</th>
-      <td>
-        <input type="email" name="email" style="width: 300px;" placeholder="Enter Your Email" required>
-      </td>
+  <td></td>
+  <td></td>
+  <td></td>
 	  <td></td>
-	  <td> 
-	  <input type="submit" style="background-color: #18A0FB; color: #FFFFFF; border-radius: 5px; padding: 3px 5px; font-size: 16px;" value="Submit">
+	  <td></td>
+	<input type="hidden" name="expertID" value="<?php echo $_SESSION['expertID']; ?>"></td>   
+	  <td><input type="submit" style="background-color: #18A0FB; color: #FFFFFF; border-radius: 5px; padding: 3px 5px; font-size: 16px;" value="Submit">
 	  </td>
     </tr>
    

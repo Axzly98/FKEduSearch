@@ -7,7 +7,7 @@ $link = mysqli_connect("localhost", "root", "") or die(mysqli_connect_error());
 //Select the database.
 mysqli_select_db($link, "miniproject") or die(mysqli_error($link));
 
-$userID = $_REQUEST['userID'];
+$user_ID = $_REQUEST['userID'];
 
 $email = $_REQUEST['email'];
 
@@ -25,24 +25,28 @@ mysqli_query($link, "START TRANSACTION") or die(mysqli_error($link));
 $query = "
     UPDATE user
     SET user_email = '$email'
-    WHERE user_ID = '$userID';
+    WHERE user_ID = '$user_ID';
 
     UPDATE research_area
     SET researchAreaName = '$researchAreaName'
-    WHERE researchArea_ID = '$userID';
-
+    WHERE researchArea_ID IN (
+	SELECT researchArea_ID 
+	FROM research_areauserexpert
+	WHERE user_ID = '$user_ID'
+	);
+	
     UPDATE academic_status
     SET academicStatus_type = '$academicStatus_type'
     WHERE academicStatus_ID IN (
     SELECT academicStatus_ID
     FROM academic_statususerexpert
-    WHERE user_ID = '$userID'
+    WHERE user_ID = '$user_ID'
     );
 	
     UPDATE socialmedia
     SET instagram_userName = '$instagram_userName',
         linkedin_userName = '$linkedin_userName'
-    WHERE user_ID = '$userID';
+    WHERE user_ID = '$user_ID';
 ";
 
 $result = mysqli_multi_query($link, $query) or die("Could not execute query in userProfile.php");

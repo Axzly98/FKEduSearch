@@ -8,7 +8,7 @@ include 'headerUser.php';
 
 
 
-<form action="userAddPostDBBetul.php?userID=<?php echo $_SESSION['userID']; ?>" method="post">
+<form action="userAddPostDBBetul.php" method="post">
 <table align=center>
 
 <tr>
@@ -39,6 +39,7 @@ include 'headerUser.php';
    </tr>
    
    <tr>
+   <input type="hidden" name="userID" value="<?php echo $_SESSION['userID']; ?>">
    <td><input type="submit" align="center" style="background-color: #18A0FB; color: #FFFFFF; border-radius: 5px;" value="Submit"></td>
    
    </tr>

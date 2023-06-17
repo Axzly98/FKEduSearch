@@ -79,7 +79,8 @@ if (mysqli_num_rows($result) > 0) {
 		exit();
         // Redirect to expert page
     } elseif ($chosenRole == "User") {
-        $_SESSION["userID"] = $roleID;
+        //$_SESSION["userID"] = $roleID;
+		  $_SESSION['userID'] = $row['user_ID'];
         $_SESSION["userUsername"] = $roleUsername;
 		$alert_message = "User Successful Login!";
 		echo "<script>alert('$alert_message');</script>";

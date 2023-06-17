@@ -26,8 +26,8 @@ include 'headerUser.php';
 	
 	
 	
-	<form action="userProfileFormInsert.php?userID=<?php echo $_SESSION['userID']; ?>" method="POST">
-  
+	<!-- <form action="userProfileFormInsert.php?userID=<?php // echo $_SESSION['userID']; ?>" method="POST"> -->
+   <form action="userProfileFormInsert.php" method="POST"> 
   <table>
     
    <h2 align="center" style="text-transform: uppercase; color: #18A0FB;">user first time Access Profile</h2>
@@ -81,15 +81,12 @@ include 'headerUser.php';
         <input type="text" name="linkedin_userName" style="width: 210px;" placeholder="Enter LinkedIn Username" required>
       </td>
     </tr>
- <input type="hidden" name="userID" value="<?php echo $_SESSION['userID']; ?>"></td>  
+	
+	
   <tr>
-      <th class="th">Email:</th>
-      <td>
-        <input type="email" name="email" style="width: 300px;" placeholder="Enter Your Email" required>
-      </td>
-	  <td></td>
 	  <td> 
-	  <input type="submit" style="background-color: #18A0FB; color: #FFFFFF; border-radius: 5px; padding: 3px 5px; font-size: 16px;" value="Submit">
+	   <input type="hidden" name="userID" value="<?php echo $_SESSION['userID']; ?>"></td>   
+	<td>  <input type="submit" style="background-color: #18A0FB; color: #FFFFFF; border-radius: 5px; padding: 3px 5px; font-size: 16px;" value="Submit">
 	  </td>
     </tr>
    

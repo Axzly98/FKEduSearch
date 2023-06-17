@@ -64,9 +64,9 @@ if (mysqli_num_rows($result) > 0) {
 <br>
 <br>
 
-<form action="addPostUIAminBetul.php?userID=<?php echo $_SESSION['userID']; ?>">
+<form action="addPostUIAminBetul.php" >
 <div style="text-align: center;">
- <!--  <input type="hidden" name="userID" value="<?php // echo $_SESSION['userID']; ?>"></td>   -->
+   <input type="hidden" name="userID" value="<?php echo $_SESSION['userID']; ?>"></td>   
 <input type="submit" style="background-color: #18A0FB; color: #FFFFFF; border-radius: 5px; width: 130px; height: 25px; font-size: 12px;" value="CREATE NEW POST">
 </div>
 </form>
