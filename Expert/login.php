@@ -89,7 +89,6 @@ if (mysqli_num_rows($result) > 0) {
 		$alert_message = "User Successful Login!";
 		echo "<script>alert('$alert_message');</script>";
 		echo "<script>setTimeout(function() { window.location.href = 'userHomeAmin.php'; }, 250);</script>";
-		header("Location: userHomeAmin.php");
 		exit();
         // Redirect to user page
     }

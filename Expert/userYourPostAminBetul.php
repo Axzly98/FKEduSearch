@@ -26,13 +26,14 @@ if (mysqli_num_rows($result) > 0) {
     <table border="2" style="width: 100%;">
 	
       	<tr>
-	<th class="thlist">No. </th>  
-    <th class="thlist">Category</th> 
-	<th class="thlist">Post Title</th> 
-	<th class="thlist">Post Question </th>
-    <th class="thlist">Post Date Created</th>  
-	<th class="thlist">Total Likes </th> 
-	<th class="thlist">Post Status</th>
+	<th>No. </th>  
+    <th>Category</th> 
+	<th>Post Title</th> 
+	<th>Post Question </th>
+    <th>Post Date Created</th>  
+	<th>Total Likes </th> 
+	<th>Post Status</th>
+	<th colspan="2">Action</th>
 	<!-- <th class="thlist">Total Comments </th>  -->
 
 	
@@ -49,6 +50,7 @@ if (mysqli_num_rows($result) > 0) {
                 <td align="center"><?php echo $row['post_createdDate']; ?></td>
 				 <td align="center"><?php echo $row['post_likes']; ?></td>	
 				 <td align="center"><?php echo $row['post_status']; ?></td>
+				<td style="font-weight: bold; text-transform: uppercase" align="center"><a href="editPostForm.php?post_ID=<?php echo $row['post_ID']; ?>">EDIT</td>
 				 <td style="font-weight: bold; text-transform: uppercase" align="center"><a href="postDelete.php?id=<?php echo $row['post_ID']; ?>">DELETE</a></td>
             </tr>
             <?php
