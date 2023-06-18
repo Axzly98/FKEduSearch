@@ -100,7 +100,10 @@ if (mysqli_num_rows($result) > 0) {
 
 // If the login was unsuccessful, display an error message or perform any necessary actions
 if (!$loginSuccessful) {
-	echo "Invalid username or password. Please try again.";
+	//echo "Invalid username or password. Please try again.";
+	  $alert_message = "Invalid Username Or Password. Please Try Again. ";
+    echo "<script>alert('$alert_message');</script>";
+    echo "<script type='text/javascript'>window.location='index.php';</script>";
 }
 
 
