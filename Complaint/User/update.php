@@ -8,7 +8,7 @@ mysqli_select_db($link, "miniproject") or die(mysqli_error($link));
 $complainid = $_GET['comid'];
 
 //SQL query
-$query = "SELECT * FROM complaint WHERE complaint_ID = '$complainid'"
+$query = "SELECT c.*,u.user_userName FROM complaint c inner join user u on u.user_ID = c.user_ID WHERE complaint_ID = '$complainid'"
 	or die(mysqli_connect_error());
 	
 //Execute the query (the recordset $rs contains the result)
@@ -17,6 +17,7 @@ $result = mysqli_query($link, $query);
  $row = mysqli_fetch_assoc($result);
 
     $userid = $row["user_ID"];
+    $name = $row["user_userName"];
 	$type = $row["complaint_Type"];
 	$desc = $row["complaint_Desc"];
 
@@ -53,16 +54,16 @@ $result = mysqli_query($link, $query);
 <div class="center">
 <h1>Complaint</h1>
 <br>
-<form method="post" action="update_action.php">
+<form method="post" action="update_action.php?id=<?php echo $userid?>">
   <table class="center1">
     <tr>
       <td>
-        ID
+        Username
       </td>
     </tr>
     <tr>
       <td>
-        <input class="textbox-10" type="text" name="id" size="10" value="<?php echo $userid; ?>" readonly>
+        <input class="textbox-10" type="text" id="name" value="<?php echo $name; ?>" readonly>
       </td>
     </tr>
     <tr>
@@ -72,9 +73,11 @@ $result = mysqli_query($link, $query);
     </tr>      
     <tr>
       <td>
-        <select class="textbox-10" name="complainttype" class="form-control">
+      <select class="textbox-10" name="complainttype">
+          <option value="" disabled selected>Select type of complaint</option>
           <option value="Wrongly Assigned Research Area">Wrongly Assigned Research Area</option>
-          <option value="Unsatisfied Expert's Feedback">Unsatisfied Expert's Feedback</option>
+          <option value="Unsatisfied Expert Feedback">Unsatisfied Expert's Feedback</option>
+          <option value="Other">Other</option>
         </select>
       </td>
     </tr>
@@ -90,7 +93,7 @@ $result = mysqli_query($link, $query);
     </tr>
   </table>
   <input type="hidden" name="complain" value="<?php echo $complainid; ?>">
-
+  <a><button class="button-81" type="button" onclick="history.back();">Return</button></a>
   <a><button class="button-81" type="submit">Update</button></a>
   <a><button class="button-81" type="reset">Reset</button></a>
   </form>

@@ -19,7 +19,8 @@ $row = mysqli_fetch_assoc($result);
   $idexpert = $row["expert_ID"];
 	$type = $row["complaint_Type"];
 	$desc = $row["complaint_Desc"];
-  $date = $row["complaint_DateTime"];
+  $date = $row["complaint_Date"];
+  $time = $row["complaint_Time"];
   $statusid = $row["complaintStatus_ID"];
   
 ?>	
@@ -28,8 +29,12 @@ $row = mysqli_fetch_assoc($result);
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="/FKEduSearch/Complaint/styleUser.css">
+<meta charset="UTF-8">
+<title>Complaint</title>
+
 
 </head>
+
 <body>
 
 <!-- HEADER -->
@@ -52,7 +57,7 @@ $row = mysqli_fetch_assoc($result);
 <!-- YOUR CONTENT -->
 <div class="center">
 <h1>Make a complaint</h1>
-<br>
+
 <form method="post" action="Add_action.php">
   <table class="center1">
     <tr>
@@ -62,7 +67,7 @@ $row = mysqli_fetch_assoc($result);
     </tr>
     <tr>
       <td>
-        <input class="textbox-10" type="text" name="id" size="10" value="<?php echo $iduser; ?>">
+        <input class="textbox-10" type="text" name="id" size="10" value="<?php $iduser; ?>">
       </td>
     </tr>
     <tr><td><br></td></tr>
@@ -73,7 +78,7 @@ $row = mysqli_fetch_assoc($result);
     </tr>      
     <tr>
       <td>
-        <select class="textbox-10 form-control" name="complainttype">
+        <select class="textbox-10" name="complainttype">
           <option value="" disabled selected>Select type of complaint</option>
           <option value="Wrongly Assigned Research Area">Wrongly Assigned Research Area</option>
           <option value="Unsatisfied Expert Feedback">Unsatisfied Expert's Feedback</option>
@@ -93,7 +98,7 @@ $row = mysqli_fetch_assoc($result);
       </td>
     </tr>
   </table>
-  <button class="button-81" type="submit">
+  <button class="button-81" type="submit" style="margin-top: 30px;">
     Submit
   </button>
   <input type="hidden" name="idadmin" value="<?php echo $idadmin = 1; ?>">

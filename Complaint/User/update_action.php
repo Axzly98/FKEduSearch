@@ -5,8 +5,8 @@ $link = mysqli_connect("localhost", "root", "") or die(mysqli_connect_error());
 //Select the database.
 mysqli_select_db($link, "miniproject") or die(mysqli_error($link));
 
+$iduser = $_GET['id'];
 $complainid = $_POST["complain"];
-$iduser = $_POST["id"];
 $type = $_POST["complainttype"];
 $desc = $_POST["description"];
 

@@ -136,7 +136,8 @@ $rowUser = mysqli_fetch_assoc($resultUser);
     <div>
         <table style="width:100%; margin-left:20px;">
             <tr>
-                <td>All (<?php echo $data['total']; ?>)</td>
+            <td style="float:left; margin-right:30px"></td>
+            <td><button class="button-81" type="button" style="width: 1050px; margin-left: 150px;">All (<?php echo $data['total']; ?>)</button></td>
                 <td style="float:right; margin-right:30px"><button class="button-17" type="button" onclick="window.location.href='/FKEduSearch/Complaint/User/Report.php?id=<?php echo $userid?>'">Report</button></td>
             </tr>
         </table>
@@ -149,6 +150,7 @@ $rowUser = mysqli_fetch_assoc($resultUser);
   <th class="th" scope="col">No</th>
   <th class="th" scope="col">Name</th>
   <th class="th" scope="col">Date</th>
+  <th class="th" scope="col">Time</th>
   <th class="th" scope="col">Type of complaint</th>
   <th class="th" scope="col">Description</th>
   <th class="th" scope="col">Status</th>
@@ -162,7 +164,8 @@ $rowUser = mysqli_fetch_assoc($resultUser);
     $no = $no + 1;
     $complainid = $row["complaint_ID"];
     $name = $rowUser["user_fullName"];
-    $date = $row["complaint_DateTime"];
+    $date = $row["complaint_Date"];
+    $time = $row["complaint_Time"];
 	  $type = $row["complaint_Type"];
     $desc = $row["complaint_Desc"];
     $status = $row["complaintStatus_type"];
@@ -173,6 +176,7 @@ $rowUser = mysqli_fetch_assoc($resultUser);
     <td class="td"><?php echo $no; ?></td>
     <td class="td"><?php echo $name; ?></td>
 		<td class="td"><?php echo $date; ?></td>
+    <td class="td"><?php echo $time; ?></td>
     <td class="td"><?php echo $type; ?></td>
     <td class="td"><?php echo $desc; ?></td>
     <td class="td"><?php echo $status; ?></td>

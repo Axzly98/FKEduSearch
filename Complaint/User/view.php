@@ -8,7 +8,7 @@ mysqli_select_db($link, "miniproject") or die(mysqli_error($link));
 $complainid = $_GET['comid'];
 
 //SQL query
-$query = "SELECT * FROM complaint WHERE complaint_ID = '$complainid'"
+$query = "SELECT c.*,u.user_userName FROM complaint c inner join user u on u.user_ID = c.user_ID WHERE complaint_ID = '$complainid'"
 	or die(mysqli_connect_error());
 	
 //Execute the query (the recordset $rs contains the result)
@@ -46,7 +46,7 @@ $result = mysqli_query($link, $query);
     $row = mysqli_fetch_assoc($result);
 
     $complainid = $row["complaint_ID"];
-    $userid = $row["user_ID"];
+    $name = $row["user_userName"];
 	$type = $row["complaint_Type"];
 	$desc = $row["complaint_Desc"];
 } else {
@@ -56,18 +56,18 @@ $result = mysqli_query($link, $query);
 ?>
 
 <div class="center">
-<h1>Make a complaint</h1>
+<h1>Complaint</h1>
 
 <form method="post">
   <table class="center1">
     <tr>
       <td>
-        ID
+      Username
       </td>
     </tr>
     <tr>
       <td>
-        <input class="textbox-10" type="text" name="id" size="7" placeholder="<?php echo $userid; ?>" readonly>
+        <input class="textbox-10" type="text" name="name" placeholder="<?php echo $name; ?>" readonly>
       </td>
     </tr>
     <tr><td><br></td></tr>

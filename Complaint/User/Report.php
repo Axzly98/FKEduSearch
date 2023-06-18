@@ -87,7 +87,7 @@ $data3=mysqli_fetch_assoc($result3);
 
 <button class="button-1" type="button" onclick="history.back()"><img src="https://whatemoji.org/wp-content/uploads/2020/07/Back-Arrow-Emoji.png" height="50px"></button>
 
-<canvas id="myChart" style="width:100%; height:60%; margin-top:-50px;"></canvas>
+<canvas id="myChart" style="width:100%; height:60%; margin-top:-50px; margin-left:-50px;"></canvas>
 
 <script>
 var no1 = "<?php echo $data1['total'];?>";
@@ -100,7 +100,7 @@ var yValues = [no1, no2, no3];
 var barColors = [
   "#b91d47",
   "#00aba9",
-  "#13f449"
+  "#31c346"
 ];
 
 new Chart("myChart", {
