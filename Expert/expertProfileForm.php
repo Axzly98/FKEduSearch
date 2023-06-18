@@ -47,7 +47,7 @@ include 'headerExpert.php';
    <h3 align="center" style="text-transform: uppercase; color:red">please fill in all information details</h3>
    
    <tr>
-      <th class="th">Expert Profile Information</th>
+      <th class="th" style=" text-decoration: underline;">Expert Profile Information</th>
     </tr>
 	
 	<tr>

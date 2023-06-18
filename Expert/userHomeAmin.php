@@ -50,9 +50,120 @@ include 'headerUser.php';
         text-align: center;
         margin-bottom: 10px;
     }
+	
+	 .search-form {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .search-form input[type="text"] {
+        width: 30%;
+        height: 20px;
+    }
+
+    .search-form input[type="submit"] {
+        background-color: #18A0FB;
+        color: #FFFFFF;
+        border-radius: 5px;
+        width: 70px;
+        height: 25px;
+        font-size: 18px;
+		
+
+    .post-table {
+        width: 100%;
+    }
+		
+    }
 </style>
 
-<h1 class="post-title">All Posts</h1>
+<div class="search-form">
+    <form method="get" action="userHomeAmin.php">
+        <input type="text" name="searchQuery" placeholder="Search Posts Based On Post Categories">
+        <input type="submit" value="Search">
+    </form>
+</div>
+
+ <?php
+    $link = mysqli_connect("localhost", "root") or die(mysqli_connect_error());
+    mysqli_select_db($link, "miniproject") or die(mysqli_error($link));
+
+    if (isset($_REQUEST['searchQuery']) && !empty($_REQUEST['searchQuery'])) {
+        $searchQuery = $_GET['searchQuery'];
+
+        $querySearch = "SELECT * FROM post WHERE post_categories LIKE '%$searchQuery%'";
+        $resultSearch = mysqli_query($link, $querySearch) or die(mysqli_error($link));
+
+        if (mysqli_num_rows($resultSearch) > 0) {
+            $numberIncrement = 1;
+            ?>
+
+            <table border="0" align="center" style="width:100%">
+                <tr>
+                    <th style="font-weight:bold; text-transform: uppercase; ">Result of Searched Posts</th>
+                </tr>
+             
+            </table>
+			<br>
+
+            <table border="2" style="width: 100%;">
+                <tr>
+                    <th >No.</th>
+                    <th >Post Categories</th>
+                    <th >Post Title</th>
+                    <th >Post Content</th>
+                    <th >Date Created</th>
+               
+                </tr>
+
+                <?php
+                while ($row = mysqli_fetch_assoc($resultSearch)) {
+                    ?>
+                    <tr class="trlist">
+                        <td align="center"><?php echo $numberIncrement; ?></td>
+                        <td align="center"><?php echo $row['post_categories']; ?></td>
+                        <td align="center"><?php echo $row['post_title']; ?></td>
+                        <td align="center"><?php echo $row['post_content']; ?></td>
+                        <td align="center"><?php echo $row['post_createdDate']; ?></td>
+                    </tr>
+                    <?php
+                    $numberIncrement++; // Increment the numberIncrement variable
+                }
+                ?>
+
+            </table>
+
+            <?php
+        } else {
+            ?>
+            <table border="1" align="center" >
+                <tr>
+                    <th>Result of Searched Posts</th>
+                </tr>
+                <tr>
+                    <td>No Posts Found</td>
+                </tr>
+            </table>
+            <?php
+        }
+    } else {
+        ?>
+        <table border="1" align="center">
+            <tr>
+                <th class="th">Result of Searched Posts</th>
+            </tr>
+            <tr>
+                <td align="center">Please Search Post's Based On Categories.</td>
+            </tr>
+        </table>
+		<br><br>
+		      <?php
+    }
+    ?>
+
+
+<br>
+<h1 class="post-title" style=" text-decoration: underline;">All Posts</h1>
 
 <?php
 $link = mysqli_connect("localhost", "root") or die(mysqli_connect_error($link));
@@ -131,7 +242,7 @@ if (mysqli_num_rows($result) > 0) {
 
         // Display post information
         echo "<div class='post-container'>";
-        echo "<h3 class='post-title' >Post Title: $postTitle</h3>";
+        echo "<h3 class='post-title' style=' text-decoration: underline;' >Post Title: $postTitle</h3>";
         echo "<p class='post-content' align='center'><strong>Post Content:</strong> $postContent</p>";
         echo "<p class='post-details'><strong>Date Created:</strong>  $postCreatedDate</p>";
         echo "<p class='post-details'><strong>Post Categories:</strong>  $postCategories</p>";
@@ -184,6 +295,7 @@ if (mysqli_num_rows($result) > 0) {
 } else {
     echo "No Posts Found.";
 }
+
 
 mysqli_close($link);
 

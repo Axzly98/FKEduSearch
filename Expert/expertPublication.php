@@ -59,7 +59,7 @@ $searchQuery = $_REQUEST['searchQuery'] ?? '';
     <form action="publicationAdd.php" method="post" enctype="multipart/form-data">
         <table class="publication-table" border="0">
             <tr>
-                <th class="th" colspan="4">Add Publication</th>
+                <th class="th" colspan="4" style=" text-decoration: underline;">Add Publication</th>
             </tr>
             <tr>
                 <td>.</td>

@@ -14,7 +14,12 @@ mysqli_select_db($link, "miniproject") or die(mysqli_error());
 
  $user_ID = $_SESSION['userID'];
 
-$query = "SELECT * FROM post WHERE user_ID = '$user_ID'";
+//$query = "SELECT * FROM post WHERE user_ID = '$user_ID'";
+
+$query = "SELECT post.post_ID, post.post_categories, post.post_title, post.post_content, post.post_createdDate, post.post_likes, post.post_status, post_assigned.postAssigned_Status
+          FROM post 
+          LEFT JOIN post_assigned ON post.post_ID = post_assigned.post_ID
+          WHERE post.user_ID = '$user_ID'";
 
 
 $result = mysqli_query($link, $query) or die(mysqli_error($link));
@@ -26,13 +31,14 @@ if (mysqli_num_rows($result) > 0) {
     <table border="2" style="width: 100%;">
 	
       	<tr>
-	<th class="thlist">No. </th>  
-    <th class="thlist">Category</th> 
-	<th class="thlist">Post Title</th> 
-	<th class="thlist">Post Question </th>
-    <th class="thlist">Post Date Created</th>  
-	<th class="thlist">Total Likes </th> 
-	<th class="thlist">Post Status</th>
+	<th>No. </th>  
+    <th>Category</th> 
+	<th>Post Title</th> 
+	<th>Post Question </th>
+    <th>Post Date Created</th>  
+	<th>Total Likes </th> 
+	<th>Post Status</th>
+	<th colspan="2">Action</th>
 	<!-- <th class="thlist">Total Comments </th>  -->
 
 	
@@ -48,7 +54,8 @@ if (mysqli_num_rows($result) > 0) {
                 <td><?php echo $row['post_content']; ?></td>
                 <td align="center"><?php echo $row['post_createdDate']; ?></td>
 				 <td align="center"><?php echo $row['post_likes']; ?></td>	
-				 <td align="center"><?php echo $row['post_status']; ?></td>
+				 <td align="center"><?php echo $row['postAssigned_Status']; ?></td>
+				<td style="font-weight: bold; text-transform: uppercase" align="center"><a href="editPostForm.php?post_ID=<?php echo $row['post_ID']; ?>">EDIT</td>
 				 <td style="font-weight: bold; text-transform: uppercase" align="center"><a href="postDelete.php?id=<?php echo $row['post_ID']; ?>">DELETE</a></td>
             </tr>
             <?php
@@ -64,6 +71,7 @@ if (mysqli_num_rows($result) > 0) {
     echo "No Post Created Yet -----";
 }
 ?>
+
 <br>
 <br>
 
@@ -73,6 +81,14 @@ if (mysqli_num_rows($result) > 0) {
 <input type="submit" style="background-color: #18A0FB; color: #FFFFFF; border-radius: 5px; width: 130px; height: 25px; font-size: 12px;" value="CREATE NEW POST">
 </div>
 </form>
+<br>
+<div style="text-align: center;">
+<form action="viewExpertAnswer.php" method="POST">
+<input type="hidden" name="user_ID" value="<?php echo $user_ID; ?>">
+  <input type="submit" style="background-color: #18A0FB; color: #FFFFFF; border-radius: 5px; width: 190px; height: 25px; font-size: 12px;" value="VIEW EXPERT ANSWER">
+</div>
+</form>
+
 
  <!-- <button onclick="window.location.href='addPostUIAminBetul.php'" style="background-color: #18A0FB; color: white; font-weight: bold ">CREATE NEW POST</button> -->
 

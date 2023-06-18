@@ -71,9 +71,8 @@ $average_rating = ($rating_count > 0) ? ($rating_sum / $rating_count) : 0;
   <!-- Guna <div> element for the chart -->
 <div class="publicationChart" style="width: 50%; height: 400px; margin-bottom: 50px;" data-expertid="<?php echo $expertID; ?>"></div>
 
-		
-		<h2 style="margin-left: 20%;">For Example Only.....</h2>
 		<h3 style="margin-left: 20%;">Rating (Calculation Part)</h3>
+		<h3 style="margin-left: 20%;">Untuk Gambaran</h3>
 		
 		<!-- form action = "" <--- maksud nye dia submit data dalam page yang same -->
 		<form action="" method="post">

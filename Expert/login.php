@@ -49,12 +49,8 @@ if (mysqli_num_rows($result) > 0) {
     $loginID = $row["login_ID"];
     $roleID = $row["${tableName}_ID"];
     $roleUsername = $row["${tableName}_userName"];
-	$adminID = $row["admin_ID"];
-	$expertID = $row["expert_ID"];
-	$userID = $row["user_ID"];
-	$adminUsername = $row["admin_userName"];
-	$expertUsername = $row["expert_userName"];
-	$userUsername = $row["user_userName"];
+
+
 
 // Store the user's login ID and role ID in session variables for further use
     $_SESSION["loginID"] = $loginID;
@@ -66,6 +62,8 @@ if (mysqli_num_rows($result) > 0) {
 
     // Redirect to the next page based on the chosen role
     if ($chosenRole == "Admin") {
+		$adminID = $row["admin_ID"];
+		$adminUsername = $row["admin_userName"];
         $_SESSION["adminID"] = $roleID;
         $_SESSION["adminUsername"] = $roleUsername;
 		 $alert_message = "Admin Successful Login!";
@@ -75,7 +73,9 @@ if (mysqli_num_rows($result) > 0) {
         // Redirect to admin page
     } elseif ($chosenRole == "Expert") {
        // $_SESSION["expertID"] = $roleID;
-	   $_SESSION['expertID'] = $row['expert_ID'];
+		$expertID = $row["expert_ID"];
+	   	$expertUsername = $row["expert_userName"];
+		$_SESSION['expertID'] = $row['expert_ID'];
         $_SESSION["expertUsername"] = $roleUsername;
 		$alert_message = "Expert Successful Login!";
 		echo "<script>alert('$alert_message');</script>";
@@ -84,12 +84,13 @@ if (mysqli_num_rows($result) > 0) {
         // Redirect to expert page
     } elseif ($chosenRole == "User") {
         //$_SESSION["userID"] = $roleID;
-		  $_SESSION['userID'] = $row['user_ID'];
+		$userID = $row["user_ID"];
+		$userUsername = $row["user_userName"];
+		$_SESSION['userID'] = $row['user_ID'];
         $_SESSION["userUsername"] = $roleUsername;
 		$alert_message = "User Successful Login!";
 		echo "<script>alert('$alert_message');</script>";
 		echo "<script>setTimeout(function() { window.location.href = 'userHomeAmin.php'; }, 250);</script>";
-		header("Location: userHomeAmin.php");
 		exit();
         // Redirect to user page
     }
@@ -100,7 +101,10 @@ if (mysqli_num_rows($result) > 0) {
 
 // If the login was unsuccessful, display an error message or perform any necessary actions
 if (!$loginSuccessful) {
-	echo "Invalid username or password. Please try again.";
+	//echo "Invalid username or password. Please try again.";
+	  $alert_message = "Invalid Username Or Password. Please Try Again. ";
+    echo "<script>alert('$alert_message');</script>";
+    echo "<script type='text/javascript'>window.location='index.php';</script>";
 }
 
 
