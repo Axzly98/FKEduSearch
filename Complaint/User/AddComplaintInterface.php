@@ -76,7 +76,8 @@ $row = mysqli_fetch_assoc($result);
         <select class="textbox-10 form-control" name="complainttype">
           <option value="" disabled selected>Select type of complaint</option>
           <option value="Wrongly Assigned Research Area">Wrongly Assigned Research Area</option>
-          <option value="Unsatisfied Expert's Feedback">Unsatisfied Expert's Feedback</option>
+          <option value="Unsatisfied Expert Feedback">Unsatisfied Expert's Feedback</option>
+          <option value="Other">Other</option>
         </select>
       </td>
     </tr>
