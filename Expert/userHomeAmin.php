@@ -296,6 +296,7 @@ if (mysqli_num_rows($result) > 0) {
     echo "No Posts Found.";
 }
 
+
 mysqli_close($link);
 
 include 'footerUser.php';

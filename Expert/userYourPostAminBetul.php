@@ -14,7 +14,12 @@ mysqli_select_db($link, "miniproject") or die(mysqli_error());
 
  $user_ID = $_SESSION['userID'];
 
-$query = "SELECT * FROM post WHERE user_ID = '$user_ID'";
+//$query = "SELECT * FROM post WHERE user_ID = '$user_ID'";
+
+$query = "SELECT post.post_ID, post.post_categories, post.post_title, post.post_content, post.post_createdDate, post.post_likes, post.post_status, post_assigned.postAssigned_Status
+          FROM post 
+          LEFT JOIN post_assigned ON post.post_ID = post_assigned.post_ID
+          WHERE post.user_ID = '$user_ID'";
 
 
 $result = mysqli_query($link, $query) or die(mysqli_error($link));
@@ -49,7 +54,7 @@ if (mysqli_num_rows($result) > 0) {
                 <td><?php echo $row['post_content']; ?></td>
                 <td align="center"><?php echo $row['post_createdDate']; ?></td>
 				 <td align="center"><?php echo $row['post_likes']; ?></td>	
-				 <td align="center"><?php echo $row['post_status']; ?></td>
+				 <td align="center"><?php echo $row['postAssigned_Status']; ?></td>
 				<td style="font-weight: bold; text-transform: uppercase" align="center"><a href="editPostForm.php?post_ID=<?php echo $row['post_ID']; ?>">EDIT</td>
 				 <td style="font-weight: bold; text-transform: uppercase" align="center"><a href="postDelete.php?id=<?php echo $row['post_ID']; ?>">DELETE</a></td>
             </tr>
@@ -66,6 +71,7 @@ if (mysqli_num_rows($result) > 0) {
     echo "No Post Created Yet -----";
 }
 ?>
+
 <br>
 <br>
 
