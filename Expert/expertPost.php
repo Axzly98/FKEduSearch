@@ -107,7 +107,7 @@ $result = mysqli_query($link, $queryAssigned) or die(mysqli_error($link));
 </div><!-- End Page Title -->
 
 <div class="container">
-    <h2 align="center">Assigned Posts</h2>
+    <h2 align="center" style=" text-decoration: underline;" >Assigned Posts</h2>
     <?php
     if (mysqli_num_rows($result) > 0) {
         // Display the assigned posts

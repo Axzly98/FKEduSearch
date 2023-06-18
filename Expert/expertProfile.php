@@ -95,7 +95,7 @@ include 'headerExpert.php';
 	<table class="profile-table" border="0"> 
 	
 	<tr>
-	<th class="th">expert profile information</th>  
+	<th class="th" style=" text-decoration: underline;">expert profile information</th>  
 	</tr>
 	
 	<tr>

@@ -163,7 +163,7 @@ include 'headerUser.php';
 
 
 <br>
-<h1 class="post-title">All Posts</h1>
+<h1 class="post-title" style=" text-decoration: underline;">All Posts</h1>
 
 <?php
 $link = mysqli_connect("localhost", "root") or die(mysqli_connect_error($link));
@@ -242,7 +242,7 @@ if (mysqli_num_rows($result) > 0) {
 
         // Display post information
         echo "<div class='post-container'>";
-        echo "<h3 class='post-title' >Post Title: $postTitle</h3>";
+        echo "<h3 class='post-title' style=' text-decoration: underline;' >Post Title: $postTitle</h3>";
         echo "<p class='post-content' align='center'><strong>Post Content:</strong> $postContent</p>";
         echo "<p class='post-details'><strong>Date Created:</strong>  $postCreatedDate</p>";
         echo "<p class='post-details'><strong>Post Categories:</strong>  $postCategories</p>";

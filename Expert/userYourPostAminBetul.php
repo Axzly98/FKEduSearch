@@ -81,6 +81,14 @@ if (mysqli_num_rows($result) > 0) {
 <input type="submit" style="background-color: #18A0FB; color: #FFFFFF; border-radius: 5px; width: 130px; height: 25px; font-size: 12px;" value="CREATE NEW POST">
 </div>
 </form>
+<br>
+<div style="text-align: center;">
+<form action="viewExpertAnswer.php" method="POST">
+<input type="hidden" name="user_ID" value="<?php echo $user_ID; ?>">
+  <input type="submit" style="background-color: #18A0FB; color: #FFFFFF; border-radius: 5px; width: 190px; height: 25px; font-size: 12px;" value="VIEW EXPERT ANSWER">
+</div>
+</form>
+
 
  <!-- <button onclick="window.location.href='addPostUIAminBetul.php'" style="background-color: #18A0FB; color: white; font-weight: bold ">CREATE NEW POST</button> -->
 
