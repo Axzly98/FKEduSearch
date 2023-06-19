@@ -33,6 +33,35 @@ $rowUser = mysqli_fetch_assoc($resultUser);
 <link rel="stylesheet" href="/FKEduSearch/Complaint/styleUser.css">
 
 </head>
+<style>
+    .button-1 {
+    background-color: #b2ebfb;
+    border: 0 solid #e2e8f0;
+    border-radius: 3rem;
+    box-sizing: border-box;
+    color: white;
+    cursor: pointer;
+    display: inline-block;
+    font-family: "Basier circle",-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+    font-size: 1.1rem;
+    font-weight: 600;
+    line-height: 1;
+    padding: 1rem 1.6rem;
+    text-align: center;
+    text-decoration: none #0d172a solid;
+    transition: all .1s cubic-bezier(.4, 0, .2, 1);
+    box-shadow: 0px 1px 2px rgba(166, 175, 195, 0.25);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    margin-left: 10px;
+  }
+  
+  .button-1:hover {
+    background-color: #A5DBFF;
+    color: #0b3b5c;
+  }
+</style>
 <body>
 
 <!-- HEADER -->
@@ -53,35 +82,9 @@ $rowUser = mysqli_fetch_assoc($resultUser);
     <br>
     <div>
     <div>
-        <table style="width:50%; margin-left:20px;">
-            <tr>
-                <td>All (<?php echo $data['total']; ?>)</td>
-                <form action="search_action.php?id=<?php echo $userid?>" method="post">
-                
-                
-            </tr>
-            <tr>
-              <td>
-                <table>
-                  <tr><td><a style="margin-left: 100px;">Date</a></td>
-                    <td><input class="textbox-10" type="date" name="newdate" value="<?php $newDate?>"></td></tr>
-                  <tr><td><a style="margin-left: 100px; margin-right:10px;">Complaint Type</a></td>
-                    <td><select class="textbox-10" name="newtype" >
-                      <option value="" disabled selected>Select type of complaint</option>
-                      <option value="Wrongly Assigned Research Area">Wrongly Assigned Research Area</option>
-                      <option value="Unsatisfied Expert Feedback">Unsatisfied Expert's Feedback</option>
-                      <option value="Other">Other</option>
-                    </select>
-                    </td>
-                  </tr>
-                </table>
-              </td>
-              <td><button class="button-81" style="margin-left: -230px;" type="submit">Search</button></td>
-            </tr>
-        </table>
-                </form>
+        <a style="margin-left: 30px;">All (<?php echo $data['total']; ?>)</a>  
     </div>
-        <button style="float: right; margin-right:10px; margin-top:-10px; margin-bottom:10px;" class="button-17" type="button" onclick="window.location.href='/FKEduSearch/Complaint/User/Report.php?id=<?php echo $userid?>'">Report</button>
+        <button style="float:right; margin-top:-30px; margin-right:10px; margin-bottom:10px;" class="button-1" type="button" onclick="history.back()"><img src="https://whatemoji.org/wp-content/uploads/2020/07/Back-Arrow-Emoji.png" height="50px"></button>
     </div>
     <br>
 <div>
