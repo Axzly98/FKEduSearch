@@ -137,7 +137,7 @@ $newType;
         <table style="width:50%; margin-left:20px;">
             <tr>
                 <td>All (<?php echo $data['total']; ?>)</td>
-                <form action="search_action.php?id=<?php echo $userid?>" method="post">
+                <form action="search.php?id=<?php echo $userid?>" method="post">
                 
                 
             </tr>
