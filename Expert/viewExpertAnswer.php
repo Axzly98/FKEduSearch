@@ -34,19 +34,19 @@ if (mysqli_num_rows($result) > 0) {
         echo "<div class='post-box'>";
         echo "<h3 class='post-title'><strong>Post Title: </strong>$post_Title</h3>";
         echo "<p class='post-content'><strong>Post Content: </strong>$post_Content</p>";
-echo "<form action='complaint.php' method='post'>";
-echo "<div class='complaint-container'>";
-echo "<input type='hidden' name='userID' value='".$_SESSION['userID']."' />";
-echo "<input type='submit' value='Complaint' class='complaint-button'/>";
-echo "</form>";
-echo "</div>";
+
         // Display other necessary data from the row
 
         // Display the expert's answer if available
         $post_Answer = $row['post_answer'];
         if (!empty($post_Answer)) {
             echo "<p class='post-answer'><strong>Expert's Answer:</strong> $post_Answer</p>";
-            
+  echo "<form action='complaint.php' method='post'>";
+  echo "<div class='complaint-container'>";
+  echo "<input type='hidden' name='userID' value='".$_SESSION['userID']."' />";
+  echo "<input type='submit' value='Complaint' class='complaint-button'/>";
+  echo "</form>";
+  echo "</div>";
             // Display rating input for the expert's answer
 			echo "<form method='POST' action='handleRating.php?expert_ID=$expert_ID'>";
 			echo "<div class='rating-container'>";
