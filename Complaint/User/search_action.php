@@ -6,9 +6,11 @@ $link = mysqli_connect("localhost", "root", "") or die(mysqli_connect_error());
 mysqli_select_db($link, "miniproject") or die(mysqli_error($link));
 
 $userid = $_GET['id'];
+$newDate = $_POST["newdate"];
+$newType = $_POST["newtype"];
 
 //SQL query
-$query = "SELECT c.*, cs.complaintStatus_type FROM complaint c INNER JOIN complaint_status cs ON c.complaintStatus_ID = cs.complaintStatus_ID WHERE user_ID = '$userid'"
+$query = "SELECT c.*, cs.complaintStatus_type FROM complaint c INNER JOIN complaint_status cs ON c.complaintStatus_ID = cs.complaintStatus_ID WHERE user_ID = '$userid' AND complaint_Date = '$newDate' AND complaint_Type = '$newType' "
 	or die(mysqli_connect_error());
 
 $queryUser = "SELECT user_fullName FROM user WHERE user_ID = '$userid'"
@@ -18,14 +20,11 @@ $queryUser = "SELECT user_fullName FROM user WHERE user_ID = '$userid'"
 $result = mysqli_query($link, $query);
 $resultUser = mysqli_query($link, $queryUser);
 
-$sql="SELECT count(*) as total from complaint where user_ID = '$userid'";
+$sql="SELECT count(*) as total from complaint where user_ID = '$userid' AND complaint_Date = '$newDate' AND complaint_Type = '$newType'";
 $resultall=mysqli_query($link,$sql);
 $data=mysqli_fetch_assoc($resultall);
 
 $rowUser = mysqli_fetch_assoc($resultUser);
-
-$newDate;
-$newType;
 ?>	
 
 <html>
@@ -34,99 +33,19 @@ $newType;
 <link rel="stylesheet" href="/FKEduSearch/Complaint/styleUser.css">
 
 </head>
-<style>
- 
-.button-17 {
-  align-items: center;
-  appearance: none;
-  background-color: #173d7b;
-  border-radius: 24px;
-  border-style: none;
-  box-shadow: rgba(0, 0, 0, .2) 0 3px 5px -1px,rgba(0, 0, 0, .14) 0 6px 10px 0,rgba(0, 0, 0, .12) 0 1px 18px 0;
-  box-sizing: border-box;
-  color: #cdf4fa;
-  cursor: pointer;
-  display: inline-flex;
-  fill: currentcolor;
-  font-family: "Google Sans",Roboto,Arial,sans-serif;
-  font-size: 14px;
-  font-weight: 500;
-  height: 48px;
-  justify-content: center;
-  letter-spacing: .25px;
-  line-height: normal;
-  max-width: 100%;
-  overflow: visible;
-  padding: 2px 24px;
-  position: relative;
-  text-align: center;
-  text-transform: none;
-  transition: box-shadow 280ms cubic-bezier(.4, 0, .2, 1),opacity 15ms linear 30ms,transform 270ms cubic-bezier(0, 0, .2, 1) 0ms;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  width: auto;
-  will-change: transform,opacity;
-  z-index: 0;
-}
+<body>
 
-.button-17:hover {
-  background: #F6F9FE;
-  color: #18A0FB;
-}
-
-.button-17:active {
-  box-shadow: 0 4px 4px 0 rgb(35 255 76 / 30%), 0 8px 12px 6px rgb(60 64 67 / 15%);
-  outline: none;
-}
-
-.button-17:focus {
-  outline: none;
-  border: 5px solid #95d1e6;
-  color: #cee9ed;
-  background-color: #9ebdef;
-}
-
-.button-17:not(:disabled) {
-  box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
-}
-
-.button-17:not(:disabled):hover {
-  box-shadow: rgba(60, 64, 67, .3) 0 2px 3px 0, rgba(60, 64, 67, .15) 0 6px 10px 4px;
-}
-
-.button-17:not(:disabled):focus {
-  box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
-}
-
-.button-17:not(:disabled):active {
-  box-shadow: rgba(60, 64, 67, .3) 0 4px 4px 0, rgba(60, 64, 67, .15) 0 8px 12px 6px;
-}
-
-.button-17:disabled {
-  box-shadow: rgba(60, 64, 67, .3) 0 1px 3px 0, rgba(60, 64, 67, .15) 0 4px 8px 3px;
-}
-</style>
 <!-- HEADER -->
-<div class="div">
 <div class="topnav">
   <a><img src="https://umplive.ump.edu.my/images/2020/07/26/logo-ump-transparent-blue__1122x561.png" style="width: 40px;"></a>
   <a href="/FKEduSearch/User/userHome.php" style="margin-left: 400px;">Home</a>
   <a href="/FKEduSearch/User/userYourPost.php">Your Post</a>
-  <a class="active" href="/FKEduSearch/Complaint/User/ComplaintInterface.php?id=<?php echo $userid?>">Complaint</a>
+  <a class="active" href="/FKEduSearch/Complaint/User/ComplaintInterface.php">Complaint</a>
   <a href="/FKEduSearch/User/userProfile.php">Profile</a>
   <a href="/FKEduSearch/Admin/logout.php">Logout</a>
-  <div class="search-container">
 
-  </div>
 </div>
 <hr style="box-shadow: 5px 0px 1px #6DE4EA;">
-</div>
-
-
-<body style="overflow:auto;">
-
-
 
 <!-- YOUR CONTENT -->
 <div>
@@ -224,9 +143,8 @@ $newType;
 </div>
 </div>
 
-
 <!-- FOOTER -->
-<footer style="position: static">
+<footer>
 
       <div class="foot">
         <a>
@@ -239,5 +157,4 @@ $newType;
       </div>
 </footer>
 </body>
-
 </html>

@@ -13,7 +13,7 @@ mysqli_select_db($link, "miniproject") or die(mysqli_error($link));
 	$type = $_POST["complainttype"];
 	$desc = $_POST["description"];
 	$statusid = $_POST["complain"];
-	$date = date('y-m-d');
+	$date = date('y/m/d');
 	$time = date('H:i:s');
 	
 //link to query
