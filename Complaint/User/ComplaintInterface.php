@@ -115,6 +115,15 @@ $rowUser = mysqli_fetch_assoc($resultUser);
   <a href="/FKEduSearch/User/userProfile.php">Profile</a>
   <a href="/FKEduSearch/Admin/logout.php">Logout</a>
   <div class="search-container">
+
+  <div id="sbq-wrap" class="sbq-w">
+    <input type="text" class="sbq" id="yschsp" name="p" value="shopee" autocomplete="off" tabindex="1" placeholder="Search the web" role="combobox" aria-autocomplete="both" aria-expanded="true">
+    <button id="sbq-clear" type="button" class="sbq-x sa-hidden" aria-label="Clear">
+  
+    </button>
+    <span class="sb-ico ico ico-modern mag-glass-16"></span>
+  </div>
+
     <form action="/action_page.php">
       <input class="input" type="text" name="search">
       <button type="submit">Search</button>
