@@ -7,7 +7,7 @@
 
 	// Fetch data from the admin, user, and expert tables
 	$query = "SELECT * FROM admin UNION SELECT * FROM user UNION SELECT * FROM expert";
-	$result = mysqli_query($connection, $query);
+	$result = mysqli_query($link, $query);
 
 	// Check if there are any rows returned
 	if (mysqli_num_rows($result) > 0) {
@@ -17,7 +17,7 @@
 	}
 
 	// Close the database connection
-	mysqli_close($connection);
+	mysqli_close($link);
 ?>
 
 <!DOCTYPE html>
