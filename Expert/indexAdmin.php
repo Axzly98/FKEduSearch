@@ -91,7 +91,7 @@ $queryU = "SELECT user_userName, user_ID
 		<td class="td"><?php echo $expertid; ?></td>
 	<td align="center"> 
 	<a><button class="button-48" type="button" onclick="updateExpert(<?php echo $expertid; ?>)">Update</button></a>
-	<a><button class="button-48" type="button" onclick="deleteExpert(<?php echo $expertid; ?>)">Delete</button></td>
+	<a><button class="button-48" type="button" onclick="window.location.href='/FKEduSearch/Expert/deleteAdmin.php?expert_ID=<?php echo $expertid?>'">Delete</button></td>
 	</tr>
 <?php
     }
@@ -125,7 +125,7 @@ $queryU = "SELECT user_userName, user_ID
     <td class="td"><?php echo $userid; ?></td>
 	<td align="center">
 	<a><button class="button-48" type="button" onclick="updateUser(<?php echo $userid; ?>)">Update</button></a>
-	<a><button class="button-48" type="button" onclick="deleteUser(<?php echo $userid; ?>)">Delete</button></a></td>
+	<a><button class="button-48" type="button" onclick="window.location.href='/FKEduSearch/Expert/deleteUAdmin.php?user_ID=<?php echo $userid?>'">Delete</button></td>
 	</tr>
 <?php
     }
