@@ -1,4 +1,8 @@
 <?php
+
+session_start();
+$iduser = $_SESSION['userID'];
+
 //Connect to the database server.
 $link = mysqli_connect("localhost", "root", "") or die(mysqli_connect_error());
 
@@ -6,7 +10,7 @@ $link = mysqli_connect("localhost", "root", "") or die(mysqli_connect_error());
 mysqli_select_db($link, "miniproject") or die(mysqli_error($link));
 
 //SQL query
-$query = "SELECT * FROM complaint"
+$query = "SELECT c.*, u.user_userName FROM complaint c INNER JOIN user u ON u.user_ID = c.user_ID"
 	or die(mysqli_connect_error());
 	
 //Execute the query (the recordset $rs contains the result)
@@ -14,9 +18,11 @@ $result = mysqli_query($link, $query);
 
 $row = mysqli_fetch_assoc($result);
   
-	$iduser = $row["user_ID"];
+  $iduser = $row["user_ID"];
+  $expertuser = $row["expert_ID"];
   $idadmin = $row["admin_ID"];
-  $idexpert = $row["expert_ID"];
+  $postanswer_ID = $row["post_AnswerID"];
+  $username = $row["user_userName"];
 	$type = $row["complaint_Type"];
 	$desc = $row["complaint_Desc"];
   $date = $row["complaint_Date"];
@@ -62,12 +68,12 @@ $row = mysqli_fetch_assoc($result);
   <table class="center1">
     <tr>
       <td>
-        ID
+        Username
       </td>
     </tr>
     <tr>
       <td>
-        <input class="textbox-10" type="text" name="id" size="10" value="<?php $iduser; ?>">
+        <input class="textbox-10" type="text" name="username" value="<?php echo $username; ?>" readonly>
       </td>
     </tr>
     <tr><td><br></td></tr>
@@ -94,16 +100,19 @@ $row = mysqli_fetch_assoc($result);
     </tr>      
     <tr>
       <td colspan="2">
-        <textarea class="textbox-10" style="width: 100%;" name="description" value="<?php echo $desc; ?>"></textarea>
+        <textarea class="textbox-10" style="width: 100%;" name="description" value="<?php $desc; ?>"></textarea>
       </td>
     </tr>
   </table>
+  <input type="hidden" name="iduser" value="<?php echo $iduser = $_GET['userid'];?>">
+  <input type="hidden" name="idadmin" value="<?php echo $idadmin = 1; ?>">
+  <input type="hidden" name="idexpert" value="<?php echo $expertuser= $_GET['expertid']; ?>">
+  <input type="hidden" name="complain" value="<?php echo $statusid = 1; ?>">
+  <input type="hidden" name="postanswer" value="<?php echo $postanswer_ID = $_GET['postanswer']; ?>">
   <button class="button-81" type="submit" style="margin-top: 30px;">
     Submit
   </button>
-  <input type="hidden" name="idadmin" value="<?php echo $idadmin = 1; ?>">
-  <input type="hidden" name="idexpert" value="<?php echo $idexpert = 12; ?>">
-  <input type="hidden" name="complain" value="<?php echo $statusid = 1; ?>">
+  
 
   
 

@@ -44,7 +44,7 @@ $user_ID = $_SESSION['userID'];
         <a href="userYourPostAminBetul.php" style="<?php if ($page == 'post') echo 'color: red;'; else echo 'color: #18A0FB;'; ?> font-weight: bold" id="post">Your Post</a>
       </li>
       <li <?php if ($page == 'complaint') echo 'class="active"'; ?>>
-        <a href="ComplaintInterface.php" style="<?php if ($page == 'publication') echo 'color: red;'; else echo 'color: #18A0FB;'; ?> font-weight: bold" id="publication">Complaint</a>
+        <a href="/FKEduSearch/Complaint/User/ComplaintInterface.php" style="<?php if ($page == 'publication') echo 'color: red;'; else echo 'color: #18A0FB;'; ?> font-weight: bold" id="publication">Complaint</a>
       </li>
       <li <?php if ($page == 'profile') echo 'class="active"'; ?>>
         <a href="userProfile.php" style="<?php if ($page == 'profile') echo 'color: red;'; else echo 'color: #18A0FB;'; ?> font-weight: bold" id="profile">Profile</a>
