@@ -6,7 +6,7 @@ session_start();
 	$link = mysqli_connect("localhost", "root", "") or die(mysqli_connect_error());
 	mysqli_select_db($link, "miniproject") or die(mysqli_error($link));
 
-	// Fetch data from the admin, user, and expert tables using inner joins
+	// Fetch data from the user, and expert tables using SELECT
 	$query = "SELECT expert_userName, expert_ID
 		FROM expert";
 
