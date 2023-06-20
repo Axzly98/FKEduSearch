@@ -93,5 +93,5 @@ mysqli_query($link, "COMMIT") or die(mysqli_error($link));
 
 $alert_message = "Expert Profile Information has been updated!";
 echo "<script>alert('$alert_message');</script>";
-echo "<script type='text/javascript'> window.location='expertProfile.php' </script>";
+echo "<script type='text/javascript'> window.location='/FKEduSearch/Expert/expertProfile.php' </script>";
 ?>

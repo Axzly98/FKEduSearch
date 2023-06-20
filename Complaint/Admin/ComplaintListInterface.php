@@ -246,7 +246,7 @@ if ($status=="Resolved"){
 </div>
 
 <!-- FOOTER -->
-<footer style="position: static">
+<footer style="bottom : 2px;position:static;width:100%;">
 
       <div class="foot">
         <a>

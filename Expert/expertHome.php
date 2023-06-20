@@ -126,6 +126,7 @@ $average_rating = ($rating_count > 0) ? ($rating_sum / $rating_count) : 0;
   $link = mysqli_connect("localhost", "root", "") or die(mysqli_connect_error());
   mysqli_select_db($link, "miniproject") or die(mysqli_error($link));
 
+  //gune find_in_set ...biase nye sbb dalam column value....dia ada comma (,) 
   $queryDetails = "
       SELECT a.academicStatus_type, e.expert_fullName
       FROM academic_statususerexpert ase

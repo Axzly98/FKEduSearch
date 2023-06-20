@@ -6,7 +6,7 @@ session_start();
 	$link = mysqli_connect("localhost", "root", "") or die(mysqli_connect_error());
 	mysqli_select_db($link, "miniproject") or die(mysqli_error($link));
 
-	// Fetch data from the admin, user, and expert tables using inner joins
+	// Fetch data from the user, and expert tables using SELECT
 	$query = "SELECT expert_userName, expert_ID
 		FROM expert";
 
@@ -26,11 +26,104 @@ $queryU = "SELECT user_userName, user_ID
 	<title>ADMIN</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: white;
+			margin: 0;
+			padding: 0;
+		}
+
+		.container {
+			max-width: 800px;
+			margin: 0 auto;
+			padding: 20px;
+			background-color: #fff;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+		}
+
+		h1 {
+			text-align: center;
+			margin-bottom: 30px;
+		}
+
+		form {
+			margin-bottom: 20px;
+		}
+
+		label {
+			display: block;
+			font-weight: bold;
+			margin-bottom: 5px;
+		}
+
+		input[type="text"],
+		input[type="email"],
+		input[type="password"],
+		select {
+			width: 100%;
+			padding: 10px;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+			box-sizing: border-box;
+		}
+
+		.error {
+			color: red;
+			margin-bottom: 10px;
+		}
+
+		.btn {
+			display: inline-block;
+			background-color: #4CAF50;
+			color: #fff;
+			padding: 10px 20px;
+			border-radius: 4px;
+			border: none;
+			cursor: pointer;
+			transition: background-color 0.3s;
+		}
+
+		.btn:hover {
+			background-color: #45a049;
+		}
+
+		.table {
+			width: 100%;
+			border-collapse: collapse;
+			margin-bottom: 20px;
+		}
+
+		.table th,
+		.table td {
+			padding: 8px;
+			border: 1px solid #ddd;
+		}
+
+		.table th {
+			background-color: #f2f2f2;
+			font-weight: bold;
+		}
+
+		.table tr:nth-child(even) {
+			background-color: #f9f9f9;
+		}
+
 		.content {
 			overflow-y: scroll;
-			height: 1000px; /* Set the desired height for the scrollable area */
-			width: 100%; /* Adjust the width as needed */
-			margin: 0 auto; /* Center the content horizontally */
+			height: 1000px;
+			width: 100%;
+			margin: 0 auto;
+			padding: 20px;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+
+		.graph {
+			width: 100%;
+			max-width: 800px;
+			margin-top: 30px;
+			text-align: center;
 		}
 	</style>
 </head>
@@ -91,7 +184,7 @@ $queryU = "SELECT user_userName, user_ID
 		<td class="td"><?php echo $expertid; ?></td>
 	<td align="center"> 
 	<a><button class="button-48" type="button" onclick="updateExpert(<?php echo $expertid; ?>)">Update</button></a>
-	<a><button class="button-48" type="button" onclick="deleteExpert(<?php echo $expertid; ?>)">Delete</button></td>
+	<a><button class="button-48" type="button" onclick="window.location.href='/FKEduSearch/Expert/deleteAdmin.php?expert_ID=<?php echo $expertid?>'">Delete</button></td>
 	</tr>
 <?php
     }
@@ -125,7 +218,7 @@ $queryU = "SELECT user_userName, user_ID
     <td class="td"><?php echo $userid; ?></td>
 	<td align="center">
 	<a><button class="button-48" type="button" onclick="updateUser(<?php echo $userid; ?>)">Update</button></a>
-	<a><button class="button-48" type="button" onclick="deleteUser(<?php echo $userid; ?>)">Delete</button></a></td>
+	<a><button class="button-48" type="button" onclick="window.location.href='/FKEduSearch/Expert/deleteUAdmin.php?user_ID=<?php echo $userid?>'">Delete</button></td>
 	</tr>
 <?php
     }
@@ -138,7 +231,7 @@ $queryU = "SELECT user_userName, user_ID
 </div>
 <script>
 	function updateExpert(expertID) {
-		window.location.href = "/FKEduSearch/Complaint/Admin/update.php?expert_id=" + expertID;
+		window.location.href = "/FKEduSearch/Expert/updateAdmin.php?expert_id=" + expertID;
 	}
 
 	function deleteExpert(expertID) {
@@ -147,15 +240,16 @@ $queryU = "SELECT user_userName, user_ID
 		xhttp.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
 				// Process the response here if needed
+				alert("Expert deleted successfully!");
 				// For example, display a success message or refresh the table
 			}
 		};
-		xhttp.open("GET", "/FKEduSearch/Complaint/Admin/delete.php?expert_id=" + expertID, true);
+		xhttp.open("GET", "/FKEduSearch/Expert/deleteAdmin.php?expert_id=" + expertID, true);
 		xhttp.send();
 	}
 
 	function updateUser(userID) {
-		window.location.href = "/FKEduSearch/Complaint/Admin/update.php?user_id=" + userID;
+		window.location.href = "/FKEduSearch/Expert/updateAdmin.php?user_id=" + userID;
 	}
 
 	function deleteUser(userID) {
@@ -164,10 +258,11 @@ $queryU = "SELECT user_userName, user_ID
 		xhttp.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
 				// Process the response here if needed
+				alert("User deleted successfully!");
 				// For example, display a success message or refresh the table
 			}
 		};
-		xhttp.open("GET", "/FKEduSearch/Complaint/Admin/delete.php?user_id=" + userID, true);
+		xhttp.open("GET", "/FKEduSearch/Expert/deleteAdmin.php?user_id=" + userID, true);
 		xhttp.send();
 	}
 </script>

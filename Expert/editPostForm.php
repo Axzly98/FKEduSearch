@@ -8,6 +8,7 @@ $link = mysqli_connect("localhost", "root", "") or die(mysqli_connect_error());
 // Select the database
 mysqli_select_db($link, "miniproject") or die(mysqli_error($link));
 
+//isset = untuk check variable and value bukan NULL
 $postID = isset($_REQUEST['post_ID']) ? $_REQUEST['post_ID'] : '';
 
 if (!empty($postID)) {

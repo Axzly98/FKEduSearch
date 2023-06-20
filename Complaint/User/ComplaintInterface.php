@@ -207,9 +207,23 @@ $newType;
 		<td class="td">
     <input type="hidden" name="comid" value="<?php echo $complainid; ?>">
     <input type="hidden" name="id" value="<?php echo $userid; ?>">
-			<a><button class="button-48" type="button" onclick="window.location.href='/FKEduSearch/Complaint/User/update.php?comid=<?php echo $complainid; ?>';">✏️</button></a> 
+    <?php
+
+if ($status=="Resolved"){
+?>
+      <a><button class="button-48" type="button" onclick="window.location.href='/FKEduSearch/Complaint/User/view_reply.php?comid=<?php echo $complainid; ?>';">📧</button></a> 
       <a><button class="button-48" type="button" onclick="window.location.href='/FKEduSearch/Complaint/User/view.php?comid=<?php echo $complainid; ?>';">👀</button></a> 
 			<a><button class="button-48" type="button" onclick="window.location.href='/FKEduSearch/Complaint/User/delete.php?comid=<?php echo $complainid; ?>';">🗑️</button></a>
+<?php
+}
+else {
+  ?>
+      <a><button class="button-48" type="button" onclick="window.location.href='/FKEduSearch/Complaint/User/update.php?comid=<?php echo $complainid; ?>';">✏️</button></a> 
+      <a><button class="button-48" type="button" onclick="window.location.href='/FKEduSearch/Complaint/User/view.php?comid=<?php echo $complainid; ?>';">👀</button></a> 
+			<a><button class="button-48" type="button" onclick="window.location.href='/FKEduSearch/Complaint/User/delete.php?comid=<?php echo $complainid; ?>';">🗑️</button></a>
+<?php 
+}
+?>
 		</td>
 	</tr>
 <?php
@@ -229,7 +243,7 @@ $newType;
 
 
 <!-- FOOTER -->
-<footer>
+<footer style="bottom : 2px;position:fixed;width:100%;">
 
       <div class="foot">
         <a>
