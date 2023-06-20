@@ -8,17 +8,16 @@ mysqli_select_db($link, "miniproject") or die(mysqli_error($link));
 $complainid = $_GET["id"];
 
 //SQL query
-$query = "SELECT * FROM complaint_reply"
+$queryReply = "SELECT * FROM complaint_reply"
 	or die(mysqli_connect_error());
-	
 //Execute the query (the recordset $rs contains the result)
-$result = mysqli_query($link, $query);
+$resultReply = mysqli_query($link, $queryReply);
 
-$row = mysqli_fetch_assoc($result);
+$rowReply = mysqli_fetch_assoc($resultReply);
   
-  $adminid = $row["admin_ID"];
-  $desc = $row["CR_reply"];
-  $date = $row["CR_datetime"];
+  $adminid = $rowReply["admin_ID"];
+  $desc = $rowReply["CR_reply"];
+  $date = $rowReply["CR_datetime"];
   
 
 ?>	
@@ -35,18 +34,14 @@ $row = mysqli_fetch_assoc($result);
   <a href="/FKEduSearch/Admin/ReactivateAcc.php" style="margin-left: 400px;">Reactivate Acc</a>
   <a href="/FKEduSearch/Expert/indexAdmin.php">Manage Acc</a>
   <a class="active" href="/FKEduSearch/Complaint/Admin/ComplaintListInterface.php">Complaint</a>
-  <a href="/FKEduSearch/User/userProfile.php">Profile</a>
   <a href="/FKEduSearch/Expert/logout.php">Logout</a>
-  <div class="search-container">
-    <form action="/action_page.php">
-      <input class="input" type="text" name="search">
-      <button type="submit">Search</button>
-    </form>
-  </div>
+
 </div>
 <hr style="box-shadow: 5px 0px 1px #6DE4EA;">
 
 <!--YOUR CONTENT-->
+
+
 <div class="center">
 <h1>Reply Complaint</h1>
 <br>
