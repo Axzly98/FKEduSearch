@@ -5,7 +5,7 @@ $link = mysqli_connect("localhost", "root", "") or die(mysqli_connect_error());
 //Select the database.
 mysqli_select_db($link, "miniproject") or die(mysqli_error($link));
 
-$complainid = $_GET["id"];
+$complainid = isset($_GET["id"]) ? $_GET["id"] : null;
 
 //SQL query
 $queryReply = "SELECT * FROM complaint_reply"
