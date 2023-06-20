@@ -69,8 +69,6 @@ include 'headerExpert.php';
 			$academicStatus_type = $row["academicStatus_type"];
 			$academicStatus_type = explode(',', $academicStatus_type);
 
-			// Continue with the rest of the code to populate the form fields and process the update
-
 			} else {
 			// No data found in the database for the expert's profile
 
