@@ -32,39 +32,10 @@ $data3=mysqli_fetch_assoc($result3);
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="/FKEduSearch/Complaint/styleUser.css">
+<link rel="stylesheet" href="/FKEduSearch/Complaint/Admin/styleAdmin.css">
 
 </head>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
-<style>
-    .button-1 {
-    background-color: #b2ebfb;
-    border: 0 solid #e2e8f0;
-    border-radius: 3rem;
-    box-sizing: border-box;
-    color: white;
-    cursor: pointer;
-    display: inline-block;
-    font-family: "Basier circle",-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
-    font-size: 1.1rem;
-    font-weight: 600;
-    line-height: 1;
-    padding: 1rem 1.6rem;
-    text-align: center;
-    text-decoration: none #0d172a solid;
-    transition: all .1s cubic-bezier(.4, 0, .2, 1);
-    box-shadow: 0px 1px 2px rgba(166, 175, 195, 0.25);
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-    margin-left: 10px;
-  }
-  
-  .button-1:hover {
-    background-color: #A5DBFF;
-    color: #0b3b5c;
-  }
-</style>
 <body>
 
 <!-- HEADER -->
@@ -74,15 +45,12 @@ $data3=mysqli_fetch_assoc($result3);
   <a href="/FKEduSearch/Expert/indexAdmin.php">Manage Acc</a>
   <a class="active" href="/FKEduSearch/Complaint/Admin/ComplaintListInterface.php">Complaint</a>
   <a href="/FKEduSearch/Expert/logout.php">Logout</a>
-  <div class="search-container">
-    
-  </div>
 </div>
 <hr style="box-shadow: 5px 0px 1px #6DE4EA;">
 
 <!-- YOUR CONTENT -->
 
-<button class="button-1" type="button" onclick="history.back()"><img src="https://whatemoji.org/wp-content/uploads/2020/07/Back-Arrow-Emoji.png" height="50px"></button>
+<button class="button-1" style="padding-bottom: 65px; margin-left:10px;" type="button" onclick="history.back()"><img src="https://whatemoji.org/wp-content/uploads/2020/07/Back-Arrow-Emoji.png" height="50px"></button>
 
 <canvas id="myChart" style="width:100%; height:60%; margin-top:-50px; margin-left:-50px;"></canvas>
 

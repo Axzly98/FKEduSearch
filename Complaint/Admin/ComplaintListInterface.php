@@ -12,11 +12,12 @@ mysqli_select_db($link, "miniproject") or die(mysqli_error($link));
 $query = "SELECT c.*, cs.complaintStatus_type, u.user_fullName FROM complaint c INNER JOIN complaint_status cs ON c.complaintStatus_ID = cs.complaintStatus_ID INNER JOIN user u ON c.user_ID = u.user_ID"
 	or die(mysqli_connect_error());
 
-$queryUser = "SELECT FROM complaint c"
-	or die(mysqli_connect_error());
+$queryAns = "SELECT cr.CR_ID FROM complaint_reply cr INNER JOIN complaint c ON c.complaint_ID = cr.complaint_ID"
+or die(mysqli_connect_error());
 
 //Execute the query (the recordset $rs contains the result)
 $result = mysqli_query($link, $query);
+$resultAns = mysqli_query($link, $queryAns);
 
 $sql="SELECT count(*) as total from complaint";
 $resultall=mysqli_query($link,$sql);
@@ -185,7 +186,7 @@ $data=mysqli_fetch_assoc($resultall);
 <?php  if (mysqli_num_rows($result) > 0){
     // output data of each row
     $no = 0;
-    while($row = mysqli_fetch_assoc($result) ){
+    while($row = mysqli_fetch_assoc($result)){
     $no = $no + 1;
     $complainid = $row["complaint_ID"];
     $name = $row["user_fullName"];
@@ -194,8 +195,7 @@ $data=mysqli_fetch_assoc($resultall);
 	  $type = $row["complaint_Type"];
     $desc = $row["complaint_Desc"];
     $status = $row["complaintStatus_type"];
-    
-    
+
 ?>	
 	
     <td class="td"><?php echo $no; ?></td>
@@ -206,11 +206,31 @@ $data=mysqli_fetch_assoc($resultall);
     <td class="td"><?php echo $desc; ?></td>
     <td class="td"><?php echo $status; ?></td>
 		<td class="td">
-    
-    <a><button class="button-48" type="button" onclick="window.location.href='/FKEduSearch/Complaint/Admin/add.php?id=<?php echo $complainid; ?>';">➕</button></a> 
-			<a><button class="button-48" type="button" onclick="window.location.href='/FKEduSearch/Complaint/Admin/update.php?id=<?php echo $complainid; ?>';">✏️</button></a> 
+<?php
+
+if ($status=="Resolved"){
+?>
+  <a><button class="button-48" type="button" onclick="window.location.href='/FKEduSearch/Complaint/Admin/update.php?id=<?php echo $complainid; ?>';">✏️</button></a> 
       <a><button class="button-48" type="button" onclick="window.location.href='/FKEduSearch/Complaint/Admin/view.php?id=<?php echo $complainid; ?>';">👀</button></a> 
-			<a><button class="button-48" type="button" onclick="window.location.href='/FKEduSearch/Complaint/Admin/delete.php?id=<?php echo $complainid; ?>';">🗑️</button></a>
+      <a><button class="button-48" type="button" onclick="window.location.href='/FKEduSearch/Complaint/Admin/delete.php?id=<?php echo $complainid; ?>';">🗑️</button></a>
+<?php
+}else if ($status=="On Hold"){
+  ?>
+  <a><button class="button-48" type="button" onclick="window.location.href='/FKEduSearch/Complaint/Admin/add.php?id=<?php echo $complainid; ?>';">➕</button></a> 
+  <a><button class="button-48" type="button" onclick="window.location.href='/FKEduSearch/Complaint/Admin/delete.php?id=<?php echo $complainid; ?>';">🗑️</button></a>
+<?php
+}else{
+  ?>
+
+  <a><button class="button-48" style="color: red;" type="button" onclick="window.location.href='/FKEduSearch/Complaint/Admin/hold_action.php?id=<?php echo $complainid; ?>';">Onhold</button></a> 
+  <a><button class="button-48" type="button" onclick="window.location.href='/FKEduSearch/Complaint/Admin/add.php?id=<?php echo $complainid; ?>';">➕</button></a> 
+  <a><button class="button-48" type="button" onclick="window.location.href='/FKEduSearch/Complaint/Admin/delete.php?id=<?php echo $complainid; ?>';">🗑️</button></a>
+  
+  <?php
+}
+
+?>
+    
 		</td>
 	</tr>
 <?php

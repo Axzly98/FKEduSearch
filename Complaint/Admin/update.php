@@ -34,17 +34,11 @@ $result = mysqli_query($link, $query);
   <a href="/FKEduSearch/Expert/indexAdmin.php">Manage Acc</a>
   <a class="active" href="/FKEduSearch/Complaint/Admin/ComplaintListInterface.php">Complaint</a>
   <a href="/FKEduSearch/Expert/logout.php">Logout</a>
-  <div class="search-container">
-    <form action="/action_page.php">
-      <input class="input" type="text" name="search">
-      <button type="submit">Search</button>
-    </form>
-  </div>
 </div>
 <hr style="box-shadow: 5px 0px 1px #6DE4EA;">
 
 <!-- YOUR CONTENT -->
-
+<button class="button-1" style="padding-bottom: 65px; margin-left:10px;" type="button" onclick="history.back()"><img src="https://whatemoji.org/wp-content/uploads/2020/07/Back-Arrow-Emoji.png" height="50px"></button>
 
 <div class="center">
 <h1>Complaint</h1>
