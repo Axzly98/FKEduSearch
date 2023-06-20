@@ -45,12 +45,12 @@ $row = mysqli_fetch_assoc($result);
 
 <!-- HEADER -->
 <div class="topnav">
-  <a><img src="https://umplive.ump.edu.my/images/2020/07/26/logo-ump-transparent-blue__1122x561.png" style="width: 40px;"></a>
-  <a href="/FKEduSearch/User/userHome.php" style="margin-left: 400px;">Home</a>
-  <a href="/FKEduSearch/User/userYourPost.php">Your Post</a>
-  <a class="active" href="/FKEduSearch/Complaint/User/ComplaintInterface.php">Complaint</a>
-  <a href="/FKEduSearch/User/userProfile.php">Profile</a>
-  <a href="/FKEduSearch/Admin/logout.php">Logout</a>
+<a><img src="https://umplive.ump.edu.my/images/2020/07/26/logo-ump-transparent-blue__1122x561.png" style="width: 40px;"></a>
+  <a href="/FKEduSearch/Expert/userHomeAmin.php" style="margin-left: 400px;">Home</a>
+  <a href="/FKEduSearch/Expert/userYourPostAminBetul.php">Your Post</a>
+  <a class="active" href="/FKEduSearch/Complaint/User/ComplaintInterface.php?id=<?php echo $userid?>">Complaint</a>
+  <a href="/FKEduSearch/Expert/userProfile.php">Profile</a>
+
   <div class="search-container">
     <form action="/action_page.php">
       <input class="input" type="text" name="search">
