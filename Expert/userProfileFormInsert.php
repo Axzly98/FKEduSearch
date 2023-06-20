@@ -8,12 +8,13 @@ $user_ID = $_REQUEST["userID"];
 
 // Check if the form is submitted
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Get the form data
+    // untuk dapatkan data dari form
     $researchAreaName = $_REQUEST['researchAreaName'];
     $academicStatus = $_REQUEST['academicStatus_type'];
     $instagramUsername = $_REQUEST['instagram_userName'];
     $linkedinUsername = $_REQUEST['linkedin_userName'];
 
+    //dia untuk link researchArea
 	$researchAreaQuery = "SELECT researchArea_ID FROM research_area WHERE researchAreaName = '$researchAreaName'";
 	$researchAreaResult = mysqli_query($link, $researchAreaQuery);
 
@@ -46,6 +47,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         mysqli_query($link, $queryAcademicExpert);
     } */
 	
+
+    //gune foreach sebab academicStatus ...untuk loop for each element dalam academic status array 
 	foreach ($academicStatus as $status) {
     $queryAcademicUser = "INSERT INTO academic_statususerexpert (user_ID, academicStatus_ID) SELECT '$user_ID', academicStatus_ID FROM academic_status WHERE academicStatus_type = '$status'";
     mysqli_query($link, $queryAcademicUser);
@@ -59,7 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Close the database connection
     mysqli_close($link);
 
-    $alert_message = "Information Details have been inserted";
+    $alert_message = "Information Details Have Been Inserted";
     echo "<script>alert('$alert_message');</script>";
     echo "<script type='text/javascript'>window.location='userProfile.php';</script>";
 }

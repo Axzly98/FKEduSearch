@@ -15,7 +15,10 @@ mysqli_select_db($link, "miniproject") or die(mysqli_error());
  $user_ID = $_SESSION['userID'];
 
 //$query = "SELECT * FROM post WHERE user_ID = '$user_ID'";
-
+//  LEFT JOIN post_assigned ON post.post_ID = post_assigned.post_ID
+// maksud nye dia akan retrieve all post dari post table yg related dengan specified user_ID
+// left join...return all record dari left side dan record yg matching dengan right side
+// kalau x ade matching dengan right side, return NULL VALUE untuk column yg right side  
 $query = "SELECT post.post_ID, post.post_categories, post.post_title, post.post_content, post.post_createdDate, post.post_likes, post.post_status, post_assigned.postAssigned_Status
           FROM post 
           LEFT JOIN post_assigned ON post.post_ID = post_assigned.post_ID

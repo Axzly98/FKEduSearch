@@ -13,15 +13,18 @@ $page = 'publication';
   
 	mysqli_select_db($link, "miniproject") or die(mysqli_error());
   
-  // Get the expert ID from the form data
+  //  Untuk dapatkan expertID daripada form submission dari page expertPublication.php
 $expertID = $_POST['expertID'];
   
-  // Get the current date and time
+  // Untuk dapatkan current date and time
 	$publicationCreatedDate = date('Y-m-d');
 	
+
 	if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   // Check if file was uploaded without any errors
+  //isset = untuk variable dengan value (not null)
   if (isset($_FILES['publicationFile']) && $_FILES['publicationFile']['error'] === UPLOAD_ERR_OK) {
+    //tmp = temporary
     $tmpFilePath = $_FILES['publicationFile']['tmp_name'];
     $fileName = $_FILES['publicationFile']['name'];
     // Move the uploaded file to the desired location

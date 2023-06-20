@@ -82,7 +82,7 @@ if (!empty($profilePicture) && file_exists("uploads/$profilePicture")) {
     }
 } else {
     // Provide a default profile picture
-    echo '<a href="expertProfile.php"><img src="uploads/profile_default.png" alt="Profile Picture" style="width: 70px; height: auto;"></a>';
+    echo '<a href="expertProfile.php"><img src="uploads/default_img.png" alt="Profile Picture" style="width: 70px; height: auto;"></a>';
 }
 
       ?>

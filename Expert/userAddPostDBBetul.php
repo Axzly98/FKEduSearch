@@ -7,32 +7,30 @@ $page = 'add post';
  
  <?php 
 $link = mysqli_connect("localhost", "root") or die(mysqli_connect_error($link));
-mysqli_select_db($link, "miniproject") or die(mysqli_error($link)); //'link' tu main letak sebab kalau tkde, error
+mysqli_select_db($link, "miniproject") or die(mysqli_error($link)); 
 
 $user_ID = $_REQUEST['userID'];
 
-  // Get the current date and time
+  // Untuk dapatkan current date
 	$post_createdDate = date('Y-m-d');
 
 $post_categories = $_REQUEST["category"];
 $postTitle = $_REQUEST["postTitle"];
 $postQuestion = $_REQUEST["postQuestion"];
 
-// Check if the post count session variable exists
+// Untuk check post count session variable exist atau tak 
 if (!isset($_SESSION['postCount'])) {
     $_SESSION['postCount'] = 0;
 }
 
 
-// Check if the post count exceeds the limit ( 3 )
+// Check if the post count exceeds the limit (3)
 if ($_SESSION['postCount'] >= 3) {
     $alert_message = "You Have Reached The Maximum Limit For Posts In This Session!";
     echo "<script>alert('$alert_message');</script>";
     echo "<script type='text/javascript'>window.location='addPostUIAminBetul.php'</script>";
     exit(); // Stop execution code
 }
-
-// insert into maksudnya masukkan data dalam db
 
 $query = "INSERT INTO post (user_ID, post_title, post_content, post_createdDate, post_categories) 
           VALUES ('$user_ID', '$postTitle', '$postQuestion', '$post_createdDate', '$post_categories')";
@@ -47,11 +45,11 @@ if ($result) {
 $post_ID = mysqli_insert_id($link);
 
 
- // Randomly select an expert from the 'expert' table
+ // Untuk select an expert secara random from the 'expert' table
     $selectExpertQuery = "SELECT expert_ID FROM expert ORDER BY RAND() LIMIT 1";
     $expertResult = mysqli_query($link, $selectExpertQuery);
 	
-	// Fetch the research area ID based on the post category
+	// Untuk dapatkan research area ID based on post_categories
 	$researchAreaQuery = "SELECT researchArea_ID FROM research_area WHERE researchAreaName = '$post_categories'";
 	$researchAreaResult = mysqli_query($link, $researchAreaQuery);
 

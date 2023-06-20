@@ -31,7 +31,11 @@ mysqli_select_db($link, "miniproject") or die(mysqli_error());
 
 $user_ID = $_SESSION['userID'];
 
-
+//AS = aliases
+// FROM user sebab nak fetch dari specific user, sebab tu buat FROM user .... user table macam primary table untuk dalam SQL yang ni
+//JOIN sume ni....untuk link dengan table mana yang relate.....
+// kalo nak confirm kan...tengok kat table mana yg related.....
+//user.user_ID/email...maksudnye dalam table user, user_ID, user_email...and so on....untuk research area/academic
 $query = "SELECT user.user_email AS user_email, research_area.researchAreaName AS researchAreaName, academic_status.academicStatus_type AS academicStatus_type, socialmedia.instagram_userName AS instagram_userName, socialmedia.linkedin_userName AS linkedin_userName
 					  FROM user
 					  JOIN research_areauserexpert ON user.user_ID = research_areauserexpert.user_ID
@@ -41,7 +45,7 @@ $query = "SELECT user.user_email AS user_email, research_area.researchAreaName A
 					  JOIN socialmedia ON user.user_ID = socialmedia.user_ID
 					  WHERE user.user_ID = '$user_ID' " or die(mysqli_connect_error());
 
-//echo $query; ...Untuk debug
+//echo $query; ...Syntax Untuk debug
 
 $result = mysqli_query($link, $query);
 
@@ -49,10 +53,9 @@ $row = mysqli_fetch_assoc($result);
 
 		if ($row) {
 			// Data exists in the database for the user's profile
+      //gune explode untuk display yg dari dropdown list........
 			$academicStatus_type = $row["academicStatus_type"];
 			$academicStatus_type = explode(',', $academicStatus_type);
-
-			// Continue with the rest of the code to populate the form fields and process the update
 
 			} else {
 			// No data found in the database for the user's profile
