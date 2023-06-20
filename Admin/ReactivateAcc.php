@@ -21,11 +21,28 @@ $queryU = "SELECT user_userName, user_ID
 
 <!DOCTYPE html>
 <html>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 <head>
 	<title>ADMIN</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
+    <style>
+		.content {
+			overflow-y: scroll;
+			height: 1000px; /* Set the desired height for the scrollable area */
+			width: 100%; /* Adjust the width as needed */
+			margin: 0 auto; /* Center the content horizontally */
+		}
+
+        .graph{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 70vh; /* Adjust the height as needed */
+        }
+	</style>
 </head>
 <body align="center">
+<div class="content">
 	<h2>Reactivate Account</h2>
 	
 
@@ -95,6 +112,37 @@ $queryU = "SELECT user_userName, user_ID
 }
 ?>
 </table>
+
+<div class="graph">
+<canvas id="myChart" style="width:100%;max-width:800px"></canvas>
+<script>
+var xValues = ["Active", "User", "Expert"];
+var yValues = [44, 24, 15];
+var barColors = [
+  "#2b5797",
+  "#e8c3b9",
+  "#1e7145"
+];
+
+new Chart("myChart", {
+  type: "doughnut",
+  data: {
+    labels: xValues,
+    datasets: [{
+      backgroundColor: barColors,
+      data: yValues
+    }]
+  },
+  options: {
+    title: {
+      display: true,
+      text: "ACTIVE ACCOUNT GRAPH"
+    }
+  }
+});
+</script>
+</div>
+</div>
 </body>
 </html>
 
