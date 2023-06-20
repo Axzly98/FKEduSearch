@@ -138,7 +138,7 @@ $queryU = "SELECT user_userName, user_ID
 </div>
 <script>
 	function updateExpert(expertID) {
-		window.location.href = "/FKEduSearch/Complaint/Admin/update.php?expert_id=" + expertID;
+		window.location.href = "/FKEduSearch/Expert/updateAdmin.php?expert_id=" + expertID;
 	}
 
 	function deleteExpert(expertID) {
@@ -147,15 +147,16 @@ $queryU = "SELECT user_userName, user_ID
 		xhttp.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
 				// Process the response here if needed
+				alert("Expert deleted successfully!");
 				// For example, display a success message or refresh the table
 			}
 		};
-		xhttp.open("GET", "/FKEduSearch/Complaint/Admin/delete.php?expert_id=" + expertID, true);
+		xhttp.open("GET", "/FKEduSearch/Expert/deleteAdmin.php?expert_id=" + expertID, true);
 		xhttp.send();
 	}
 
 	function updateUser(userID) {
-		window.location.href = "/FKEduSearch/Complaint/Admin/update.php?user_id=" + userID;
+		window.location.href = "/FKEduSearch/Expert/updateAdmin.php?user_id=" + userID;
 	}
 
 	function deleteUser(userID) {
@@ -164,10 +165,11 @@ $queryU = "SELECT user_userName, user_ID
 		xhttp.onreadystatechange = function() {
 			if (this.readyState == 4 && this.status == 200) {
 				// Process the response here if needed
+				alert("User deleted successfully!");
 				// For example, display a success message or refresh the table
 			}
 		};
-		xhttp.open("GET", "/FKEduSearch/Complaint/Admin/delete.php?user_id=" + userID, true);
+		xhttp.open("GET", "/FKEduSearch/Expert/deleteAdmin.php?user_id=" + userID, true);
 		xhttp.send();
 	}
 </script>

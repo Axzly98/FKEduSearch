@@ -16,30 +16,38 @@ if (isset($_GET['expert_ID'])) {
 }
 
 // Establish a database connection (replace the placeholder values with your actual credentials)
-$link = mysqli_connect("localhost", "root", "") or die(mysqli_connect_error());
-mysqli_select_db($link, "miniproject") or die(mysqli_error($link));
+$link = mysqli_connect("localhost", "root", "", "miniproject") or die(mysqli_connect_error());
 
-// Delete the expert/user record from the database
-$query = "DELETE FROM $table WHERE ";
+// Prepare the SQL statement with parameterized queries
+$query = "";
 if ($table === "expert") {
-    $query .= "expert_ID = $id";
+    $query = "SELECT * FROM expert WHERE expert_ID = ?";
 } elseif ($table === "user") {
-    $query .= "user_ID = $id";
+    $query = "SELECT * FROM user WHERE user_ID = ?";
 }
 
-$result = mysqli_query($link, $query);
+// Prepare the statement
+$stmt = mysqli_prepare($link, $query);
 
-// Check if the record was successfully deleted
-if ($result) {
-    // Redirect or display a success message
-    header("Location: index.php?success=Record deleted successfully");
-    exit();
-} else {
+// Bind the parameter
+mysqli_stmt_bind_param($stmt, "i", $id);
+
+// Execute the statement
+mysqli_stmt_execute($stmt);
+
+// Get the result
+$result = mysqli_stmt_get_result($stmt);
+
+// Check if the record exists
+if (mysqli_num_rows($result) === 0) {
     // Redirect or display an error message
-    header("Location: index.php?error=Failed to delete record");
+    header("Location: index.php?error=Record not found");
     exit();
 }
 
+// Process the record here (e.g., display a form for updating the data)
+
+mysqli_stmt_close($stmt);
 mysqli_close($link);
 
 include 'footerAdmin.php';
