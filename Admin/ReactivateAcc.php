@@ -26,7 +26,7 @@ $queryU = "SELECT user_userName, user_ID
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body align="center">
-	<h2>Registered New Users</h2>
+	<h2>Reactivate Account</h2>
 	
 
 
