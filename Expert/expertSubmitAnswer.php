@@ -57,11 +57,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $answer = $_POST['answer'];
 
     // Prepare the INSERT query with parameter placeholders
+    // ? = parameter binding
     $insertQuery = "INSERT INTO post_answer (postAssigned_ID, expert_ID, post_answer)
                     VALUES (?, ?, ?)";
     $stmt = mysqli_prepare($link, $insertQuery);
     
     // Bind the values to the prepared statement
+    // iis = integer, integer, string
     mysqli_stmt_bind_param($stmt, "iis", $postAssignedID, $expertID, $answer);
 
     // Execute the prepared statement
@@ -72,7 +74,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Update the post_assigned table to change the status to Completed
         $updateQuery = "UPDATE post_assigned SET postAssigned_status = 'Completed' WHERE postAssigned_ID = ?";
         $stmt = mysqli_prepare($link, $updateQuery);
-        mysqli_stmt_bind_param($stmt, "i", $postAssignedID);
+        mysqli_stmt_bind_param($stmt, "i", $postAssignedID); //mysqli_stmt_bind_param -> actual value untuk dari placeholder are separate dgn gune function ni...  
         mysqli_stmt_execute($stmt);
 
         $alert_message = "Post Answer Has Been Submitted!";

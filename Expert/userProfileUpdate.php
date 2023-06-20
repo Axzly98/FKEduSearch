@@ -35,6 +35,7 @@ $email = $_REQUEST['email'];
 $researchAreaName = $_REQUEST['researchAreaName'];
 
 $academicStatusType = $_REQUEST["academicStatus_type"];
+//gune implode sbb array ..untuk convert array kepada string
 $academicStatus_type = implode(',', $academicStatusType);
 
 $instagram_userName = $_REQUEST['instagram_userName'];
@@ -43,6 +44,9 @@ $linkedin_userName = $_REQUEST['linkedin_userName'];
 // Begin the transaction.
 mysqli_query($link, "START TRANSACTION") or die(mysqli_error($link));
 
+
+
+// inner join... ON....untuk tunjukkan join condition between dua tables.... 
 $query = "
 
     UPDATE user
@@ -51,16 +55,14 @@ $query = "
 
 
 	
-	UPDATE research_areauserexpert
+	UPDATE research_areauserexpert 
     INNER JOIN research_area ON research_areauserexpert.researchArea_ID = research_area.researchArea_ID
-    SET research_area.researchAreaName = '$researchAreaName'
-    WHERE research_areauserexpert.user_ID = '$user_ID';
+    SET research_area.researchAreaName = '$researchAreaName' WHERE research_areauserexpert.user_ID = '$user_ID';
 	
 
 	UPDATE academic_statususerexpert
     INNER JOIN academic_status ON academic_statususerexpert.academicStatus_ID = academic_status.academicStatus_ID
-    SET academic_status.academicStatus_type = '$academicStatus_type'
-    WHERE academic_statususerexpert.user_ID = '$user_ID';
+    SET academic_status.academicStatus_type = '$academicStatus_type' WHERE academic_statususerexpert.user_ID = '$user_ID';
 
 	
     UPDATE socialmedia

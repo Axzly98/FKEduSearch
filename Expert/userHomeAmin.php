@@ -91,6 +91,7 @@ include 'headerUser.php';
     if (isset($_REQUEST['searchQuery']) && !empty($_REQUEST['searchQuery'])) {
         $searchQuery = $_GET['searchQuery'];
 
+                //search untuk post based on post_categories 
         $querySearch = "SELECT * FROM post WHERE post_categories LIKE '%$searchQuery%'";
         $resultSearch = mysqli_query($link, $querySearch) or die(mysqli_error($link));
 
@@ -182,15 +183,17 @@ if (isset($_SESSION['userID'])) {
         $checkLikedResult = mysqli_query($link, $checkLikedQuery);
 
         if (mysqli_num_rows($checkLikedResult) > 0) {
-            // User has already liked the post
+            // untuk kalau user dah like post
             echo "<script>alert('You Have Already Liked This Post!');</script>";
         } else {
-            // Insert the like into the 'post_likes' table
+            // Insert like into the 'post_likes' table
+            // masukkan dekat foreign key yg kat dalam post_likes...untuk tunjukkan like tu relate dgn post yang mane & user yg mane
             $insertLikeQuery = "INSERT INTO post_likes (post_ID, user_ID) VALUES ('$postID', '$user_ID')";
             $insertLikeResult = mysqli_query($link, $insertLikeQuery);
 
             if ($insertLikeResult) {
-                // Update the 'total_likes' field in the 'post' table
+                // Untuk update total_likes yang dalam post table bile like yang kat query atas, user duk like ...
+                //dia akan update total likes dekat post table sekali......
                 $updateLikesQuery = "UPDATE post SET post_likes = post_likes + 1 WHERE post_ID = '$postID'";
                 $updateLikesResult = mysqli_query($link, $updateLikesQuery);
 
@@ -206,7 +209,7 @@ if (isset($_SESSION['userID'])) {
     }
 }
 
-// Handle comment submission
+// Utk check comment ad value atau Null
 if (isset($_POST['submitComment'])) {
     $postID = $_POST['postID'];
     $commentContent = $_POST['comments_description'];
@@ -285,7 +288,7 @@ if (mysqli_num_rows($result) > 0) {
             }
         }
 
-        // Display like button if the user is logged in
+        // Display like button if the user is logged in (checked logged in = isset)
         if (isset($_SESSION['userID'])) {
             echo "<p class='like-link'><a href='userHomeAmin.php?like_post=$postID'>Like Here</a></p>";
         }

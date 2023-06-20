@@ -5,12 +5,13 @@ $page = 'post';
 $link = mysqli_connect("localhost", "root", "") or die(mysqli_connect_error());
 mysqli_select_db($link, "miniproject") or die(mysqli_error($link));
 
-// Check if the form is submitted
+// Check if the form is submitted......$_SERVER is superglobal variable yg ad information yg related dgn server.
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Get the rating value from the form submission
+    
+    // untuk dapatkan value rating dari form submission dari page viewExpertAnswer.php
     $ratingValue = $_POST['rating'];
 
-    // Get the expert_ID from the query string
+    // untuk dapatkan expert_ID yang relate dgn post tuh
     $expertID = $_GET['expert_ID'];
 
 

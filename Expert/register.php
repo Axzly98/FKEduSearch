@@ -7,12 +7,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    // Perform necessary validations and checks here
 
     $link = mysqli_connect("localhost", "root", "") or die(mysqli_connect_error());
     mysqli_select_db($link, "miniproject") or die(mysqli_error($link));
 
-    // Insert into the respective tables based on the selected role
+    // gune switch case ...based on role yang pilih dekat dropdown list
     switch ($role) {
         case 'Admin':
             // Insert into the admin table
@@ -54,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             break;
 
         default:
-            // Handle the case when no role is selected
+            // Untuk kalo bila tak ade role selected....
             break;
     }
 
