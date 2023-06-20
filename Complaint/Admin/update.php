@@ -30,11 +30,11 @@ $result = mysqli_query($link, $query);
 <!-- HEADER -->
 <div class="topnav">
   <a><img src="https://umplive.ump.edu.my/images/2020/07/26/logo-ump-transparent-blue__1122x561.png" style="width: 40px;"></a>
-  <a href="/FKEduSearch/User/userHome.php" style="margin-left: 400px;">Home</a>
-  <a href="/FKEduSearch/User/userYourPost.php">Your Post</a>
-  <a class="active" href="/FKEduSearch/Complaint/User/ComplaintInterface.php">Complaint</a>
+  <a href="/FKEduSearch/Admin/ReactivateAcc.php" style="margin-left: 400px;">Reactivate Acc</a>
+  <a href="/FKEduSearch/Expert/indexAdmin.php">Manage Acc</a>
+  <a class="active" href="/FKEduSearch/Complaint/Admin/ComplaintListInterface.php">Complaint</a>
   <a href="/FKEduSearch/User/userProfile.php">Profile</a>
-  <a href="/FKEduSearch/Admin/logout.php">Logout</a>
+  <a href="/FKEduSearch/Expert/logout.php">Logout</a>
   <div class="search-container">
     <form action="/action_page.php">
       <input class="input" type="text" name="search">

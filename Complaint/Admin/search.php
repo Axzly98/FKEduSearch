@@ -5,7 +5,7 @@ $link = mysqli_connect("localhost", "root", "") or die(mysqli_connect_error());
 //Select the database.
 mysqli_select_db($link, "miniproject") or die(mysqli_error($link));
 
-$userid = $_GET['id'];
+$adminid = $_GET['id'];
 $newDate = $_POST["newdate"];
 $newType = $_POST["newtype"];
 
@@ -67,11 +67,11 @@ $rowUser = mysqli_fetch_assoc($resultUser);
 <!-- HEADER -->
 <div class="topnav">
   <a><img src="https://umplive.ump.edu.my/images/2020/07/26/logo-ump-transparent-blue__1122x561.png" style="width: 40px;"></a>
-  <a href="/FKEduSearch/User/userHome.php" style="margin-left: 400px;">Home</a>
-  <a href="/FKEduSearch/User/userYourPost.php">Your Post</a>
-  <a class="active" href="/FKEduSearch/Complaint/User/ComplaintInterface.php">Complaint</a>
+  <a href="/FKEduSearch/Admin/ReactivateAcc.php" style="margin-left: 400px;">Reactivate Acc</a>
+  <a href="/FKEduSearch/Expert/indexAdmin.php">Manage Acc</a>
+  <a class="active" href="/FKEduSearch/Complaint/Admin/ComplaintListInterface.php">Complaint</a>
   <a href="/FKEduSearch/User/userProfile.php">Profile</a>
-  <a href="/FKEduSearch/Admin/logout.php">Logout</a>
+  <a href="/FKEduSearch/Expert/logout.php">Logout</a>
 
 </div>
 <hr style="box-shadow: 5px 0px 1px #6DE4EA;">
