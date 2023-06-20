@@ -13,13 +13,18 @@
       font-weight: bold;
       text-align: right;
     }
+
+    .header{
+      background: white;
+    }
+
   </style>
   
 </head>
 
 <body>
 <!-- HEADER -->
-<div class="topnav">
+<div class="topnav header">
   <a href="https://ump.edu.my/en" target="_blank">
     <img src="https://umplive.ump.edu.my/images/2020/07/26/logo-ump-transparent-blue__1122x561.png" style="width: 100px;">
   </a>

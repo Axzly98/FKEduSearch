@@ -41,7 +41,6 @@ $result = mysqli_query($link, $query);
   <a href="/FKEduSearch/Admin/ReactivateAcc.php" style="margin-left: 400px;">Reactivate Acc</a>
   <a href="/FKEduSearch/Expert/indexAdmin.php">Manage Acc</a>
   <a class="active" href="/FKEduSearch/Complaint/Admin/ComplaintListInterface.php">Complaint</a>
-  <a href="/FKEduSearch/User/userProfile.php">Profile</a>
   <a href="/FKEduSearch/Expert/logout.php">Logout</a>
   <div class="search-container">
     <form action="/action_page.php">

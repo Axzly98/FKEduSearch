@@ -3,18 +3,17 @@
 
 	// Establish a database connection (replace the placeholder values with your actual credentials)
 	$link = mysqli_connect("localhost", "root", "") or die(mysqli_connect_error());
-    mysqli_select_db($link, "miniproject") or die(mysqli_error($link));
+	mysqli_select_db($link, "miniproject") or die(mysqli_error($link));
 
-	// Fetch data from the admin, user, and expert tables
-	$query = "SELECT * FROM admin UNION SELECT * FROM user UNION SELECT * FROM expert";
+	// Fetch data from the admin, user, and expert tables using inner joins
+	$query = "SELECT expert_userName, expert_ID
+		FROM expert";
+
+$queryU = "SELECT user_userName, user_ID
+		FROM user";
+
 	$result = mysqli_query($link, $query);
-
-	// Check if there are any rows returned
-	if (mysqli_num_rows($result) > 0) {
-		$users = mysqli_fetch_all($result, MYSQLI_ASSOC);
-	} else {
-		$users = [];
-	}
+	$resultU = mysqli_query($link, $queryU);
 
 	// Close the database connection
 	mysqli_close($link);
@@ -29,28 +28,73 @@
 <body align="center">
 	<h2>Registered New Users</h2>
 	
-	<table border='1' align="center">
-		<tr>
-			<td>No.</td>
-			<td>Username</td>
-			<td>ID</td>
-			<td>Reason</td>
-			<td>Acc Status</td>
-			<td colspan='2'>Reactivate Approval</td>
-		</tr>
-		
-		<?php foreach ($users as $index => $user): ?>
-			<tr>
-				<td><?php echo $index + 1; ?></td>
-				<td><?php echo $user['username']; ?></td>
-				<td><?php echo $user['id']; ?></td>
-				<td><?php echo $user['reason']; ?></td>
-				<td><?php echo $user['acc_status']; ?></td>
-				<td colspan='2'>Reactivate Approval</td>
-			</tr>
-		<?php endforeach; ?>
-		
-	</table>
+
+
+	<table border="1" class="table" style="width: 100%">
+<tr class="thread">
+  <th class="th" scope="col">No</th>
+  <th class="th" scope="col">Expert Username</th>
+  <th class="th" scope="col">Expert ID</th>
+  <th class="th" scope="col">Reactivate Approval</th>
+            </tr>
+            <tr>
+<?php  if (mysqli_num_rows($result) > 0){
+    // output data of each row
+    $no = 0;
+    while($row = mysqli_fetch_assoc($result) ){
+    $no = $no + 1;
+    $expertname = $row["expert_userName"];
+    $expertid = $row["expert_ID"];   
+?>	
+ <td class="td"><?php echo $no; ?></td>
+    <td class="td"><?php echo $expertname; ?></td>
+		<td class="td"><?php echo $expertid; ?></td>
+	<td align="center"><a><button class="button-48" type="button" onclick="window.location.href='/FKEduSearch/Complaint/Admin/add.php';">Reason</button></a> 
+	<a><button class="button-48" type="button" onclick="window.location.href='/FKEduSearch/Complaint/Admin/add.php';">Reject</button></a>
+	<a><button class="button-48" type="button" onclick="window.location.href='/FKEduSearch/Complaint/Admin/add.php';">Approve</button></a></td>
+	</tr>
+<?php
+    }
+} else {
+    echo "0 results";
+
+}
+?>
+</table>
+
+<br><br>
+
+<table border="1" class="table" style="width: 100%">
+<tr class="thread">
+  <th class="th" scope="col">No</th>
+  <th class="th" scope="col">User Username</th>
+  <th class="th" scope="col">User ID</th>
+  <th class="th" scope="col">Reactivate Approval</th>
+            </tr>
+            <tr>
+<?php  if (mysqli_num_rows($resultU) > 0){
+    // output data of each row
+    $no = 0;
+    while($rowU = mysqli_fetch_assoc($resultU) ){
+    $no = $no + 1;
+    $username = $rowU["user_userName"];
+    $userid = $rowU["user_ID"];   
+?>	
+ <td class="td"><?php echo $no; ?></td>
+    <td class="td"><?php echo $username; ?></td>
+    <td class="td"><?php echo $userid; ?></td>
+	<td align="center"><a><button class="button-48" type="button" onclick="window.location.href='/FKEduSearch/Complaint/Admin/add.php';">Reason</button></a>
+	<a><button class="button-48" type="button" onclick="window.location.href='/FKEduSearch/Complaint/Admin/add.php';">Reject</button></a>
+	<a><button class="button-48" type="button" onclick="window.location.href='/FKEduSearch/Complaint/Admin/add.php';">Approve</button></a></td>
+	</tr>
+<?php
+    }
+} else {
+    echo "0 results";
+
+}
+?>
+</table>
 </body>
 </html>
 
