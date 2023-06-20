@@ -19,7 +19,7 @@ $query = "SELECT pa.postAssigned_ID, pa.post_ID, pa.expert_ID, pa.date_assigned,
             p.post_title, p.post_content, p.post_createdDate,
             pa.date_assigned, pa.postAssigned_status, 
             pa.expert_ID, pa.postAssigned_ID, 
-            pa.date_assigned, 
+            pa.date_assigned, a.complaint_ID,
             a.post_answer, a.post_AnswerID
         FROM post_assigned pa
         INNER JOIN post p ON pa.post_ID = p.post_ID
@@ -35,6 +35,7 @@ if (mysqli_num_rows($result) > 0) {
 		 $expert_ID = $row['expert_ID'];
         $post_Title = $row['post_title'];
         $post_Content = $row['post_content'];
+        $complain = $row['complaint_ID'];
         // Retrieve other necessary data from the row
 
         // Display post information within a container
@@ -49,12 +50,17 @@ if (mysqli_num_rows($result) > 0) {
         $post_Answer = $row['post_answer'];
         if (!empty($post_Answer)) {
             echo "<p class='post-answer'><strong>Expert's Answer:</strong> $post_Answer</p>";
-  echo "<form action='/FKEduSearch/Complaint/User/AddComplaintInterface.php?userid=$user_ID&expertid=$expert_ID&postanswer=$postanswer_ID' method='post'>";
+        if($complain == 0){
+          echo "<form action='/FKEduSearch/Complaint/User/AddComplaintInterface.php?userid=$user_ID&expertid=$expert_ID&postanswer=$postanswer_ID' method='post'>";
   echo "<div class='complaint-container'>";
   echo "<input type='hidden' name='userID' value='".$_SESSION['userID']."' />";
   echo "<input type='submit' value='Complaint' class='complaint-button'/>";
   echo "</form>";
   echo "</div>";
+        }else{
+          echo "<input type='button' style='float:right;' value='Complaint has been made!' readonly/>";
+        }
+  
             // Display rating input for the expert's answer
 			echo "<form method='POST' action='handleRating.php?expert_ID=$expert_ID'>";
 			echo "<div class='rating-container'>";
