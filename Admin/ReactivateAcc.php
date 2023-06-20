@@ -22,6 +22,47 @@ $queryU = "SELECT user_userName, user_ID
 <!DOCTYPE html>
 <html>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+<style>
+		.content {
+			overflow-y: scroll;
+			height: 1000px;
+			width: 100%;
+			margin: 0 auto;
+		}
+
+		.table {
+			border-collapse: collapse;
+			width: 100%;
+		}
+
+		.th, .td {
+			padding: 8px;
+			text-align: left;
+		}
+
+		.thread {
+			background-color: #f2f2f2;
+		}
+
+		.button-48 {
+			padding: 8px 16px;
+			font-size: 14px;
+			border-radius: 4px;
+			cursor: pointer;
+		}
+
+		.button-48:hover {
+			background-color: #4CAF50;
+			color: white;
+		}
+
+		.graph {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 70vh;
+		}
+	</style>
 <head>
 	<title>ADMIN</title>
 	<link rel="stylesheet" type="text/css" href="style.css">

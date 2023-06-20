@@ -1,44 +1,77 @@
 <?php
-session_start();
-include 'headerAdmin.php';
+    include'headerAdmin.php';
+?>
 
-// Check if the expert_id or user_id parameter is present in the URL
-if (isset($_GET['expert_ID'])) {
-    $id = $_GET['expert_ID'];
-    $table = "expert";
-} elseif (isset($_GET['user_ID'])) {
-    $id = $_GET['user_ID'];
-    $table = "user";
-} else {
-    // Redirect or display an error message
-    header("Location: index.php?error=Invalid ID");
-    exit();
-}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Update Page</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+		}
 
-// Establish a database connection (replace the placeholder values with your actual credentials)
-$link = mysqli_connect("localhost", "root", "") or die(mysqli_connect_error());
-mysqli_select_db($link, "miniproject") or die(mysqli_error($link));
+		h1 {
+			text-align: center;
+		}
 
-// Retrieve the expert/user record from the database
-$query = "SELECT * FROM $table WHERE ";
-if ($table === "expert") {
-    $query .= "expert_ID = $id";
-} elseif ($table === "user") {
-    $query .= "user_ID = $id";
-}
+		form {
+			width: 300px;
+			margin: 0 auto;
+		}
 
-$result = mysqli_query($link, $query);
+		label {
+			display: block;
+			margin-bottom: 5px;
+		}
 
-// Check if the record exists
-if (mysqli_num_rows($result) === 0) {
-    // Redirect or display an error message
-    header("Location: index.php?error=Record not found");
-    exit();
-}
+		input[type="text"],
+		input[type="email"],
+		input[type="password"] {
+			width: 100%;
+			padding: 8px;
+			margin-bottom: 10px;
+			border-radius: 4px;
+			border: 1px solid #ccc;
+			box-sizing: border-box;
+		}
 
-// Process the record here (e.g., display a form for updating the data)
+		input[type="submit"] {
+			background-color: #4CAF50;
+			color: white;
+			padding: 10px 15px;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+			width: 100%;
+		}
 
-mysqli_close($link);
+		input[type="submit"]:hover {
+			background-color: #45a049;
+		}
+	</style>
+</head>
+<body>
+	<h1>Update User</h1>
+	<form action="updateProcess.php" method="POST">
+		<label for="username">Username:</label>
+		<input type="text" id="username" name="username" required>
 
-include 'footerAdmin.php';
+		<label for="id">ID:</label>
+		<input type="text" id="id" name="id" required>
+
+		<label for="email">Email:</label>
+		<input type="email" id="email" name="email" required>
+
+		<label for="password">New Password:</label>
+		<input type="password" id="password" name="password" required>
+
+		<input type="submit" value="Update">
+	</form>
+</body>
+</html>
+
+
+<?php
+    include'footerAdmin.php';
 ?>

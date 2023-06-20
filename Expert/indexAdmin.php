@@ -26,11 +26,104 @@ $queryU = "SELECT user_userName, user_ID
 	<title>ADMIN</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: white;
+			margin: 0;
+			padding: 0;
+		}
+
+		.container {
+			max-width: 800px;
+			margin: 0 auto;
+			padding: 20px;
+			background-color: #fff;
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+		}
+
+		h1 {
+			text-align: center;
+			margin-bottom: 30px;
+		}
+
+		form {
+			margin-bottom: 20px;
+		}
+
+		label {
+			display: block;
+			font-weight: bold;
+			margin-bottom: 5px;
+		}
+
+		input[type="text"],
+		input[type="email"],
+		input[type="password"],
+		select {
+			width: 100%;
+			padding: 10px;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+			box-sizing: border-box;
+		}
+
+		.error {
+			color: red;
+			margin-bottom: 10px;
+		}
+
+		.btn {
+			display: inline-block;
+			background-color: #4CAF50;
+			color: #fff;
+			padding: 10px 20px;
+			border-radius: 4px;
+			border: none;
+			cursor: pointer;
+			transition: background-color 0.3s;
+		}
+
+		.btn:hover {
+			background-color: #45a049;
+		}
+
+		.table {
+			width: 100%;
+			border-collapse: collapse;
+			margin-bottom: 20px;
+		}
+
+		.table th,
+		.table td {
+			padding: 8px;
+			border: 1px solid #ddd;
+		}
+
+		.table th {
+			background-color: #f2f2f2;
+			font-weight: bold;
+		}
+
+		.table tr:nth-child(even) {
+			background-color: #f9f9f9;
+		}
+
 		.content {
 			overflow-y: scroll;
-			height: 1000px; /* Set the desired height for the scrollable area */
-			width: 100%; /* Adjust the width as needed */
-			margin: 0 auto; /* Center the content horizontally */
+			height: 1000px;
+			width: 100%;
+			margin: 0 auto;
+			padding: 20px;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+
+		.graph {
+			width: 100%;
+			max-width: 800px;
+			margin-top: 30px;
+			text-align: center;
 		}
 	</style>
 </head>
