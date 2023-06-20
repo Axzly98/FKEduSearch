@@ -126,7 +126,7 @@ $newType;
 </div>
 
 
-<body style="overflow:auto;">
+<body>
 
 
 
@@ -206,6 +206,7 @@ $newType;
     <td class="td"><?php echo $status; ?></td>
 		<td class="td">
     <input type="hidden" name="comid" value="<?php echo $complainid; ?>">
+    <input type="hidden" name="id" value="<?php echo $userid; ?>">
 			<a><button class="button-48" type="button" onclick="window.location.href='/FKEduSearch/Complaint/User/update.php?comid=<?php echo $complainid; ?>';">✏️</button></a> 
       <a><button class="button-48" type="button" onclick="window.location.href='/FKEduSearch/Complaint/User/view.php?comid=<?php echo $complainid; ?>';">👀</button></a> 
 			<a><button class="button-48" type="button" onclick="window.location.href='/FKEduSearch/Complaint/User/delete.php?comid=<?php echo $complainid; ?>';">🗑️</button></a>
@@ -228,7 +229,7 @@ $newType;
 
 
 <!-- FOOTER -->
-<footer style="position: static">
+<footer>
 
       <div class="foot">
         <a>
@@ -241,5 +242,4 @@ $newType;
       </div>
 </footer>
 </body>
-
 </html>

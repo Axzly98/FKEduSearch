@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-$iduser = $_SESSION['userID'];
+$iduser = $_GET['userid'];
 
 //Connect to the database server.
 $link = mysqli_connect("localhost", "root", "") or die(mysqli_connect_error());
@@ -10,19 +10,24 @@ $link = mysqli_connect("localhost", "root", "") or die(mysqli_connect_error());
 mysqli_select_db($link, "miniproject") or die(mysqli_error($link));
 
 //SQL query
-$query = "SELECT c.*, u.user_userName FROM complaint c INNER JOIN user u ON u.user_ID = c.user_ID"
+$query = "SELECT c.* FROM complaint c"
 	or die(mysqli_connect_error());
-	
+
+  $queryUser = "SELECT user_userName FROM user WHERE user_ID = '$iduser'"
+	or die(mysqli_connect_error());
+  
 //Execute the query (the recordset $rs contains the result)
 $result = mysqli_query($link, $query);
+$resultUser = mysqli_query($link, $queryUser);
 
 $row = mysqli_fetch_assoc($result);
+$rowUser = mysqli_fetch_assoc($resultUser);
   
-  $iduser = $row["user_ID"];
+
   $expertuser = $row["expert_ID"];
   $idadmin = $row["admin_ID"];
   $postanswer_ID = $row["post_AnswerID"];
-  $username = $row["user_userName"];
+  $username = $rowUser["user_userName"];
 	$type = $row["complaint_Type"];
 	$desc = $row["complaint_Desc"];
   $date = $row["complaint_Date"];

@@ -7,7 +7,27 @@
 	<title>ADMIN</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
+<<<<<<< HEAD
+<body>
+	<div>
+		<h5>Universiti Malaysia Pahang</h5>
+	</div>
+	<div>
+		<table>
+			<tr>
+				<td><a href="ReactivateAcc.php">Reactivate Acc</a></td>
+				<td><a href="#">Complaint</td>
+			</tr>
+			<tr>
+				<td><a href="#">Manage Acc</td>
+				<td><a href="#">Logout</td>
+			</tr>
+		</table>
+	</div>
+	
+=======
 <body align="center">
+>>>>>>> 1061d955996b013e2f047a538db09f669cd74f45
 	<form action="admin.php" method="post">
 		<h2>Registered New User</h2>
 		
