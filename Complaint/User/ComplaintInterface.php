@@ -1,11 +1,13 @@
 <?php
+
+session_start();
+$userid = $_SESSION['userID'];
+
 //Connect to the database server.
 $link = mysqli_connect("localhost", "root", "") or die(mysqli_connect_error());
 
 //Select the database.
 mysqli_select_db($link, "miniproject") or die(mysqli_error($link));
-
-$userid = $_GET['id'];
 
 //SQL query
 $query = "SELECT c.*, cs.complaintStatus_type FROM complaint c INNER JOIN complaint_status cs ON c.complaintStatus_ID = cs.complaintStatus_ID WHERE user_ID = '$userid'"
@@ -111,11 +113,11 @@ $newType;
 <div class="div">
 <div class="topnav">
   <a><img src="https://umplive.ump.edu.my/images/2020/07/26/logo-ump-transparent-blue__1122x561.png" style="width: 40px;"></a>
-  <a href="/FKEduSearch/User/userHome.php" style="margin-left: 400px;">Home</a>
-  <a href="/FKEduSearch/User/userYourPost.php">Your Post</a>
+  <a href="/FKEduSearch/Expert/userHomeAmin.php" style="margin-left: 400px;">Home</a>
+  <a href="/FKEduSearch/Expert/userYourPostAminBetul.php">Your Post</a>
   <a class="active" href="/FKEduSearch/Complaint/User/ComplaintInterface.php?id=<?php echo $userid?>">Complaint</a>
-  <a href="/FKEduSearch/User/userProfile.php">Profile</a>
-  <a href="/FKEduSearch/Admin/logout.php">Logout</a>
+  <a href="/FKEduSearch/Expert/userProfile.php">Profile</a>
+  <a href="/FKEduSearch/Expert/logout.php">Logout</a>
   <div class="search-container">
 
   </div>

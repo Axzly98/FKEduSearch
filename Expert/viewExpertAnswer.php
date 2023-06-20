@@ -13,7 +13,7 @@ $query = "SELECT pa.postAssigned_ID, pa.post_ID, pa.expert_ID, pa.date_assigned,
             pa.date_assigned, pa.postAssigned_status, 
             pa.expert_ID, pa.postAssigned_ID, 
             pa.date_assigned, 
-            a.post_answer
+            a.post_answer, a.post_AnswerID
         FROM post_assigned pa
         INNER JOIN post p ON pa.post_ID = p.post_ID
         LEFT JOIN post_answer a ON pa.postAssigned_ID = a.postAssigned_ID
@@ -24,6 +24,7 @@ $result = mysqli_query($link, $query);
 if (mysqli_num_rows($result) > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
         $post_ID = $row['post_ID'];
+        $postanswer_ID = $row['post_AnswerID'];
 		 $expert_ID = $row['expert_ID'];
         $post_Title = $row['post_title'];
         $post_Content = $row['post_content'];
@@ -41,7 +42,7 @@ if (mysqli_num_rows($result) > 0) {
         $post_Answer = $row['post_answer'];
         if (!empty($post_Answer)) {
             echo "<p class='post-answer'><strong>Expert's Answer:</strong> $post_Answer</p>";
-  echo "<form action='complaint.php' method='post'>";
+  echo "<form action='/FKEduSearch/Complaint/User/AddComplaintInterface.php?userid=$user_ID&expertid=$expert_ID&postanswer=$postanswer_ID' method='post'>";
   echo "<div class='complaint-container'>";
   echo "<input type='hidden' name='userID' value='".$_SESSION['userID']."' />";
   echo "<input type='submit' value='Complaint' class='complaint-button'/>";
