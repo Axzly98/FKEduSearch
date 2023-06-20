@@ -3,11 +3,11 @@ session_start();
 include 'headerAdmin.php';
 
 // Check if the expert_id or user_id parameter is present in the URL
-if (isset($_GET['expert_id'])) {
-    $id = $_GET['expert_id'];
+if (isset($_GET['expert_ID'])) {
+    $id = $_GET['expert_ID'];
     $table = "expert";
-} elseif (isset($_GET['user_id'])) {
-    $id = $_GET['user_id'];
+} elseif (isset($_GET['user_ID'])) {
+    $id = $_GET['user_ID'];
     $table = "user";
 } else {
     // Redirect or display an error message
