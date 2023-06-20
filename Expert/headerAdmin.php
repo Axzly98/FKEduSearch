@@ -11,7 +11,7 @@
   <a href="/FKEduSearch/Admin/ReactivateAcc.php" style="margin-left: 400px;">Reactivate Acc</a>
   <a class="active" href="/FKEduSearch/Expert/indexAdmin.php">Manage Acc</a>
   <a href="/FKEduSearch/Complaint/Admin/ComplaintListInterface.php">Complaint</a>
-  <a href="/FKEduSearch/Expert/logout.php">Logout</a>
+  <a href="logout.php">Logout</a>
 </div>
 <hr style="box-shadow: 5px 0px 1px #6DE4EA;">
 
