@@ -1,63 +1,151 @@
+<?php
+	include 'headerAdmin.php';
+
+	// Establish a database connection (replace the placeholder values with your actual credentials)
+	$link = mysqli_connect("localhost", "root", "") or die(mysqli_connect_error());
+	mysqli_select_db($link, "miniproject") or die(mysqli_error($link));
+
+	// Fetch data from the admin, user, and expert tables using inner joins
+	$query = "SELECT expert_userName, expert_ID
+		FROM expert";
+
+$queryU = "SELECT user_userName, user_ID
+		FROM user";
+
+	$result = mysqli_query($link, $query);
+	$resultU = mysqli_query($link, $queryU);
+
+	// Close the database connection
+	mysqli_close($link);
+?>
+
 <!DOCTYPE html>
 <html>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
 <head>
 	<title>ADMIN</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
+    <style>
+		.content {
+			overflow-y: scroll;
+			height: 1000px; /* Set the desired height for the scrollable area */
+			width: 100%; /* Adjust the width as needed */
+			margin: 0 auto; /* Center the content horizontally */
+		}
+
+        .graph{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 70vh; /* Adjust the height as needed */
+        }
+	</style>
 </head>
-<body>
-	<div>
-		<h5>Universiti Malaysia Pahang</h5>
-	</div>
-	<div>
-		<table>
-			<tr>
-				<td><a href="#">Reactivate Acc</a></td>
-				<td><a href="#">Complaint</td>
-			</tr>
-			<tr>
-				<td><a href="#">Manage Acc</td>
-				<td><a href="#">Logout</td>
-			</tr>
-		</table>
-	</div>
+<body align="center">
+<div class="content">
+	<h2>Reactivate Account</h2>
 	
-	<h2>Registerd New User</h2>
-	
-	<table border='1'>
-		<tr>
-			<td>No.</td>
-			<td>Username</td>
-			<td>ID</td>
-			<td>Reason</td>
-			<td>Acc Status</td>
-			<td colspan='2'>Reactivate Approval</td>
-		</tr>
-		<tr>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-		</tr>
-		<tr>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-			<td></td>
-		</tr>
-	</table>
-	<div class=footer>
-		<table>
-			<td><a href="#">UMP.Official<a></td>
-			<td><a href="#">Kalam</a></td>
-			<td><a href="#">E-Comm</a></td>
-		</table>
-		
-	</div>
+
+
+	<table border="1" class="table" style="width: 100%">
+<tr class="thread">
+  <th class="th" scope="col">No</th>
+  <th class="th" scope="col">Expert Username</th>
+  <th class="th" scope="col">Expert ID</th>
+  <th class="th" scope="col">Reactivate Approval</th>
+            </tr>
+            <tr>
+<?php  if (mysqli_num_rows($result) > 0){
+    // output data of each row
+    $no = 0;
+    while($row = mysqli_fetch_assoc($result) ){
+    $no = $no + 1;
+    $expertname = $row["expert_userName"];
+    $expertid = $row["expert_ID"];   
+?>	
+ <td class="td"><?php echo $no; ?></td>
+    <td class="td"><?php echo $expertname; ?></td>
+		<td class="td"><?php echo $expertid; ?></td>
+	<td align="center"><a><button class="button-48" type="button" onclick="window.location.href='/FKEduSearch/Complaint/Admin/add.php';">Reason</button></a> 
+	<a><button class="button-48" type="button" onclick="window.location.href='/FKEduSearch/Complaint/Admin/add.php';">Reject</button></a>
+	<a><button class="button-48" type="button" onclick="window.location.href='/FKEduSearch/Complaint/Admin/add.php';">Approve</button></a></td>
+	</tr>
+<?php
+    }
+} else {
+    echo "0 results";
+
+}
+?>
+</table>
+
+<br><br>
+
+<table border="1" class="table" style="width: 100%">
+<tr class="thread">
+  <th class="th" scope="col">No</th>
+  <th class="th" scope="col">User Username</th>
+  <th class="th" scope="col">User ID</th>
+  <th class="th" scope="col">Reactivate Approval</th>
+            </tr>
+            <tr>
+<?php  if (mysqli_num_rows($resultU) > 0){
+    // output data of each row
+    $no = 0;
+    while($rowU = mysqli_fetch_assoc($resultU) ){
+    $no = $no + 1;
+    $username = $rowU["user_userName"];
+    $userid = $rowU["user_ID"];   
+?>	
+ <td class="td"><?php echo $no; ?></td>
+    <td class="td"><?php echo $username; ?></td>
+    <td class="td"><?php echo $userid; ?></td>
+	<td align="center"><a><button class="button-48" type="button" onclick="window.location.href='/FKEduSearch/Complaint/Admin/add.php';">Reason</button></a>
+	<a><button class="button-48" type="button" onclick="window.location.href='/FKEduSearch/Complaint/Admin/add.php';">Reject</button></a>
+	<a><button class="button-48" type="button" onclick="window.location.href='/FKEduSearch/Complaint/Admin/add.php';">Approve</button></a></td>
+	</tr>
+<?php
+    }
+} else {
+    echo "0 results";
+
+}
+?>
+</table>
+
+<div class="graph">
+<canvas id="myChart" style="width:100%;max-width:800px"></canvas>
+<script>
+var xValues = ["Active", "User", "Expert"];
+var yValues = [44, 24, 15];
+var barColors = [
+  "#2b5797",
+  "#e8c3b9",
+  "#1e7145"
+];
+
+new Chart("myChart", {
+  type: "doughnut",
+  data: {
+    labels: xValues,
+    datasets: [{
+      backgroundColor: barColors,
+      data: yValues
+    }]
+  },
+  options: {
+    title: {
+      display: true,
+      text: "ACTIVE ACCOUNT GRAPH"
+    }
+  }
+});
+</script>
+</div>
+</div>
 </body>
 </html>
+
+<?php
+	include 'footerAdmin.php';
+?>

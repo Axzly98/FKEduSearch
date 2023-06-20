@@ -32,7 +32,7 @@ if (isset($_REQUEST['id'])) {
     
     // Close the database connection
     mysqli_close($link);
-  	$alert_message = "Data Has Been Deleted !!!";	
+  	$alert_message = "Publication Data Has Been Deleted !!!";	
 	echo "<script>alert('$alert_message');</script>";
 	echo "<script type = 'text/javascript'> window.location='expertPublication.php' </script>";
     exit;

@@ -261,6 +261,7 @@ section {
 # Navigation Menu
 --------------------------------------------------------------*/
 /* Desktop Navigation */
+
 @media (min-width: 1200px) {
   .navmenu {
     padding: 0;

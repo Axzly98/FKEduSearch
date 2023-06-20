@@ -1,12 +1,9 @@
-<html> 
-
-
 <?php
-
+session_start();
 $page = 'publication';
 
 ?>
-
+<html> 
 <body>
  
   <?php 
@@ -16,6 +13,8 @@ $page = 'publication';
   
 	mysqli_select_db($link, "miniproject") or die(mysqli_error());
   
+  // Get the expert ID from the form data
+$expertID = $_POST['expertID'];
   
   // Get the current date and time
 	$publicationCreatedDate = date('Y-m-d');
@@ -34,12 +33,14 @@ $page = 'publication';
   $name = $_REQUEST["publisherName"];
   $type = $_REQUEST["publicationCategories"];
   
-
   
-  	
-	
-	$query = "insert into publication values('', '', '$title','$publicationCreatedDate', '$name', '$type', '$destinationPath')"
-		or die(mysqli_connect_error());
+  $query = "INSERT INTO publication (expert_ID, publicationTitle, publicationDate, publisherName, publicationType, publicationFile)
+          VALUES ('$expertID', '$title', '$publicationCreatedDate', '$name', '$type', '$fileName')";
+
+	/*  $query = "INSERT INTO publication (publicationTitle, publicationDate, publisherName, publicationType, publicationFile)
+              VALUES ('$title', '$publicationCreatedDate', '$name', '$type', '')" */
+    
+		
   
 	$result = mysqli_query($link, $query);
 	     
@@ -66,8 +67,7 @@ $page = 'publication';
 		  
   //Close the database connection
 mysqli_close($link);
-  
-  
+ 
  
   ?>
   </body>

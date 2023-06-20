@@ -1,6 +1,7 @@
 <?php
 $page = 'home';
 include 'header.php';
+include 'footer.php';
 ?>
 
 <!-- BS5 -->
@@ -44,3 +45,4 @@ include 'header.php';
 
 
 <?php include 'footer.php'; ?>
+
