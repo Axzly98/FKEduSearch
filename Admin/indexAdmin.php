@@ -11,7 +11,7 @@
 	<div>
 		<table>
 			<tr>
-				<td><a href="#">Reactivate Acc</a></td>
+				<td><a href="ReactivateAcc.php">Reactivate Acc</a></td>
 				<td><a href="#">Complaint</td>
 			</tr>
 			<tr>
