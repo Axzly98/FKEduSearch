@@ -8,6 +8,13 @@ mysqli_select_db($link, "miniproject") or die(mysqli_error($link));
 $user_ID = $_REQUEST['user_ID'];
 
 // Retrieve all posts assigned to the user
+// pa = post_assigned 
+//a = post_answer 
+// p = post
+// join (tak specify join type) = inner join...difference dekat name sahaje...function dia same ....
+// untuk join table and return the matched row from both tables...kalo row x matched...dia akan exclude...value jadi NULL
+//left join --> return semua row dari first table (yang left side) dan yang matched row dari second table (right side)
+// kalau x ade row yang matched dgn condition...result still akan include all rows dari first table dan matched rows dari second table, NULL untuk unmatched row.
 $query = "SELECT pa.postAssigned_ID, pa.post_ID, pa.expert_ID, pa.date_assigned, pa.postAssigned_status,
             p.post_title, p.post_content, p.post_createdDate,
             pa.date_assigned, pa.postAssigned_status, 
