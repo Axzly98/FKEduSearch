@@ -1,6 +1,10 @@
 <?php
     include'headerAdmin.php';
+	
+	$expertid = $_GET['expert_ID'];
 ?>
+
+
 
 <!DOCTYPE html>
 <html>
@@ -52,13 +56,13 @@
 	</style>
 </head>
 <body>
-	<h1>Update User</h1>
-	<form action="updateProcess.php" method="POST">
+	<h1>Update Profile</h1>
+	<form action="updateProcess.php?expert_ID=<?php echo $expertid ?>" method="POST">
 		<label for="username">Username:</label>
 		<input type="text" id="username" name="username" required>
 
-		<label for="id">ID:</label>
-		<input type="text" id="id" name="id" required>
+		<label for="userfname">User Fullname:</label>
+		<input type="text" id="userfname" name="userfname" required>
 
 		<label for="email">Email:</label>
 		<input type="email" id="email" name="email" required>
