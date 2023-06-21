@@ -13,10 +13,11 @@ $email = $_POST["email"];
 $password = $_POST["password"];
 
 $query = "UPDATE user SET user_userName = '$userName', user_fullName = '$userfname', user_email='$email', user_password='$password'  WHERE user_ID = '$userid'";
-
+$query1 = "UPDATE `login` SET login_userName = '$userName', login_password='$password' WHERE user_ID = '$userid'";
 
 $result = mysqli_query($link,$query) or die ("Could not execute query in update.php");
-if($result){
+$resultUpdate = mysqli_query($link,$query1) or die ("Could not execute query in update.php");
+if($result&$resultUpdate){
 	echo "<script type = 'text/javascript'> window.location='indexAdmin.php' </script>";
 }
 ?>

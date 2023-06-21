@@ -15,6 +15,15 @@ $queryU = "SELECT user_userName, user_ID
 	$result = mysqli_query($link, $query);
 	$resultU = mysqli_query($link, $queryU);
 
+	
+$sql1="SELECT count(*) as sum1 from expert";
+$result1=mysqli_query($link,$sql1);
+$data1=mysqli_fetch_assoc($result1);
+
+$sql2="SELECT count(*) as sum2 from user";
+$result2=mysqli_query($link,$sql2);
+$data2=mysqli_fetch_assoc($result2);
+
 	// Close the database connection
 	mysqli_close($link);
 ?>
@@ -154,15 +163,23 @@ $queryU = "SELECT user_userName, user_ID
 ?>
 </table>
 
+
+
+
+
+
 <div class="graph">
 <canvas id="myChart" style="width:100%;max-width:800px"></canvas>
 <script>
-var xValues = ["Active", "User", "Expert"];
-var yValues = [44, 24, 15];
+
+var no1 = "<?php echo $data1['sum1'];?>";
+var no2 = "<?php echo $data2['sum2'];?>";
+
+var xValues = ["User", "Expert"];
+var yValues = [no2, no1];
 var barColors = [
-  "#2b5797",
-  "#e8c3b9",
-  "#1e7145"
+  "#1EAE9B",
+  "#0A56C1"
 ];
 
 new Chart("myChart", {
