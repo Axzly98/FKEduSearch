@@ -106,10 +106,10 @@ new Chart("myChart", {
 <?php  if (mysqli_num_rows($resultE) > 0 ){
     // output data of each row
     $no = 0;
-    while($rowU = mysqli_fetch_assoc($resultE) ){
+    while($rowE = mysqli_fetch_assoc($resultE) ){
     $no = $no + 1;
-    $username = $rowU["expert_fullName"];
-    $userid = $rowU["expert_ID"];  
+    $username = $rowE["expert_fullName"];
+    $userid = $rowE["expert_ID"];  
     }
   }
 ?>	
