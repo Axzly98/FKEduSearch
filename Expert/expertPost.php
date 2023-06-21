@@ -87,7 +87,7 @@ $row = mysqli_fetch_assoc($result);
 $researchArea = $row['researchAreaName'];
 
 // Query the post_assigned and post tables to get the assigned posts
-$queryAssigned = "SELECT post.post_title, post.post_content, post.post_createdDate, post.post_categories, post.post_remainingDuration,
+$queryAssigned = "SELECT post.post_title, post.post_content, post.post_createdDate, post.post_categories,
           post_assigned.postAssigned_ID
           FROM post_assigned 
           INNER JOIN post ON post_assigned.post_ID = post.post_ID
@@ -115,14 +115,14 @@ $result = mysqli_query($link, $queryAssigned) or die(mysqli_error($link));
             $title = $row['post_title'];
             $content = $row['post_content'];
             $postCategories = $row['post_categories'];
-            $remainingDuration = $row['post_remainingDuration'];
+           // $remainingDuration = $row['post_remainingDuration'];
             $date = $row['post_createdDate'];
             $postAssignedID = $row['postAssigned_ID']; 
 
             echo "<h3><strong>Post Title:</strong> $title</h3>";
             echo "<p><strong>Post Content:</strong> $content</p>";
             echo "<p><strong>Post Categories:</strong> $postCategories</p>";
-            echo "<p><strong>Post Remaining:</strong> $remainingDuration</p>";
+          //  echo "<p><strong>Post Remaining:</strong> $remainingDuration</p>";
             echo "<p><strong>Post Created Date:</strong> $date</p>";
             echo "<hr>";
 
