@@ -77,16 +77,13 @@ $result = mysqli_query($link, $query);
   </table>
   <input type="hidden" name="complain" value="<?php echo $complainid; ?>">
 <br>
-  <button class="button-81" type="button" onclick="history.back();">
-    Return
-  </button>
 
   </form>
 </div>
 </div>
 
 <!-- FOOTER -->
-<footer>
+<footer style="bottom : 2px;position:fixed;width:100%;">
 
       <div class="foot">
         <a>
