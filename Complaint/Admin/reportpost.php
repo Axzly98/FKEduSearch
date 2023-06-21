@@ -33,6 +33,11 @@ $sql3="SELECT count(*) as total3 from post WHERE post_categories = 'Software Eng
 $result3=mysqli_query($link,$sql3);
 $data3=mysqli_fetch_assoc($result3);
 
+$sql4="SELECT count(*) as total4 from post WHERE post_categories = 'Graphic and Multimedia'";
+$result4=mysqli_query($link,$sql4);
+$data4=mysqli_fetch_assoc($result4);
+
+
 ?>	
 
 <html>
@@ -65,14 +70,16 @@ $data3=mysqli_fetch_assoc($result3);
 var no1 = "<?php echo $data1['total'];?>";
 var no2 = "<?php echo $data2['total2'];?>";
 var no3 = "<?php echo $data3['total3'];?>";
+var no4 = "<?php echo $data4['total4'];?>";
 
 
-var xValues = ["Cyber Security", "Networking", "Software Engineering"];
-var yValues = [no1, no2, no3];
+var xValues = ["Cyber Security", "Networking", "Software Engineering","Graphic and Multimedia"];
+var yValues = [no1, no2, no3,no4];
 var barColors = [
   "yellow",
   "green",
-  "red"
+  "red",
+  "purple"
 ];
 
 
