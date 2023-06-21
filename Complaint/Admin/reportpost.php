@@ -61,9 +61,9 @@ var no3 = "<?php echo $data3['total3'];?>";
 var xValues = ["Cyber Security", "Networking", "Software Engineering"];
 var yValues = [no1, no2, no3];
 var barColors = [
-  "#b91d47",
-  "#00aba9",
-  "#31c346"
+  "yellow",
+  "green",
+  "red"
 ];
 
 new Chart("myChart", {
