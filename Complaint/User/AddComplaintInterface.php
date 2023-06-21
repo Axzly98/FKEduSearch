@@ -1,6 +1,7 @@
 <?php
 
 session_start();
+
 $iduser = $_GET['userid'];
 
 //Connect to the database server.
@@ -10,7 +11,7 @@ $link = mysqli_connect("localhost", "root", "") or die(mysqli_connect_error());
 mysqli_select_db($link, "miniproject") or die(mysqli_error($link));
 
 //SQL query
-$query = "SELECT c.* FROM complaint c"
+$query = "SELECT post_AnswerID, admin_ID, expert_ID, complaintStatus_ID, complaint_Date, complaint_Time FROM complaint"
 	or die(mysqli_connect_error());
 
   $queryUser = "SELECT user_userName FROM user WHERE user_ID = '$iduser'"
@@ -28,8 +29,6 @@ $rowUser = mysqli_fetch_assoc($resultUser);
   $idadmin = $row["admin_ID"];
   $postanswer_ID = $row["post_AnswerID"];
   $username = $rowUser["user_userName"];
-	$type = $row["complaint_Type"];
-	$desc = $row["complaint_Desc"];
   $date = $row["complaint_Date"];
   $time = $row["complaint_Time"];
   $statusid = $row["complaintStatus_ID"];
@@ -89,7 +88,7 @@ $rowUser = mysqli_fetch_assoc($resultUser);
     </tr>      
     <tr>
       <td>
-        <select class="textbox-10" name="complainttype">
+        <select class="textbox-10" name="complainttype" required>
           <option value="" disabled selected>Select type of complaint</option>
           <option value="Wrongly Assigned Research Area">Wrongly Assigned Research Area</option>
           <option value="Unsatisfied Expert Feedback">Unsatisfied Expert's Feedback</option>
@@ -105,11 +104,11 @@ $rowUser = mysqli_fetch_assoc($resultUser);
     </tr>      
     <tr>
       <td colspan="2">
-        <textarea class="textbox-10" style="width: 100%;" name="description" value="<?php $desc; ?>"></textarea>
+        <textarea class="textbox-10" style="width: 100%;" name="description" required></textarea>
       </td>
     </tr>
   </table>
-  <input type="hidden" name="iduser" value="<?php echo $iduser = $_GET['userid'];?>">
+  <input type="hidden" name="iduser" value="<?php echo $iduser?>">
   <input type="hidden" name="idadmin" value="<?php echo $idadmin = 1; ?>">
   <input type="hidden" name="idexpert" value="<?php echo $expertuser= $_GET['expertid']; ?>">
   <input type="hidden" name="complain" value="<?php echo $statusid = 1; ?>">
@@ -126,7 +125,7 @@ $rowUser = mysqli_fetch_assoc($resultUser);
 </div>
 
 <!-- FOOTER -->
-<footer>
+<footer style="bottom : 2px;position:fixed;width:100%;">
 
       <div class="foot">
         <a>

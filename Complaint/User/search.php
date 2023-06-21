@@ -147,7 +147,7 @@ $rowUser = mysqli_fetch_assoc($resultUser);
 </div>
 
 <!-- FOOTER -->
-<footer>
+<footer style="bottom : 2px;position:fixed;width:100%;">
 
       <div class="foot">
         <a>

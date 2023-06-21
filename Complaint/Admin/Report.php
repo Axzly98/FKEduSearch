@@ -87,7 +87,7 @@ new Chart("myChart", {
 </script>
 
 <!-- FOOTER -->
-<footer>
+<footer style="bottom : 2px;position:fixed;width:100%;">
 
       <div class="foot">
         <a>
