@@ -9,6 +9,15 @@ mysqli_select_db($link, "miniproject") or die(mysqli_error($link));
 $queryUser = "SELECT post_categories FROM post;"
 	or die(mysqli_connect_error());
 
+  $queryU = "SELECT approval_status, approval_ID
+		FROM approval";
+    $queryE = "SELECT expert_ID, expert_fullName
+		FROM expert";
+
+	
+	$resultU = mysqli_query($link, $queryU);
+  $resultE = mysqli_query($link, $queryE);
+
 //Execute the query (the recordset $rs contains the result)
 $result = mysqli_query($link, $queryUser);
 
@@ -66,6 +75,7 @@ var barColors = [
   "red"
 ];
 
+
 new Chart("myChart", {
   type: "pie",
   data: {
@@ -78,11 +88,53 @@ new Chart("myChart", {
   options: {
     title: {
       display: true,
-      text: "Type of Complaint"
+      text: "Categories"
     }
   }
 });
 </script>
+
+<table border="1" class="table" style="width: 100%">
+<tr class="thread">
+  <th class="th" scope="col">No</th>
+  <th class="th" scope="col">Expert Name</th>
+  <th class="th" scope="col">Expert ID</th>
+  <th class="th" scope="col">Status</th>
+  
+            </tr>
+            <tr>
+<?php  if (mysqli_num_rows($resultE) > 0 ){
+    // output data of each row
+    $no = 0;
+    while($rowU = mysqli_fetch_assoc($resultE) ){
+    $no = $no + 1;
+    $username = $rowU["expert_fullName"];
+    $userid = $rowU["expert_ID"];  
+    }
+  }
+?>	
+<?php  if (mysqli_num_rows($resultU) > 0 ){
+    // output data of each row
+    $no = 0;
+    while($rowU = mysqli_fetch_assoc($resultU) ){
+    $no = $no + 1;  
+    $approvalstatus = $rowU["approval_status"];
+?>	
+ <td class="td"><?php echo $no; ?></td>
+    <td class="td"><?php echo $username; ?></td>
+    <td class="td"><?php echo $userid; ?></td>
+    <td class="td"><?php echo $approvalstatus; ?></td>
+	
+	</tr>
+<?php
+    }
+} else {
+    echo "0 results";
+
+}
+?>
+</table>
+
 
 <!-- FOOTER -->
 <footer>
