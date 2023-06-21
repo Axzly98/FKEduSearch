@@ -6,7 +6,7 @@ $link = mysqli_connect("localhost", "root", "") or die(mysqli_connect_error());
 mysqli_select_db($link, "miniproject") or die(mysqli_error($link));
 
 //SQL query
-$queryUser = "SELECT post_categories FROM post;"
+$queryUser = "SELECT post_categories,post_likes FROM post;"
 	or die(mysqli_connect_error());
 
   $queryU = "SELECT approval_status, approval_ID
@@ -88,7 +88,7 @@ new Chart("myChart", {
   options: {
     title: {
       display: true,
-      text: "Categories"
+      text: "Post Categories"
     }
   }
 });
