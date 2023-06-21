@@ -5,7 +5,7 @@ $link = mysqli_connect("localhost", "root", "") or die(mysqli_connect_error());
 //Select the database.
 mysqli_select_db($link, "miniproject") or die(mysqli_error($link));
 
-$complainid = $_GET["id"];
+$complainid = isset($_GET["id"]) ? $_GET["id"] : null;
 
 //SQL query
 $queryReply = "SELECT admin_ID, complaint_ID, CR_datetime FROM complaint_reply"
@@ -33,6 +33,7 @@ $rowReply = mysqli_fetch_assoc($resultReply);
   <a href="/FKEduSearch/Admin/ReactivateAcc.php" style="margin-left: 400px;">Reactivate Acc</a>
   <a href="/FKEduSearch/Expert/indexAdmin.php">Manage Acc</a>
   <a class="active" href="/FKEduSearch/Complaint/Admin/ComplaintListInterface.php">Complaint</a>
+  <a href="/FKEduSearch/Complaint/Admin/reportpost.php">Report Post</a>
   <a href="/FKEduSearch/Expert/logout.php">Logout</a>
 
 </div>
