@@ -50,10 +50,9 @@ include 'headerExpert.php';
 			
 			$expert_ID = $_SESSION["expertID"];
 			
-			
 			$query = "SELECT expert.expert_email AS expert_email, expert.expert_profilePicture AS expert_profilePicture, expert.expert_CV AS expert_CV, research_area.researchAreaName AS researchAreaName, academic_status.academicStatus_type AS academicStatus_type, socialmedia.instagram_userName AS instagram_userName, socialmedia.linkedin_userName AS linkedin_userName
 					  FROM expert
-					  JOIN research_areauserexpert ON expert.expert_ID = research_areauserexpert.expert_ID 
+					  JOIN research_areauserexpert ON expert.expert_ID = research_areauserexpert.expert_ID
 					  JOIN research_area ON research_areauserexpert.researchArea_ID = research_area.researchArea_ID
 					  JOIN academic_statususerexpert ON expert.expert_ID = academic_statususerexpert.expert_id
 					  JOIN academic_status ON academic_statususerexpert.academicStatus_ID = academic_status.academicStatus_ID
@@ -68,6 +67,8 @@ include 'headerExpert.php';
 			// Data exists in the database for the expert's profile
 			$academicStatus_type = $row["academicStatus_type"];
 			$academicStatus_type = explode(',', $academicStatus_type);
+
+			// Continue with the rest of the code to populate the form fields and process the update
 
 			} else {
 			// No data found in the database for the expert's profile
