@@ -43,7 +43,7 @@ $rowReply = mysqli_fetch_assoc($resultReply);
 
 
 <div class="center">
-<h1>Reply Complaint</h1>
+<h1>Reason </h1>
 <br>
 <form method="post" action="add_action.php?id=<?php echo $complainid; ?>;">
   <table class="center1">
