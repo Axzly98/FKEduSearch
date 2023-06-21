@@ -56,7 +56,7 @@
 	</style>
 </head>
 <body>
-	<h1>Update Profile</h1>
+	<h1>Update User Profile</h1>
 	<form action="updateUserProcess.php?user_ID=<?php echo $userid ?>" method="POST">
 		<label for="username">Username:</label>
 		<input type="text" id="username" name="username" required>
