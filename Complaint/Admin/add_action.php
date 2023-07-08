@@ -16,6 +16,6 @@ $query = "UPDATE complaint SET complaintStatus_ID = 3 WHERE complaint_ID = '$com
 $result = mysqli_query($link,$sql) or die ("Could not add a query");
 $resultUpdate = mysqli_query($link,$query) or die ("Could not add a query");
 if($result&$resultUpdate){
-	echo "<script type = 'text/javascript'> window.location='ComplaintListInterface.php' </script>";
+	echo "<script type = 'text/javascript'> window.location='/FKEduSearch/Admin/ComplaintListInterface.php' </script>";
 }
 ?>

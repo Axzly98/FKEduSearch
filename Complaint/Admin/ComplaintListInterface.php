@@ -9,7 +9,7 @@ $link = mysqli_connect("localhost", "root", "") or die(mysqli_connect_error());
 mysqli_select_db($link, "miniproject") or die(mysqli_error($link));
 
 //SQL query
-$query = "SELECT c.*, cs.complaintStatus_type, u.user_fullName FROM complaint c INNER JOIN complaint_status cs ON c.complaintStatus_ID = cs.complaintStatus_ID INNER JOIN user u ON c.user_ID = u.user_ID"
+$query = "SELECT c.*, cs.complaintStatus_type, u.user_userName FROM complaint c INNER JOIN complaint_status cs ON c.complaintStatus_ID = cs.complaintStatus_ID INNER JOIN user u ON c.user_ID = u.user_ID"
 	or die(mysqli_connect_error());
 
 $queryAns = "SELECT cr.CR_ID FROM complaint_reply cr INNER JOIN complaint c ON c.complaint_ID = cr.complaint_ID"
@@ -125,6 +125,7 @@ $data=mysqli_fetch_assoc($resultall);
   <a href="/FKEduSearch/Admin/ReactivateAcc.php" style="margin-left: 400px;">Reactivate Acc</a>
   <a href="/FKEduSearch/Expert/indexAdmin.php">Manage Acc</a>
   <a class="active" href="/FKEduSearch/Complaint/Admin/ComplaintListInterface.php">Complaint</a>
+  <a href="/FKEduSearch/Complaint/Admin/reportpost.php">Report Post</a>
   <a href="/FKEduSearch/Expert/logout.php">Logout</a>
   
 </div>
@@ -189,7 +190,7 @@ $data=mysqli_fetch_assoc($resultall);
     while($row = mysqli_fetch_assoc($result)){
     $no = $no + 1;
     $complainid = $row["complaint_ID"];
-    $name = $row["user_fullName"];
+    $name = $row["user_userName"];
     $date = $row["complaint_Date"];
     $time = $row["complaint_Time"];
 	  $type = $row["complaint_Type"];

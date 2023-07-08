@@ -137,20 +137,20 @@ $queryU = "SELECT user_userName, user_ID
 		<?php } ?>
 		
 		<label>Username :</label>
-		<input type="text" name="uname" placeholder="Username"><br><br>
+		<input type="text" name="uname" placeholder="Username" required><br><br>
 		<label>Full Name: </label>
-		<input type="text" name="fname" placeholder="Fullname"><br><br>
+		<input type="text" name="fname" placeholder="Fullname" required><br><br>
 		
 	
 		
 		<label>Email :</label>
-		<input type="text" name="email" placeholder="Email"><br><br>
+		<input type="text" name="email" placeholder="Email" required><br><br>
 		
 		<label>Password :</label>
-		<input type="text" name="password" placeholder="Password"><br><br>
+		<input type="text" name="password" placeholder="Password" required><br><br>
 		
 			<label>Select Role :</label>
-		<select name="role">
+		<select name="role" required>
 			<option value="">Role</option>
 			<option value="Admin">Admin</option>
 			<option value="Expert">Expert</option>
@@ -183,7 +183,7 @@ $queryU = "SELECT user_userName, user_ID
     <td class="td"><?php echo $expertname; ?></td>
 		<td class="td"><?php echo $expertid; ?></td>
 	<td align="center"> 
-	<a><button class="button-48" type="button" onclick="updateExpert(<?php echo $expertid; ?>)">Update</button></a>
+	<a><button class="button-48" type="button" onclick="window.location.href='/FKEduSearch/Expert/updateAdmin.php?expert_ID=<?php echo $expertid?>'">Update</button></a>
 	<a><button class="button-48" type="button" onclick="window.location.href='/FKEduSearch/Expert/deleteAdmin.php?expert_ID=<?php echo $expertid?>'">Delete</button></td>
 	</tr>
 <?php
@@ -217,7 +217,7 @@ $queryU = "SELECT user_userName, user_ID
     <td class="td"><?php echo $username; ?></td>
     <td class="td"><?php echo $userid; ?></td>
 	<td align="center">
-	<a><button class="button-48" type="button" onclick="updateUser(<?php echo $userid; ?>)">Update</button></a>
+	<a><button class="button-48" type="button" onclick="window.location.href='/FKEduSearch/Expert/updateUserAdmin.php?user_ID=<?php echo $userid?>'">Update</button></a>
 	<a><button class="button-48" type="button" onclick="window.location.href='/FKEduSearch/Expert/deleteUAdmin.php?user_ID=<?php echo $userid?>'">Delete</button></td>
 	</tr>
 <?php

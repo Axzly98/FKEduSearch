@@ -1,7 +1,7 @@
 <?php
     include'headerAdmin.php';
 	
-	$expertid = $_GET['expert_ID'];
+	$userid = $_GET['user_ID'];
 ?>
 
 
@@ -56,8 +56,8 @@
 	</style>
 </head>
 <body>
-	<h1>Update Expert Profile</h1>
-	<form action="updateProcess.php?expert_ID=<?php echo $expertid ?>" method="POST">
+	<h1>Update User Profile</h1>
+	<form action="updateUserProcess.php?user_ID=<?php echo $userid ?>" method="POST">
 		<label for="username">Username:</label>
 		<input type="text" id="username" name="username" required>
 
