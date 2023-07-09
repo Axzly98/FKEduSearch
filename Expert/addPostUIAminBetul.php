@@ -17,7 +17,7 @@ include 'headerUser.php';
 
 <td>
 <select name="category">
-<option value="" selected align="center">-Select Categories-</option>
+<option value="" selected align="center" required>-Select Categories-</option>
      <option value="" selected disabled required>- Select Research Area -</option>
           <option value="Computer Systems and Networking">Computer Systems and Networking</option>
           <option value="Software Engineering">Software Engineering</option>
@@ -31,7 +31,7 @@ include 'headerUser.php';
 
    <tr>
    <td>Post Title:</td>  
-   <td><input type="text" name="postTitle" placeholder="Write Your Post Title Here" style="width: 300px;"> </td> 
+   <td><input type="text" name="postTitle" placeholder="Write Your Post Title Here" style="width: 300px;" required> </td> 
    
    </tr>
 

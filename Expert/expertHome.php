@@ -14,7 +14,7 @@ $result = mysqli_query($link, $query);
 $row = mysqli_fetch_assoc($result);
 $totalPublications = $row['total'];
 
-$queryRating = "SELECT SUM(rating_value) AS total_rating, COUNT(*) AS rating_count FROM rating WHERE expert_ID = '$expertID'";
+$queryRating = "SELECT SUM(rating_value) AS total_rating, COUNT(rating_ID) AS rating_count FROM rating WHERE expert_ID = '$expertID'";
 $result = mysqli_query($link, $queryRating);
 $row = mysqli_fetch_assoc($result);
 $rating_sum = $row['total_rating'];
